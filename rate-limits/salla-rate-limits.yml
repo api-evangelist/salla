@@ -1,0 +1,49 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Salla
+providerId: salla
+created: '2026-05-24'
+modified: '2026-05-24'
+reconciled: false
+tags:
+- E-Commerce
+- Rate Limiting
+- Quotas
+description: |
+  Reconciled rate-limit posture for the Salla Merchant, Apps, and Shipping APIs. Salla's documentation states
+  that the platform enforces request-rate limiting to ensure fairness across merchants and apps, but does not
+  publish hard per-endpoint quotas. Apps that hit limits receive a 429 response and should back off using
+  exponential retry with jitter, honoring the Retry-After header when present.
+sources:
+- https://docs.salla.dev/421117m0
+- https://docs.salla.dev/421127m0
+headers:
+  retryAfter: retry-after
+  remaining: x-ratelimit-remaining
+  limit: x-ratelimit-limit
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+algorithm: token-bucket
+limits:
+- scope: per-app
+  surface: Merchant API
+  description: Per-app request quota; specific per-second / per-minute thresholds are not publicly published.
+  rps: undisclosed
+- scope: per-token
+  surface: Merchant API
+  description: Per-OAuth-token rate cap intended to prevent any single merchant token from consuming a disproportionate
+    share of capacity.
+  rps: undisclosed
+- scope: webhook-delivery
+  surface: Webhooks
+  description: Webhook delivery retries on non-2xx responses with exponential backoff; partners must respond within
+    a few seconds.
+  rps: n/a
+guidance:
+- Implement exponential backoff with jitter on 429 responses.
+- Cache responses where possible (countries, languages, currencies, taxes) — these change infrequently.
+- For bulk imports, batch operations and watch for the `next` pagination cursor instead of polling.
+- Use webhooks (order.*, product.*, customer.*) for change notifications rather than polling list endpoints.
+- Subscribe with conditional webhook rules to reduce delivery volume to only the events you actually need.

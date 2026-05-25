@@ -1,0 +1,110 @@
+vocabulary: Salla
+version: '0.1'
+description: Controlled vocabulary covering Salla's commerce, merchant, partner, and Saudi-market domain terms.
+sources:
+- https://docs.salla.dev/
+- https://salla.com
+tags:
+- E-Commerce
+- Saudi Arabia
+- MENA
+- Arabic
+- Storefront
+concepts:
+- term: Merchant
+  definition: A business that operates an online store hosted on the Salla platform.
+- term: Store
+  definition: The customer-facing online shop powered by Salla, identified by a unique domain or subdomain.
+- term: Partner
+  definition: A developer, agency, or service provider that builds apps, themes, or integrations distributed through
+    the Salla Partners Portal and App Store.
+- term: App
+  definition: A third-party extension installed on a merchant store via the Salla App Store; subject to OAuth scopes
+    and webhook subscriptions.
+- term: Theme
+  definition: A storefront skin built on the Twilight engine that controls layout, components, and customer-facing
+    UX.
+- term: Twilight
+  definition: Salla's open theming framework — Twig templates plus a JavaScript SDK and web components — used to
+    customize storefronts.
+- term: Salla CLI
+  definition: Command-line tool used by partners to scaffold, develop, test, and publish Salla apps and themes.
+- term: Embedded SDK
+  definition: SDK that allows partner apps to render inside the merchant dashboard as embedded UI.
+- term: Webhook
+  definition: A signed HTTPS callback Salla emits to a partner app for store events (orders, products, customers,
+    shipments, etc.).
+- term: Conditional Webhook
+  definition: A webhook subscription with attached rules that filter which events are delivered.
+- term: Signature Strategy
+  definition: Webhook authentication mode that signs payloads with HMAC SHA-256 and delivers them via
+    X-Salla-Security-Strategy and X-Salla-Signature headers.
+- term: Token Strategy
+  definition: Webhook authentication mode that delivers an auto-generated bearer token via the Authorization header.
+- term: Scope
+  definition: An OAuth 2.0 permission grant (e.g. orders.read, products.read_write) configured per app in the
+    Partners Portal.
+- term: Refresh Token
+  definition: A long-lived credential used to obtain a new access token; valid within a one-month window in Salla.
+- term: Access Token
+  definition: A 14-day bearer token issued by Salla Partners that authorizes Merchant API calls.
+- term: Branch
+  definition: A physical store location associated with a merchant; can be set as the default pickup branch.
+- term: Pickup Branch
+  definition: The branch designated as the origin location for a shipment.
+- term: Brand
+  definition: A manufacturer or label entity associated with products in the store.
+- term: Category
+  definition: A hierarchical grouping used to organize products within the storefront.
+- term: SKU
+  definition: Stock Keeping Unit identifier for an individual product variant.
+- term: Abandoned Cart
+  definition: A cart created by a shopper who exited the storefront without completing checkout; surfaced via the
+    abandoned.cart webhook for recovery campaigns.
+- term: Coupon
+  definition: A discount code applied at checkout; coupon.applied webhooks track usage.
+- term: Special Offer
+  definition: A merchant-configured promotion (BOGO, percentage off, fixed amount off, free shipping).
+- term: Shipment
+  definition: A package handed off to a courier for delivery to a customer; tracked through creating, created,
+    cancelled, updated lifecycle webhooks.
+- term: Shipping Zone
+  definition: A geographic region (countries, cities) that maps to a shipping company and cost configuration.
+- term: Shipping App
+  definition: A partner-built application that implements the Salla shipping contract to plug a courier into the
+    merchant shipment flow.
+- term: ZATCA
+  definition: Saudi Arabia's Zakat, Tax and Customs Authority. Salla supports ZATCA-compliant Phase-1 and Phase-2
+    e-invoicing QR codes.
+- term: Fatoora
+  definition: The Arabic word for invoice; refers to ZATCA's e-invoicing initiative.
+- term: mada
+  definition: Saudi Arabia's national debit and prepaid card network, natively supported as a Salla payment method.
+- term: STC Pay
+  definition: Saudi Arabia's leading digital wallet, supported as a native Salla payment method.
+- term: Tabby
+  definition: GCC-region buy-now-pay-later provider integrated as a Salla payment method.
+- term: Tamara
+  definition: Saudi Arabia-headquartered buy-now-pay-later provider integrated as a Salla payment method.
+- term: STC Bank
+  definition: Saudi Arabia's first licensed digital bank, integrated as a payment option across Salla-powered
+    stores.
+- term: Apple Pay
+  definition: Apple's digital wallet payment method, supported natively in Salla checkout.
+- term: HyperPay
+  definition: A regional payment gateway integrated with Salla.
+- term: Moyasar
+  definition: A Saudi-headquartered payment gateway integrated with Salla.
+- term: Aramex
+  definition: A regional logistics provider integrated as a Salla shipping app.
+- term: SMSA
+  definition: Saudi Arabia-based logistics provider integrated as a Salla shipping app.
+- term: J&T Express
+  definition: Regional logistics provider integrated as a Salla shipping app.
+- term: Salla Pay
+  definition: Salla's first-party payment processing service for merchants.
+- term: Salla Logistics
+  definition: Salla's first-party logistics offering for merchants.
+- term: Salla Migration
+  definition: A first-party service that helps merchants migrate from other platforms (Shopify, WooCommerce, Zid)
+    onto Salla.

@@ -1,0 +1,44 @@
+{
+  "status": 200,
+  "success": true,
+  "data": [
+    {
+      "id": 1773648299,
+      "name": "Arabic Coffee Set — Riyadh Edition",
+      "sku": "ACS-RYD-001",
+      "type": "product",
+      "status": "sale",
+      "price": { "amount": 245, "currency": "SAR" },
+      "sale_price": { "amount": 199, "currency": "SAR" },
+      "quantity": 47,
+      "url": "https://salla.sa/store/products/1773648299",
+      "categories": [88723, 88799],
+      "brand_id": 4421,
+      "images": [
+        {
+          "id": 9921,
+          "original": "https://cdn.salla.sa/products/1773648299/original.jpg",
+          "thumbnail": "https://cdn.salla.sa/products/1773648299/thumb.jpg",
+          "alt": "Arabic Coffee Set",
+          "sort": 1
+        }
+      ],
+      "updated_at": "2026-05-23T07:14:00+03:00"
+    },
+    {
+      "id": 1773648312,
+      "name": "Dates Premium Sukkari 1kg",
+      "sku": "DATES-SUKK-1",
+      "type": "food",
+      "status": "sale",
+      "price": { "amount": 89, "currency": "SAR" },
+      "quantity": 312,
+      "url": "https://salla.sa/store/products/1773648312"
+    }
+  ],
+  "pagination": {
+    "count": 2,
+    "current": 1,
+    "next": "https://api.salla.dev/admin/v2/products?page=2"
+  }
+}

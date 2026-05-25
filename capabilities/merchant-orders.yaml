@@ -1,0 +1,121 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salla Merchant API — Orders
+  description: Salla Merchant API Orders capability — list, retrieve, update orders, change status, and inspect histories,
+    invoices, and items via https://api.salla.dev/admin/v2.
+  tags:
+  - Salla
+  - Orders
+  - E-Commerce
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    SALLA_ACCESS_TOKEN: SALLA_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: merchant-orders
+    baseUri: https://api.salla.dev/admin/v2
+    description: Salla Merchant API — Orders business capability.
+    resources:
+    - name: orders
+      path: /orders
+      operations:
+      - name: listOrders
+        method: GET
+        description: List orders.
+        inputParameters:
+        - { name: page, in: query, type: integer }
+        - { name: per_page, in: query, type: integer }
+        - { name: status, in: query, type: string }
+        - { name: from_date, in: query, type: string }
+        - { name: to_date, in: query, type: string }
+        outputParameters:
+        - { name: result, type: object, value: $. }
+    - name: order
+      path: /orders/{order_id}
+      operations:
+      - name: getOrder
+        method: GET
+        description: Get order details.
+        inputParameters:
+        - { name: order_id, in: path, type: integer, required: true }
+        - { name: format, in: query, type: string }
+        outputParameters:
+        - { name: result, type: object, value: $. }
+      - name: updateOrder
+        method: PUT
+        description: Update order.
+        inputParameters:
+        - { name: order_id, in: path, type: integer, required: true }
+        - { name: body, in: body, type: object, required: true }
+        outputParameters:
+        - { name: result, type: object, value: $. }
+    - name: order-status
+      path: /orders/{order_id}/status
+      operations:
+      - name: updateOrderStatus
+        method: POST
+        description: Update order status.
+        inputParameters:
+        - { name: order_id, in: path, type: integer, required: true }
+        - { name: body, in: body, type: object, required: true }
+        outputParameters:
+        - { name: result, type: object, value: $. }
+    - name: order-histories
+      path: /orders/{order_id}/histories
+      operations:
+      - name: listOrderHistories
+        method: GET
+        description: List order histories.
+        inputParameters:
+        - { name: order_id, in: path, type: integer, required: true }
+        outputParameters:
+        - { name: result, type: object, value: $. }
+    - name: order-invoices
+      path: /orders/{order_id}/invoices
+      operations:
+      - name: listOrderInvoices
+        method: GET
+        description: List order invoices.
+        inputParameters:
+        - { name: order_id, in: path, type: integer, required: true }
+        outputParameters:
+        - { name: result, type: object, value: $. }
+    - name: order-items
+      path: /orders/{order_id}/items
+      operations:
+      - name: listOrderItems
+        method: GET
+        description: List order items.
+        inputParameters:
+        - { name: order_id, in: path, type: integer, required: true }
+        outputParameters:
+        - { name: result, type: object, value: $. }
+    authentication:
+      type: bearer
+      value: '{{env.SALLA_ACCESS_TOKEN}}'
+      placement: header
+  exposes:
+  - type: mcp
+    namespace: merchant-orders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salla Orders capability.
+    tools:
+    - name: salla-list-orders
+      description: List Salla orders.
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: merchant-orders.listOrders
+    - name: salla-get-order
+      description: Get a Salla order by ID.
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: merchant-orders.getOrder
+      with: { order_id: tools.order_id }
+    - name: salla-update-order-status
+      description: Update the status of a Salla order.
+      hints: { readOnly: false, destructive: false, idempotent: true }
+      call: merchant-orders.updateOrderStatus
+      with: { order_id: tools.order_id, body: tools.body }

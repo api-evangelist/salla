@@ -1,0 +1,121 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salla Merchant API — Products
+  description: Salla Merchant API Products capability — list, create, read, update, and delete products in a Salla
+    merchant store via https://api.salla.dev/admin/v2.
+  tags:
+  - Salla
+  - Products
+  - E-Commerce
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    SALLA_ACCESS_TOKEN: SALLA_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: merchant-products
+    baseUri: https://api.salla.dev/admin/v2
+    description: Salla Merchant API — Products business capability.
+    resources:
+    - name: products
+      path: /products
+      operations:
+      - name: listProducts
+        method: GET
+        description: List products in the merchant store.
+        outputRawFormat: json
+        inputParameters:
+        - { name: page, in: query, type: integer }
+        - { name: per_page, in: query, type: integer }
+        - { name: keyword, in: query, type: string }
+        - { name: status, in: query, type: string }
+        - { name: category, in: query, type: string }
+        - { name: format, in: query, type: string }
+        outputParameters:
+        - { name: result, type: object, value: $. }
+      - name: createProduct
+        method: POST
+        description: Create a product.
+        inputParameters:
+        - { name: body, in: body, type: object, required: true }
+        outputParameters:
+        - { name: result, type: object, value: $. }
+    - name: product
+      path: /products/{product_id}
+      operations:
+      - name: getProduct
+        method: GET
+        description: Get product details.
+        inputParameters:
+        - { name: product_id, in: path, type: integer, required: true }
+        outputParameters:
+        - { name: result, type: object, value: $. }
+      - name: updateProduct
+        method: PUT
+        description: Update a product.
+        inputParameters:
+        - { name: product_id, in: path, type: integer, required: true }
+        - { name: body, in: body, type: object, required: true }
+        outputParameters:
+        - { name: result, type: object, value: $. }
+      - name: deleteProduct
+        method: DELETE
+        description: Delete a product.
+        inputParameters:
+        - { name: product_id, in: path, type: integer, required: true }
+        outputParameters:
+        - { name: result, type: object, value: $. }
+    authentication:
+      type: bearer
+      value: '{{env.SALLA_ACCESS_TOKEN}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: merchant-products-rest
+    port: 8080
+    description: REST adapter for Salla Products capability.
+    resources:
+    - path: /v1/products
+      name: products
+      operations:
+      - { method: GET, name: listProducts, call: merchant-products.listProducts }
+      - { method: POST, name: createProduct, call: merchant-products.createProduct, with: { body: rest.body } }
+    - path: /v1/products/{product_id}
+      name: product
+      operations:
+      - { method: GET, name: getProduct, call: merchant-products.getProduct, with: { product_id: rest.product_id } }
+      - { method: PUT, name: updateProduct, call: merchant-products.updateProduct, with: { product_id: rest.product_id, body: rest.body } }
+      - { method: DELETE, name: deleteProduct, call: merchant-products.deleteProduct, with: { product_id: rest.product_id } }
+  - type: mcp
+    namespace: merchant-products-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salla Products capability.
+    tools:
+    - name: salla-list-products
+      description: List Salla products.
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: merchant-products.listProducts
+    - name: salla-get-product
+      description: Get a Salla product by ID.
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: merchant-products.getProduct
+      with: { product_id: tools.product_id }
+    - name: salla-create-product
+      description: Create a Salla product.
+      hints: { readOnly: false, destructive: false, idempotent: false }
+      call: merchant-products.createProduct
+      with: { body: tools.body }
+    - name: salla-update-product
+      description: Update a Salla product.
+      hints: { readOnly: false, destructive: false, idempotent: true }
+      call: merchant-products.updateProduct
+      with: { product_id: tools.product_id, body: tools.body }
+    - name: salla-delete-product
+      description: Delete a Salla product.
+      hints: { readOnly: false, destructive: true, idempotent: true }
+      call: merchant-products.deleteProduct
+      with: { product_id: tools.product_id }

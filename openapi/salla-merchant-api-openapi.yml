@@ -1,0 +1,879 @@
+openapi: 3.0.3
+info:
+  title: Salla Merchant API
+  description: |
+    RESTful endpoints purpose-built for secure, fast, and easy access to Salla
+    Merchant store data. Covers products, orders, customers, branches, brands,
+    categories, currencies, languages, coupons, taxes, abandoned carts,
+    shipping, shipments, and store configuration.
+
+    All requests use the base URL `https://api.salla.dev/admin/v2` and are
+    authenticated with an OAuth 2.0 bearer token issued via the Salla Partners
+    Portal.
+  version: '2'
+  contact:
+    name: Salla Developers
+    url: https://docs.salla.dev/
+    email: support@salla.dev
+  license:
+    name: Proprietary
+    url: https://salla.com/terms
+servers:
+- url: https://api.salla.dev/admin/v2
+  description: Salla Merchant API production
+security:
+- OAuth2: []
+paths:
+  /products:
+    get:
+      summary: List Products
+      operationId: listProducts
+      tags:
+      - Products
+      parameters:
+      - name: page
+        in: query
+        schema: { type: integer }
+      - name: per_page
+        in: query
+        schema: { type: integer }
+      - name: keyword
+        in: query
+        description: Filter products matching a name or SKU value.
+        schema: { type: string }
+      - name: status
+        in: query
+        schema: { type: string, enum: [hidden, sale, out] }
+      - name: category
+        in: query
+        schema: { type: string }
+      - name: format
+        in: query
+        description: Use `light` for simplified product data.
+        schema: { type: string, enum: [light] }
+      responses:
+        '200':
+          description: Paginated list of products.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ProductList' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+    post:
+      summary: Create Product
+      operationId: createProduct
+      tags:
+      - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ProductCreate' }
+      responses:
+        '201':
+          description: Product created.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ProductResponse' }
+        '422': { $ref: '#/components/responses/ValidationError' }
+  /products/{product_id}:
+    parameters:
+    - name: product_id
+      in: path
+      required: true
+      schema: { type: integer }
+    get:
+      summary: Get Product
+      operationId: getProduct
+      tags: [Products]
+      responses:
+        '200':
+          description: Product details.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ProductResponse' }
+    put:
+      summary: Update Product
+      operationId: updateProduct
+      tags: [Products]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ProductCreate' }
+      responses:
+        '200':
+          description: Product updated.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ProductResponse' }
+    delete:
+      summary: Delete Product
+      operationId: deleteProduct
+      tags: [Products]
+      responses:
+        '200': { description: Product deleted. }
+  /products/{product_id}/skus:
+    parameters:
+    - name: product_id
+      in: path
+      required: true
+      schema: { type: integer }
+    get:
+      summary: List Product SKUs
+      operationId: listProductSkus
+      tags: [Products]
+      responses:
+        '200':
+          description: List of SKUs for the product.
+          content:
+            application/json: { schema: { type: object } }
+  /products/options:
+    post:
+      summary: Create Product Option
+      operationId: createProductOption
+      tags: [Products]
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '201': { description: Option created. }
+  /products/quantities:
+    put:
+      summary: Update Product Quantities
+      operationId: updateProductQuantities
+      tags: [Products]
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '200': { description: Quantities updated. }
+  /orders:
+    get:
+      summary: List Orders
+      operationId: listOrders
+      tags: [Orders]
+      parameters:
+      - name: page
+        in: query
+        schema: { type: integer }
+      - name: per_page
+        in: query
+        schema: { type: integer }
+      - name: status
+        in: query
+        schema: { type: string }
+      - name: from_date
+        in: query
+        schema: { type: string, format: date }
+      - name: to_date
+        in: query
+        schema: { type: string, format: date }
+      responses:
+        '200':
+          description: Paginated list of orders.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/OrderList' }
+  /orders/{order_id}:
+    parameters:
+    - name: order_id
+      in: path
+      required: true
+      schema: { type: integer }
+    get:
+      summary: Get Order Details
+      operationId: getOrder
+      tags: [Orders]
+      parameters:
+      - name: format
+        in: query
+        description: Set to `light` to exclude shipments, items, pickup branch, and customer groups.
+        schema: { type: string, enum: [light] }
+      responses:
+        '200':
+          description: Order details.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/OrderResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    put:
+      summary: Update Order
+      operationId: updateOrder
+      tags: [Orders]
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '200':
+          description: Order updated.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/OrderResponse' }
+  /orders/{order_id}/status:
+    parameters:
+    - name: order_id
+      in: path
+      required: true
+      schema: { type: integer }
+    post:
+      summary: Update Order Status
+      operationId: updateOrderStatus
+      tags: [Orders]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [slug]
+              properties:
+                slug: { type: string, description: Status slug. }
+                note: { type: string }
+      responses:
+        '200': { description: Order status updated. }
+  /orders/{order_id}/histories:
+    parameters:
+    - name: order_id
+      in: path
+      required: true
+      schema: { type: integer }
+    get:
+      summary: List Order Histories
+      operationId: listOrderHistories
+      tags: [Orders]
+      responses:
+        '200': { description: Order history entries. }
+  /orders/{order_id}/invoices:
+    parameters:
+    - name: order_id
+      in: path
+      required: true
+      schema: { type: integer }
+    get:
+      summary: List Order Invoices
+      operationId: listOrderInvoices
+      tags: [Orders]
+      responses:
+        '200': { description: Order invoices. }
+  /orders/{order_id}/items:
+    parameters:
+    - name: order_id
+      in: path
+      required: true
+      schema: { type: integer }
+    get:
+      summary: List Order Items
+      operationId: listOrderItems
+      tags: [Orders]
+      responses:
+        '200': { description: Order items. }
+  /abandoned-carts:
+    get:
+      summary: List Abandoned Carts
+      operationId: listAbandonedCarts
+      tags: [Carts]
+      responses:
+        '200': { description: Abandoned cart list. }
+  /customers:
+    get:
+      summary: List Customers
+      operationId: listCustomers
+      tags: [Customers]
+      parameters:
+      - name: page
+        in: query
+        schema: { type: integer }
+      - name: per_page
+        in: query
+        schema: { type: integer }
+      responses:
+        '200':
+          description: Paginated list of customers.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CustomerList' }
+    post:
+      summary: Create Customer
+      operationId: createCustomer
+      tags: [Customers]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CustomerCreate' }
+      responses:
+        '201':
+          description: Customer created.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CustomerResponse' }
+  /customers/{customer_id}:
+    parameters:
+    - name: customer_id
+      in: path
+      required: true
+      schema: { type: integer }
+    get:
+      summary: Get Customer
+      operationId: getCustomer
+      tags: [Customers]
+      responses:
+        '200':
+          description: Customer details.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CustomerResponse' }
+    put:
+      summary: Update Customer
+      operationId: updateCustomer
+      tags: [Customers]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CustomerCreate' }
+      responses:
+        '200':
+          description: Customer updated.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CustomerResponse' }
+  /categories:
+    get:
+      summary: List Categories
+      operationId: listCategories
+      tags: [Categories]
+      responses:
+        '200': { description: Category list. }
+    post:
+      summary: Create Category
+      operationId: createCategory
+      tags: [Categories]
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '201': { description: Category created. }
+  /categories/{category_id}:
+    parameters:
+    - name: category_id
+      in: path
+      required: true
+      schema: { type: integer }
+    get:
+      summary: Get Category
+      operationId: getCategory
+      tags: [Categories]
+      responses:
+        '200': { description: Category details. }
+    put:
+      summary: Update Category
+      operationId: updateCategory
+      tags: [Categories]
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '200': { description: Category updated. }
+  /brands:
+    get:
+      summary: List Brands
+      operationId: listBrands
+      tags: [Brands]
+      responses:
+        '200': { description: Brand list. }
+    post:
+      summary: Create Brand
+      operationId: createBrand
+      tags: [Brands]
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '201': { description: Brand created. }
+  /brands/{brand_id}:
+    parameters:
+    - name: brand_id
+      in: path
+      required: true
+      schema: { type: integer }
+    get:
+      summary: Get Brand
+      operationId: getBrand
+      tags: [Brands]
+      responses:
+        '200': { description: Brand details. }
+    put:
+      summary: Update Brand
+      operationId: updateBrand
+      tags: [Brands]
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '200': { description: Brand updated. }
+    delete:
+      summary: Delete Brand
+      operationId: deleteBrand
+      tags: [Brands]
+      responses:
+        '200': { description: Brand deleted. }
+  /branches:
+    get:
+      summary: List Store Branches
+      operationId: listBranches
+      tags: [Branches]
+      responses:
+        '200': { description: Branch list. }
+    post:
+      summary: Create Store Branch
+      operationId: createBranch
+      tags: [Branches]
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '201': { description: Branch created. }
+  /branches/{branch_id}:
+    parameters:
+    - name: branch_id
+      in: path
+      required: true
+      schema: { type: integer }
+    get:
+      summary: Get Store Branch
+      operationId: getBranch
+      tags: [Branches]
+      responses:
+        '200': { description: Branch details. }
+  /coupons:
+    get:
+      summary: List Coupons
+      operationId: listCoupons
+      tags: [Coupons]
+      responses:
+        '200': { description: Coupon list. }
+    post:
+      summary: Create Coupon
+      operationId: createCoupon
+      tags: [Coupons]
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '201': { description: Coupon created. }
+  /currencies:
+    get:
+      summary: List Currencies
+      operationId: listCurrencies
+      tags: [Localization]
+      responses:
+        '200': { description: Currency list. }
+  /languages:
+    get:
+      summary: List Languages
+      operationId: listLanguages
+      tags: [Localization]
+      responses:
+        '200': { description: Language list. }
+  /countries:
+    get:
+      summary: List Countries
+      operationId: listCountries
+      tags: [Localization]
+      responses:
+        '200': { description: Country list. }
+  /countries/{country_id}:
+    parameters:
+    - name: country_id
+      in: path
+      required: true
+      schema: { type: integer }
+    get:
+      summary: Get Country Details
+      operationId: getCountry
+      tags: [Localization]
+      responses:
+        '200': { description: Country details. }
+  /taxes:
+    get:
+      summary: List Taxes
+      operationId: listTaxes
+      tags: [Financial]
+      responses:
+        '200': { description: Tax list. }
+    post:
+      summary: Create Tax
+      operationId: createTax
+      tags: [Financial]
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '201': { description: Tax created. }
+  /transactions:
+    get:
+      summary: List Transactions
+      operationId: listTransactions
+      tags: [Financial]
+      responses:
+        '200': { description: Transaction list. }
+  /shipments:
+    get:
+      summary: List Shipments
+      operationId: listShipments
+      tags: [Shipping]
+      responses:
+        '200': { description: Shipment list. }
+    post:
+      summary: Create Shipment
+      operationId: createShipment
+      tags: [Shipping]
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '201': { description: Shipment created. }
+  /shipments/{shipment_id}:
+    parameters:
+    - name: shipment_id
+      in: path
+      required: true
+      schema: { type: integer }
+    get:
+      summary: Get Shipment Details
+      operationId: getShipment
+      tags: [Shipping]
+      responses:
+        '200': { description: Shipment details. }
+  /shipping/zones:
+    get:
+      summary: List Shipping Zones
+      operationId: listShippingZones
+      tags: [Shipping]
+      responses:
+        '200': { description: Shipping zone list. }
+  /shipping/zones/{zone_id}:
+    parameters:
+    - name: zone_id
+      in: path
+      required: true
+      schema: { type: integer }
+    get:
+      summary: Get Shipping Zone Details
+      operationId: getShippingZone
+      tags: [Shipping]
+      responses:
+        '200': { description: Shipping zone details. }
+  /shipping/companies:
+    get:
+      summary: List Shipping Companies
+      operationId: listShippingCompanies
+      tags: [Shipping]
+      responses:
+        '200': { description: Shipping company list. }
+  /webhooks/subscribe:
+    post:
+      summary: Subscribe Webhook
+      operationId: subscribeWebhook
+      tags: [Webhooks]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, event, url]
+              properties:
+                name: { type: string }
+                event: { type: string, description: Webhook event name (e.g. `order.created`). }
+                url: { type: string, format: uri }
+                version: { type: integer }
+                rule: { type: string, description: Optional conditional rule. }
+                headers:
+                  type: array
+                  items: { type: object }
+                security_strategy: { type: string, enum: [signature, token] }
+      responses:
+        '201': { description: Webhook subscription created. }
+  /webhooks/subscriptions:
+    get:
+      summary: List Webhook Subscriptions
+      operationId: listWebhookSubscriptions
+      tags: [Webhooks]
+      responses:
+        '200': { description: Webhook subscriptions. }
+  /webhooks/unsubscribe/{subscription_id}:
+    parameters:
+    - name: subscription_id
+      in: path
+      required: true
+      schema: { type: integer }
+    delete:
+      summary: Unsubscribe Webhook
+      operationId: unsubscribeWebhook
+      tags: [Webhooks]
+      responses:
+        '200': { description: Webhook subscription deleted. }
+  /store/info:
+    get:
+      summary: Get Store Info
+      operationId: getStoreInfo
+      tags: [Store]
+      responses:
+        '200': { description: Store information. }
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.salla.sa/oauth2/auth
+          tokenUrl: https://accounts.salla.sa/oauth2/token
+          refreshUrl: https://accounts.salla.sa/oauth2/token
+          scopes:
+            offline_access: Required to receive a refresh token.
+            orders.read: Read orders.
+            orders.read_write: Read and write orders.
+            products.read: Read products.
+            products.read_write: Read and write products.
+            customers.read: Read customers.
+            customers.read_write: Read and write customers.
+            settings.read: Read store settings.
+            webhooks.read_write: Manage webhook subscriptions.
+  responses:
+    Unauthorized:
+      description: Invalid or missing access token.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    ValidationError:
+      description: Request validation failed.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+  schemas:
+    Money:
+      type: object
+      properties:
+        amount: { type: number }
+        currency: { type: string, example: SAR }
+    Pagination:
+      type: object
+      properties:
+        count: { type: integer }
+        current: { type: integer }
+        next: { type: string, nullable: true }
+    Image:
+      type: object
+      properties:
+        id: { type: integer }
+        original: { type: string, format: uri }
+        thumbnail: { type: string, format: uri }
+        alt: { type: string }
+        sort: { type: integer }
+    Product:
+      type: object
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        sku: { type: string }
+        mpn: { type: string }
+        gtin: { type: string }
+        type: { type: string, enum: [product, service, group_products, codes, digital, food, booking, donating] }
+        status: { type: string, enum: [sale, out, hidden, deleted] }
+        price: { $ref: '#/components/schemas/Money' }
+        sale_price: { $ref: '#/components/schemas/Money' }
+        cost_price: { $ref: '#/components/schemas/Money' }
+        quantity: { type: integer }
+        description: { type: string }
+        url: { type: string, format: uri }
+        images:
+          type: array
+          items: { $ref: '#/components/schemas/Image' }
+        categories:
+          type: array
+          items: { type: integer }
+        brand_id: { type: integer }
+        tags:
+          type: array
+          items: { type: string }
+        updated_at: { type: string, format: date-time }
+    ProductCreate:
+      type: object
+      required: [name, price, product_type]
+      properties:
+        name: { type: string }
+        price: { type: number }
+        product_type: { type: string, enum: [product, service, group_products, codes, digital, food, booking, donating] }
+        status: { type: string, enum: [sale, out, hidden, deleted] }
+        quantity: { type: integer }
+        description: { type: string }
+        categories:
+          type: array
+          items: { type: integer }
+        sale_price: { type: number }
+        cost_price: { type: number }
+        sale_start: { type: string, format: date-time }
+        sale_end: { type: string, format: date-time }
+        sku: { type: string }
+        mpn: { type: string }
+        gtin: { type: string }
+        brand_id: { type: integer }
+        tags:
+          type: array
+          items: { type: string }
+        images:
+          type: array
+          items: { $ref: '#/components/schemas/Image' }
+        options:
+          type: array
+          items: { type: object }
+        metadata_title: { type: string }
+        metadata_description: { type: string }
+        metadata_url: { type: string }
+    ProductResponse:
+      type: object
+      properties:
+        status: { type: integer }
+        success: { type: boolean }
+        data: { $ref: '#/components/schemas/Product' }
+    ProductList:
+      type: object
+      properties:
+        status: { type: integer }
+        success: { type: boolean }
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Product' }
+        pagination: { $ref: '#/components/schemas/Pagination' }
+    Customer:
+      type: object
+      properties:
+        id: { type: integer }
+        first_name: { type: string }
+        last_name: { type: string }
+        mobile: { type: string }
+        mobile_code: { type: string }
+        email: { type: string, format: email }
+        gender: { type: string, enum: [male, female] }
+        birthday: { type: string, format: date }
+        avatar: { type: string, format: uri }
+        city: { type: string }
+        country: { type: string }
+        currency: { type: string }
+        updated_at: { type: string, format: date-time }
+    CustomerCreate:
+      type: object
+      required: [first_name, mobile, mobile_code]
+      properties:
+        first_name: { type: string }
+        last_name: { type: string }
+        mobile: { type: string }
+        mobile_code: { type: string }
+        email: { type: string, format: email }
+        gender: { type: string, enum: [male, female] }
+        birthday: { type: string, format: date }
+        city: { type: string }
+        country: { type: string }
+        groups:
+          type: array
+          items: { type: integer }
+    CustomerResponse:
+      type: object
+      properties:
+        status: { type: integer }
+        success: { type: boolean }
+        data: { $ref: '#/components/schemas/Customer' }
+    CustomerList:
+      type: object
+      properties:
+        status: { type: integer }
+        success: { type: boolean }
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Customer' }
+        pagination: { $ref: '#/components/schemas/Pagination' }
+    Order:
+      type: object
+      properties:
+        id: { type: integer }
+        reference_id: { type: integer }
+        urls: { type: object }
+        date:
+          type: object
+          properties:
+            date: { type: string, format: date-time }
+            timezone: { type: string }
+        source: { type: string }
+        status:
+          type: object
+          properties:
+            id: { type: integer }
+            name: { type: string }
+            slug: { type: string }
+            customized: { type: object }
+        can_cancel: { type: boolean }
+        can_reorder: { type: boolean }
+        is_pending_payment: { type: boolean }
+        payment_method: { type: string }
+        amounts:
+          type: object
+          properties:
+            sub_total: { $ref: '#/components/schemas/Money' }
+            shipping_cost: { $ref: '#/components/schemas/Money' }
+            tax: { $ref: '#/components/schemas/Money' }
+            discounts: { $ref: '#/components/schemas/Money' }
+            total: { $ref: '#/components/schemas/Money' }
+        shipping: { type: object }
+        shipments:
+          type: array
+          items: { type: object }
+        items:
+          type: array
+          items: { type: object }
+        total_weight: { type: number }
+        currency: { type: string }
+        customer: { $ref: '#/components/schemas/Customer' }
+    OrderResponse:
+      type: object
+      properties:
+        status: { type: integer }
+        success: { type: boolean }
+        data: { $ref: '#/components/schemas/Order' }
+    OrderList:
+      type: object
+      properties:
+        status: { type: integer }
+        success: { type: boolean }
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Order' }
+        pagination: { $ref: '#/components/schemas/Pagination' }
+    Error:
+      type: object
+      properties:
+        status: { type: integer }
+        success: { type: boolean }
+        error:
+          type: object
+          properties:
+            code: { type: string }
+            message: { type: string }
+            fields: { type: object }

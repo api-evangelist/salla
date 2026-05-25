@@ -1,0 +1,61 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salla Merchant API — Brands
+  description: Salla Merchant API Brands capability — list, create, get, update, and delete brands.
+  tags: [Salla, Brands, E-Commerce]
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    SALLA_ACCESS_TOKEN: SALLA_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: merchant-brands
+    baseUri: https://api.salla.dev/admin/v2
+    description: Salla Merchant API — Brands business capability.
+    resources:
+    - name: brands
+      path: /brands
+      operations:
+      - name: listBrands
+        method: GET
+        outputParameters: [{ name: result, type: object, value: $. }]
+      - name: createBrand
+        method: POST
+        inputParameters: [{ name: body, in: body, type: object, required: true }]
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: brand
+      path: /brands/{brand_id}
+      operations:
+      - name: getBrand
+        method: GET
+        inputParameters: [{ name: brand_id, in: path, type: integer, required: true }]
+        outputParameters: [{ name: result, type: object, value: $. }]
+      - name: updateBrand
+        method: PUT
+        inputParameters:
+        - { name: brand_id, in: path, type: integer, required: true }
+        - { name: body, in: body, type: object, required: true }
+        outputParameters: [{ name: result, type: object, value: $. }]
+      - name: deleteBrand
+        method: DELETE
+        inputParameters: [{ name: brand_id, in: path, type: integer, required: true }]
+        outputParameters: [{ name: result, type: object, value: $. }]
+    authentication: { type: bearer, value: '{{env.SALLA_ACCESS_TOKEN}}', placement: header }
+  exposes:
+  - type: mcp
+    namespace: merchant-brands-mcp
+    port: 9090
+    transport: http
+    tools:
+    - name: salla-list-brands
+      description: List Salla brands.
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: merchant-brands.listBrands
+    - name: salla-create-brand
+      description: Create a Salla brand.
+      hints: { readOnly: false, destructive: false, idempotent: false }
+      call: merchant-brands.createBrand
+      with: { body: tools.body }

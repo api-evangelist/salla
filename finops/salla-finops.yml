@@ -1,0 +1,93 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Salla
+providerId: salla
+created: '2026-05-24'
+modified: '2026-05-24'
+reconciled: false
+tags:
+- FinOps
+- Cost Management
+- FOCUS
+- E-Commerce
+- Saudi Arabia
+description: |
+  FOCUS-aligned FinOps definition for the Salla e-commerce platform. Salla's commercial surface combines a flat
+  monthly SaaS subscription with optional usage-based services (Salla Pay payment processing, Salla Logistics
+  fulfillment) and partner-app charges billed through the Salla App Store on the merchant's invoice.
+sources:
+- https://salla.com/pricing
+- https://docs.salla.dev/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Salla
+serviceCategory: Commerce Platform
+billingModel:
+  pricingCategory: Subscription with Usage Add-ons
+  billingFrequency: Monthly
+  billingCurrency: SAR
+  chargeCategories:
+  - Subscription
+  - Usage
+  - Purchase
+  - Tax
+  - Credit
+  - Adjustment
+  primaryUnit: store
+  secondaryUnits:
+  - transaction
+  - shipment
+  - app_install
+focusColumns:
+  ServiceName: Salla
+  ServiceCategory: Commerce Platform
+  ProviderName: Salla
+  PublisherName: Salla
+  InvoiceIssuerName: Salla
+  PricingCategory: Subscription
+  PricingUnit: store
+  BillingCurrency: SAR
+meters:
+- name: store_subscription
+  unit: store
+  aggregation: count
+  dimensions:
+  - plan
+  - billing_cycle
+- name: payment_transaction
+  unit: transaction
+  aggregation: sum
+  dimensions:
+  - payment_method
+  - currency
+  - amount_bucket
+- name: shipment_fee
+  unit: shipment
+  aggregation: sum
+  dimensions:
+  - courier
+  - origin
+  - destination
+- name: app_marketplace_charge
+  unit: app_install
+  aggregation: sum
+  dimensions:
+  - app
+  - partner
+  - plan
+costAllocation:
+  byPlan: Allocate subscription cost by Salla plan tier (Special, Advanced, Pro, Enterprise).
+  byMerchant: Allocate transaction and shipment fees by merchant store identifier.
+  byApp: Allocate App Store charges by installed partner app.
+notes:
+- The Salla Merchant API itself is not billed per call; it is bundled with each paid subscription.
+- Transaction fees are charged only when the merchant uses Salla Pay; native gateway integrations (mada, STC Pay,
+  HyperPay, Moyasar) have their own fee schedules billed directly by the payment provider.
+- Salla Logistics fees follow the courier's published rate sheet plus a platform margin.
+- Partner-app subscriptions and one-off purchases from the Salla App Store appear as separate line items on the
+  merchant invoice.

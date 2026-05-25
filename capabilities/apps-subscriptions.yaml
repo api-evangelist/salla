@@ -1,0 +1,62 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salla Apps API — Subscriptions And Webhooks
+  description: Salla Apps webhook subscription capability — manage event subscriptions to receive store events from
+    Salla.
+  tags: [Salla, Webhooks, Subscriptions, Apps]
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    SALLA_ACCESS_TOKEN: SALLA_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: apps-subscriptions
+    baseUri: https://api.salla.dev/admin/v2
+    resources:
+    - name: subscribe-webhook
+      path: /webhooks/subscribe
+      operations:
+      - name: subscribeWebhook
+        method: POST
+        description: Subscribe to a webhook event.
+        inputParameters: [{ name: body, in: body, type: object, required: true }]
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: list-subscriptions
+      path: /webhooks/subscriptions
+      operations:
+      - name: listWebhookSubscriptions
+        method: GET
+        description: List existing webhook subscriptions.
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: unsubscribe-webhook
+      path: /webhooks/unsubscribe/{subscription_id}
+      operations:
+      - name: unsubscribeWebhook
+        method: DELETE
+        description: Delete a webhook subscription.
+        inputParameters: [{ name: subscription_id, in: path, type: integer, required: true }]
+        outputParameters: [{ name: result, type: object, value: $. }]
+    authentication: { type: bearer, value: '{{env.SALLA_ACCESS_TOKEN}}', placement: header }
+  exposes:
+  - type: mcp
+    namespace: apps-subscriptions-mcp
+    port: 9090
+    transport: http
+    tools:
+    - name: salla-subscribe-webhook
+      description: Subscribe to a Salla webhook event.
+      hints: { readOnly: false, destructive: false, idempotent: false }
+      call: apps-subscriptions.subscribeWebhook
+      with: { body: tools.body }
+    - name: salla-list-webhook-subscriptions
+      description: List Salla webhook subscriptions.
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: apps-subscriptions.listWebhookSubscriptions
+    - name: salla-unsubscribe-webhook
+      description: Unsubscribe a Salla webhook.
+      hints: { readOnly: false, destructive: true, idempotent: true }
+      call: apps-subscriptions.unsubscribeWebhook
+      with: { subscription_id: tools.subscription_id }

@@ -1,0 +1,106 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Salla
+providerId: salla
+created: '2026-05-24'
+modified: '2026-05-24'
+reconciled: false
+tags:
+- E-Commerce
+- Saudi Arabia
+- Storefront
+- SMB
+description: |
+  Reconciled commercial plans for the Salla e-commerce platform. Pricing is published in SAR on salla.com.
+  Salla offers a tiered subscription model plus a free trial; transaction fees apply when using Salla's first-party
+  payment service (Salla Pay). Partner apps (separately) follow their own pricing in the Salla App Store.
+sources:
+- https://salla.com/pricing
+- https://salla.com
+plans:
+- id: salla-trial
+  name: Free Trial
+  type: trial
+  description: 15-day free trial to evaluate the storefront builder and basic features.
+  entries:
+  - label: Trial seat
+    name: trial
+    type: free
+    metric: store
+    limit: 1
+    timeFrame: 15-day
+    geo: SA
+    unit: 1
+    price: '0.00'
+    userMultiplied: false
+- id: salla-special
+  name: Special
+  type: subscription
+  description: Entry-level paid plan aimed at new merchants — store builder, mada checkout, ZATCA-ready invoicing.
+  entries:
+  - label: Monthly subscription
+    name: monthly
+    type: subscription
+    metric: store
+    limit: 1
+    timeFrame: month
+    geo: SA
+    unit: 1
+    price: '199.00'
+    currency: SAR
+    userMultiplied: false
+- id: salla-advanced
+  name: Advanced
+  type: subscription
+  description: Mid-tier plan adding higher product limits, more payment gateways, and additional staff seats.
+  entries:
+  - label: Monthly subscription
+    name: monthly
+    type: subscription
+    metric: store
+    limit: 1
+    timeFrame: month
+    geo: SA
+    unit: 1
+    price: '499.00'
+    currency: SAR
+    userMultiplied: false
+- id: salla-pro
+  name: Pro
+  type: subscription
+  description: Top published tier for established merchants — advanced reporting, multi-branch support, deeper
+    integrations.
+  entries:
+  - label: Monthly subscription
+    name: monthly
+    type: subscription
+    metric: store
+    limit: 1
+    timeFrame: month
+    geo: SA
+    unit: 1
+    price: '1499.00'
+    currency: SAR
+    userMultiplied: false
+- id: salla-enterprise
+  name: Enterprise
+  type: contact-sales
+  description: Custom enterprise plan with dedicated infrastructure, bespoke commercial terms, and white-glove
+    migration support. Pricing on request.
+  entries:
+  - label: Custom contract
+    name: enterprise
+    type: subscription
+    metric: store
+    limit: -1
+    timeFrame: month
+    geo: SA
+    unit: 1
+    price: contact
+    userMultiplied: false
+notes:
+- The Merchant API itself is included with every paid plan; there is no separate API subscription.
+- Salla Pay (first-party payments) and Salla Logistics (first-party fulfillment) charge transaction-level fees
+  beyond the base subscription.
+- Pricing shown is the published Saudi Arabia (SAR) rate; international or partner-routed pricing may differ.

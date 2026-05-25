@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/salla/refs/heads/main/json-schema/salla-order-schema.json",
+  "title": "Salla Order",
+  "description": "A customer order placed in a Salla merchant store.",
+  "type": "object",
+  "required": ["id", "reference_id", "status"],
+  "properties": {
+    "id": { "type": "integer" },
+    "reference_id": { "type": "integer" },
+    "urls": { "type": "object" },
+    "date": {
+      "type": "object",
+      "properties": {
+        "date": { "type": "string", "format": "date-time" },
+        "timezone": { "type": "string" }
+      }
+    },
+    "source": { "type": "string" },
+    "status": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "customized": { "type": "object" }
+      }
+    },
+    "can_cancel": { "type": "boolean" },
+    "can_reorder": { "type": "boolean" },
+    "is_pending_payment": { "type": "boolean" },
+    "payment_method": { "type": "string" },
+    "amounts": {
+      "type": "object",
+      "properties": {
+        "sub_total": { "$ref": "#/$defs/Money" },
+        "shipping_cost": { "$ref": "#/$defs/Money" },
+        "tax": { "$ref": "#/$defs/Money" },
+        "discounts": { "$ref": "#/$defs/Money" },
+        "total": { "$ref": "#/$defs/Money" }
+      }
+    },
+    "shipping": { "type": "object" },
+    "shipments": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "items": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "total_weight": { "type": "number" },
+    "currency": { "type": "string" }
+  },
+  "$defs": {
+    "Money": {
+      "type": "object",
+      "properties": {
+        "amount": { "type": "number" },
+        "currency": { "type": "string" }
+      }
+    }
+  }
+}

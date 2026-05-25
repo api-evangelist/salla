@@ -1,0 +1,84 @@
+extends:
+- spectral:oas
+formats:
+- oas3
+rules:
+  salla-base-url:
+    description: Salla Merchant and Shipping APIs must be served from https://api.salla.dev/admin/v2.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://(api|accounts)\.salla\.(dev|sa)(/.*)?$'
+
+  salla-oauth-security:
+    description: Endpoints must use OAuth 2.0 security defined under components.securitySchemes.
+    severity: error
+    given: $.components.securitySchemes
+    then:
+      field: OAuth2
+      function: truthy
+
+  salla-snake-case-paths:
+    description: Salla paths and path parameters use snake_case.
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^/[a-z0-9_./{}-]+$'
+
+  salla-operation-summary-title-case:
+    description: Operation summaries must use Title Case.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][A-Za-z0-9]*(\s+[A-Z][A-Za-z0-9]*)*$'
+
+  salla-operation-id-camel-case:
+    description: Operation IDs must be camelCase.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]*$'
+
+  salla-pagination-query-params:
+    description: List endpoints should accept `page` and `per_page` query parameters.
+    severity: info
+    given: $.paths[*].get.parameters[?(@.in=='query' && @.name=='page')]
+    then:
+      field: schema.type
+      function: enumeration
+      functionOptions:
+        values:
+        - integer
+
+  salla-error-response-envelope:
+    description: Salla responses are wrapped in an envelope with `status`, `success`, and either `data` or `error`.
+    severity: info
+    given: $.components.schemas.Error.properties
+    then:
+      field: status
+      function: truthy
+
+  salla-no-secret-in-path:
+    description: Never put secrets (api keys, tokens) in URL paths.
+    severity: error
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: '(api[_-]?key|token|secret|password)'
+
+  salla-arabic-language-support:
+    description: Document Accept-Language and Content-Language header support on responses.
+    severity: info
+    given: $.paths[*][get,post,put,patch].responses['200']
+    then:
+      field: description
+      function: truthy

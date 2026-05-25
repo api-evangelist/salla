@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/salla/refs/heads/main/json-schema/salla-product-schema.json",
+  "title": "Salla Product",
+  "description": "A product in a Salla merchant store.",
+  "type": "object",
+  "required": ["id", "name", "type", "status", "price"],
+  "properties": {
+    "id": { "type": "integer" },
+    "name": { "type": "string" },
+    "sku": { "type": "string" },
+    "mpn": { "type": "string" },
+    "gtin": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": ["product", "service", "group_products", "codes", "digital", "food", "booking", "donating"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["sale", "out", "hidden", "deleted"]
+    },
+    "price": { "$ref": "#/$defs/Money" },
+    "sale_price": { "$ref": "#/$defs/Money" },
+    "cost_price": { "$ref": "#/$defs/Money" },
+    "quantity": { "type": "integer", "minimum": 0 },
+    "description": { "type": "string" },
+    "url": { "type": "string", "format": "uri" },
+    "categories": {
+      "type": "array",
+      "items": { "type": "integer" }
+    },
+    "brand_id": { "type": "integer" },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "original": { "type": "string", "format": "uri" },
+          "thumbnail": { "type": "string", "format": "uri" },
+          "alt": { "type": "string" },
+          "sort": { "type": "integer" }
+        }
+      }
+    },
+    "metadata_title": { "type": "string" },
+    "metadata_description": { "type": "string" },
+    "metadata_url": { "type": "string" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "Money": {
+      "type": "object",
+      "properties": {
+        "amount": { "type": "number" },
+        "currency": { "type": "string", "examples": ["SAR", "AED", "USD"] }
+      }
+    }
+  }
+}

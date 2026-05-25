@@ -1,0 +1,59 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salla Merchant API — Categories
+  description: Salla Merchant API Categories capability — list, create, get, and update product categories.
+  tags: [Salla, Categories, E-Commerce]
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    SALLA_ACCESS_TOKEN: SALLA_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: merchant-categories
+    baseUri: https://api.salla.dev/admin/v2
+    description: Salla Merchant API — Categories business capability.
+    resources:
+    - name: categories
+      path: /categories
+      operations:
+      - name: listCategories
+        method: GET
+        description: List categories.
+        outputParameters: [{ name: result, type: object, value: $. }]
+      - name: createCategory
+        method: POST
+        description: Create a category.
+        inputParameters: [{ name: body, in: body, type: object, required: true }]
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: category
+      path: /categories/{category_id}
+      operations:
+      - name: getCategory
+        method: GET
+        inputParameters: [{ name: category_id, in: path, type: integer, required: true }]
+        outputParameters: [{ name: result, type: object, value: $. }]
+      - name: updateCategory
+        method: PUT
+        inputParameters:
+        - { name: category_id, in: path, type: integer, required: true }
+        - { name: body, in: body, type: object, required: true }
+        outputParameters: [{ name: result, type: object, value: $. }]
+    authentication: { type: bearer, value: '{{env.SALLA_ACCESS_TOKEN}}', placement: header }
+  exposes:
+  - type: mcp
+    namespace: merchant-categories-mcp
+    port: 9090
+    transport: http
+    tools:
+    - name: salla-list-categories
+      description: List Salla categories.
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: merchant-categories.listCategories
+    - name: salla-get-category
+      description: Get a Salla category.
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: merchant-categories.getCategory
+      with: { category_id: tools.category_id }

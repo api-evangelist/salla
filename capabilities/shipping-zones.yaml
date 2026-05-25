@@ -1,0 +1,71 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salla Shipping API — Zones And Companies
+  description: Salla Shipping API zones and companies capability — list, get, create, update shipping zones and
+    shipping companies.
+  tags: [Salla, Shipping, Zones, Companies]
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    SALLA_ACCESS_TOKEN: SALLA_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: shipping-zones
+    baseUri: https://api.salla.dev/admin/v2
+    resources:
+    - name: zones
+      path: /shipping/zones
+      operations:
+      - name: listShippingZones
+        method: GET
+        outputParameters: [{ name: result, type: object, value: $. }]
+      - name: createShippingZone
+        method: POST
+        inputParameters: [{ name: body, in: body, type: object, required: true }]
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: zone
+      path: /shipping/zones/{zone_id}
+      operations:
+      - name: getShippingZone
+        method: GET
+        inputParameters: [{ name: zone_id, in: path, type: integer, required: true }]
+        outputParameters: [{ name: result, type: object, value: $. }]
+      - name: updateShippingZone
+        method: PUT
+        inputParameters:
+        - { name: zone_id, in: path, type: integer, required: true }
+        - { name: body, in: body, type: object, required: true }
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: companies
+      path: /shipping/companies
+      operations:
+      - name: listShippingCompanies
+        method: GET
+        outputParameters: [{ name: result, type: object, value: $. }]
+      - name: createShippingCompany
+        method: POST
+        inputParameters: [{ name: body, in: body, type: object, required: true }]
+        outputParameters: [{ name: result, type: object, value: $. }]
+    authentication: { type: bearer, value: '{{env.SALLA_ACCESS_TOKEN}}', placement: header }
+  exposes:
+  - type: mcp
+    namespace: shipping-zones-mcp
+    port: 9090
+    transport: http
+    tools:
+    - name: salla-list-shipping-zones
+      description: List Salla shipping zones.
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: shipping-zones.listShippingZones
+    - name: salla-get-shipping-zone
+      description: Get a Salla shipping zone.
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: shipping-zones.getShippingZone
+      with: { zone_id: tools.zone_id }
+    - name: salla-list-shipping-companies
+      description: List Salla shipping companies.
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: shipping-zones.listShippingCompanies

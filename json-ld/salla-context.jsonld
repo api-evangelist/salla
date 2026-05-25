@@ -1,0 +1,82 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "salla": "https://api.salla.dev/admin/v2/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Product": {
+      "@id": "salla:Product",
+      "@context": {
+        "id": { "@id": "salla:Product/id", "@type": "xsd:integer" },
+        "name": "schema:name",
+        "sku": "schema:sku",
+        "mpn": "schema:mpn",
+        "gtin": "schema:gtin",
+        "type": { "@id": "salla:Product/type" },
+        "status": { "@id": "salla:Product/status" },
+        "price": "schema:price",
+        "sale_price": { "@id": "salla:Product/salePrice" },
+        "cost_price": { "@id": "salla:Product/costPrice" },
+        "quantity": "schema:inventoryLevel",
+        "description": "schema:description",
+        "url": { "@id": "schema:url", "@type": "@id" },
+        "categories": { "@id": "salla:Product/categories", "@container": "@list" },
+        "brand_id": { "@id": "salla:Product/brand" },
+        "images": { "@id": "schema:image", "@container": "@list" }
+      }
+    },
+
+    "Order": {
+      "@id": "salla:Order",
+      "@context": {
+        "id": { "@id": "salla:Order/id", "@type": "xsd:integer" },
+        "reference_id": "schema:orderNumber",
+        "status": "schema:orderStatus",
+        "payment_method": "schema:paymentMethod",
+        "amounts": { "@id": "salla:Order/amounts" },
+        "shipping": { "@id": "salla:Order/shipping" },
+        "shipments": { "@id": "salla:Order/shipments", "@container": "@list" },
+        "items": { "@id": "schema:orderedItem", "@container": "@list" },
+        "currency": "schema:priceCurrency",
+        "customer": "schema:customer"
+      }
+    },
+
+    "Customer": {
+      "@id": "salla:Customer",
+      "@context": {
+        "id": { "@id": "salla:Customer/id", "@type": "xsd:integer" },
+        "first_name": "schema:givenName",
+        "last_name": "schema:familyName",
+        "email": "schema:email",
+        "mobile": "schema:telephone",
+        "gender": "schema:gender",
+        "birthday": "schema:birthDate",
+        "city": "schema:addressLocality",
+        "country": "schema:addressCountry"
+      }
+    },
+
+    "Shipment": {
+      "@id": "salla:Shipment",
+      "@context": {
+        "id": { "@id": "salla:Shipment/id", "@type": "xsd:integer" },
+        "order_id": { "@id": "salla:Shipment/order" },
+        "courier_name": "schema:provider",
+        "tracking_number": "schema:trackingNumber",
+        "tracking_link": { "@id": "schema:trackingUrl", "@type": "@id" },
+        "status": "schema:deliveryStatus"
+      }
+    },
+
+    "Money": {
+      "@id": "salla:Money",
+      "@context": {
+        "amount": "schema:value",
+        "currency": "schema:priceCurrency"
+      }
+    }
+  }
+}

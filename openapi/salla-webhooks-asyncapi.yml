@@ -1,0 +1,292 @@
+asyncapi: 2.6.0
+info:
+  title: Salla Webhooks
+  version: '1.0'
+  description: |
+    Server-to-server event delivery from Salla to subscriber endpoints. Each
+    payload is signed with HMAC SHA-256 and includes the headers
+    `X-Salla-Security-Strategy` and `X-Salla-Signature` (signature strategy)
+    or `Authorization` (token strategy).
+  contact:
+    name: Salla Developers
+    url: https://docs.salla.dev/421119m0
+    email: support@salla.dev
+defaultContentType: application/json
+servers:
+  partner:
+    url: https://your-app.example.com
+    protocol: https
+    description: Partner-hosted HTTPS endpoint that receives Salla webhook callbacks.
+channels:
+  order.created:
+    description: Fired when a new order is placed.
+    subscribe:
+      operationId: onOrderCreated
+      message: { $ref: '#/components/messages/OrderEvent' }
+  order.updated:
+    subscribe:
+      operationId: onOrderUpdated
+      message: { $ref: '#/components/messages/OrderEvent' }
+  order.status.updated:
+    subscribe:
+      operationId: onOrderStatusUpdated
+      message: { $ref: '#/components/messages/OrderEvent' }
+  order.cancelled:
+    subscribe:
+      operationId: onOrderCancelled
+      message: { $ref: '#/components/messages/OrderEvent' }
+  order.refunded:
+    subscribe:
+      operationId: onOrderRefunded
+      message: { $ref: '#/components/messages/OrderEvent' }
+  order.deleted:
+    subscribe:
+      operationId: onOrderDeleted
+      message: { $ref: '#/components/messages/OrderEvent' }
+  order.products.updated:
+    subscribe:
+      operationId: onOrderProductsUpdated
+      message: { $ref: '#/components/messages/OrderEvent' }
+  order.payment.updated:
+    subscribe:
+      operationId: onOrderPaymentUpdated
+      message: { $ref: '#/components/messages/OrderEvent' }
+  order.coupon.updated:
+    subscribe:
+      operationId: onOrderCouponUpdated
+      message: { $ref: '#/components/messages/OrderEvent' }
+  order.total.price.updated:
+    subscribe:
+      operationId: onOrderTotalPriceUpdated
+      message: { $ref: '#/components/messages/OrderEvent' }
+  order.shipment.creating:
+    subscribe:
+      operationId: onOrderShipmentCreating
+      message: { $ref: '#/components/messages/ShipmentEvent' }
+  order.shipment.created:
+    subscribe:
+      operationId: onOrderShipmentCreated
+      message: { $ref: '#/components/messages/ShipmentEvent' }
+  order.shipment.cancelled:
+    subscribe:
+      operationId: onOrderShipmentCancelled
+      message: { $ref: '#/components/messages/ShipmentEvent' }
+  order.shipment.return.creating:
+    subscribe:
+      operationId: onOrderShipmentReturnCreating
+      message: { $ref: '#/components/messages/ShipmentEvent' }
+  order.shipment.return.created:
+    subscribe:
+      operationId: onOrderShipmentReturnCreated
+      message: { $ref: '#/components/messages/ShipmentEvent' }
+  order.shipment.return.cancelled:
+    subscribe:
+      operationId: onOrderShipmentReturnCancelled
+      message: { $ref: '#/components/messages/ShipmentEvent' }
+  order.shipping.address.updated:
+    subscribe:
+      operationId: onOrderShippingAddressUpdated
+      message: { $ref: '#/components/messages/OrderEvent' }
+  product.created:
+    subscribe:
+      operationId: onProductCreated
+      message: { $ref: '#/components/messages/ProductEvent' }
+  product.updated:
+    subscribe:
+      operationId: onProductUpdated
+      message: { $ref: '#/components/messages/ProductEvent' }
+  product.deleted:
+    subscribe:
+      operationId: onProductDeleted
+      message: { $ref: '#/components/messages/ProductEvent' }
+  product.quantity.low:
+    subscribe:
+      operationId: onProductQuantityLow
+      message: { $ref: '#/components/messages/ProductEvent' }
+  product.price.updated:
+    subscribe:
+      operationId: onProductPriceUpdated
+      message: { $ref: '#/components/messages/ProductEvent' }
+  product.status.updated:
+    subscribe:
+      operationId: onProductStatusUpdated
+      message: { $ref: '#/components/messages/ProductEvent' }
+  product.image.updated:
+    subscribe:
+      operationId: onProductImageUpdated
+      message: { $ref: '#/components/messages/ProductEvent' }
+  product.category.updated:
+    subscribe:
+      operationId: onProductCategoryUpdated
+      message: { $ref: '#/components/messages/ProductEvent' }
+  product.brand.updated:
+    subscribe:
+      operationId: onProductBrandUpdated
+      message: { $ref: '#/components/messages/ProductEvent' }
+  product.tags.updated:
+    subscribe:
+      operationId: onProductTagsUpdated
+      message: { $ref: '#/components/messages/ProductEvent' }
+  customer.created:
+    subscribe:
+      operationId: onCustomerCreated
+      message: { $ref: '#/components/messages/CustomerEvent' }
+  customer.updated:
+    subscribe:
+      operationId: onCustomerUpdated
+      message: { $ref: '#/components/messages/CustomerEvent' }
+  customer.login:
+    subscribe:
+      operationId: onCustomerLogin
+      message: { $ref: '#/components/messages/CustomerEvent' }
+  customer.otp.request:
+    subscribe:
+      operationId: onCustomerOtpRequest
+      message: { $ref: '#/components/messages/CustomerEvent' }
+  shipping.zone.created:
+    subscribe:
+      operationId: onShippingZoneCreated
+      message: { $ref: '#/components/messages/ShippingZoneEvent' }
+  shipping.zone.updated:
+    subscribe:
+      operationId: onShippingZoneUpdated
+      message: { $ref: '#/components/messages/ShippingZoneEvent' }
+  shipping.company.created:
+    subscribe:
+      operationId: onShippingCompanyCreated
+      message: { $ref: '#/components/messages/ShippingCompanyEvent' }
+  shipping.company.updated:
+    subscribe:
+      operationId: onShippingCompanyUpdated
+      message: { $ref: '#/components/messages/ShippingCompanyEvent' }
+  shipping.company.deleted:
+    subscribe:
+      operationId: onShippingCompanyDeleted
+      message: { $ref: '#/components/messages/ShippingCompanyEvent' }
+  shipment.creating:
+    subscribe:
+      operationId: onShipmentCreating
+      message: { $ref: '#/components/messages/ShipmentEvent' }
+  shipment.created:
+    subscribe:
+      operationId: onShipmentCreated
+      message: { $ref: '#/components/messages/ShipmentEvent' }
+  shipment.cancelled:
+    subscribe:
+      operationId: onShipmentCancelled
+      message: { $ref: '#/components/messages/ShipmentEvent' }
+  shipment.updated:
+    subscribe:
+      operationId: onShipmentUpdated
+      message: { $ref: '#/components/messages/ShipmentEvent' }
+  store.branch.created:
+    subscribe:
+      operationId: onBranchCreated
+      message: { $ref: '#/components/messages/BranchEvent' }
+  store.branch.updated:
+    subscribe:
+      operationId: onBranchUpdated
+      message: { $ref: '#/components/messages/BranchEvent' }
+  store.branch.setDefault:
+    subscribe:
+      operationId: onBranchSetDefault
+      message: { $ref: '#/components/messages/BranchEvent' }
+  store.branch.activated:
+    subscribe:
+      operationId: onBranchActivated
+      message: { $ref: '#/components/messages/BranchEvent' }
+  store.branch.deleted:
+    subscribe:
+      operationId: onBranchDeleted
+      message: { $ref: '#/components/messages/BranchEvent' }
+  storetax.created:
+    subscribe:
+      operationId: onStoreTaxCreated
+      message: { $ref: '#/components/messages/StoreTaxEvent' }
+  category.created:
+    subscribe:
+      operationId: onCategoryCreated
+      message: { $ref: '#/components/messages/CategoryEvent' }
+  category.updated:
+    subscribe:
+      operationId: onCategoryUpdated
+      message: { $ref: '#/components/messages/CategoryEvent' }
+  brand.created:
+    subscribe:
+      operationId: onBrandCreated
+      message: { $ref: '#/components/messages/BrandEvent' }
+  brand.updated:
+    subscribe:
+      operationId: onBrandUpdated
+      message: { $ref: '#/components/messages/BrandEvent' }
+  brand.deleted:
+    subscribe:
+      operationId: onBrandDeleted
+      message: { $ref: '#/components/messages/BrandEvent' }
+  abandoned.cart:
+    subscribe:
+      operationId: onAbandonedCart
+      message: { $ref: '#/components/messages/AbandonedCartEvent' }
+  coupon.applied:
+    subscribe:
+      operationId: onCouponApplied
+      message: { $ref: '#/components/messages/CouponEvent' }
+  invoice.created:
+    subscribe:
+      operationId: onInvoiceCreated
+      message: { $ref: '#/components/messages/InvoiceEvent' }
+  specialoffer.created:
+    subscribe:
+      operationId: onSpecialOfferCreated
+      message: { $ref: '#/components/messages/SpecialOfferEvent' }
+  specialoffer.updated:
+    subscribe:
+      operationId: onSpecialOfferUpdated
+      message: { $ref: '#/components/messages/SpecialOfferEvent' }
+  review.added:
+    subscribe:
+      operationId: onReviewAdded
+      message: { $ref: '#/components/messages/ReviewEvent' }
+  app.installed:
+    subscribe:
+      operationId: onAppInstalled
+      message: { $ref: '#/components/messages/AppEvent' }
+  app.uninstalled:
+    subscribe:
+      operationId: onAppUninstalled
+      message: { $ref: '#/components/messages/AppEvent' }
+  app.store.authorize:
+    subscribe:
+      operationId: onAppStoreAuthorize
+      message: { $ref: '#/components/messages/AppEvent' }
+  app.updated:
+    subscribe:
+      operationId: onAppUpdated
+      message: { $ref: '#/components/messages/AppEvent' }
+components:
+  messages:
+    OrderEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+    ProductEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+    CustomerEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+    ShipmentEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+    ShippingZoneEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+    ShippingCompanyEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+    BranchEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+    StoreTaxEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+    CategoryEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+    BrandEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+    AbandonedCartEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+    CouponEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+    InvoiceEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+    SpecialOfferEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+    ReviewEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+    AppEvent: { payload: { $ref: '#/components/schemas/EventEnvelope' } }
+  schemas:
+    EventEnvelope:
+      type: object
+      properties:
+        event: { type: string }
+        merchant: { type: integer }
+        created_at: { type: string, format: date-time }
+        data: { type: object }
+        security_strategy: { type: string, enum: [signature, token] }

@@ -1,0 +1,61 @@
+{
+  "status": 200,
+  "success": true,
+  "data": {
+    "id": 731920018,
+    "reference_id": 51234,
+    "urls": {
+      "customer": "https://salla.sa/order/abc123",
+      "admin": "https://salla.partners/orders/731920018"
+    },
+    "date": {
+      "date": "2026-05-24T09:42:11.000000Z",
+      "timezone": "Asia/Riyadh"
+    },
+    "source": "web",
+    "status": {
+      "id": 12,
+      "name": "Under Review",
+      "slug": "under_review",
+      "customized": {}
+    },
+    "can_cancel": true,
+    "can_reorder": false,
+    "is_pending_payment": false,
+    "payment_method": "mada",
+    "amounts": {
+      "sub_total": { "amount": 199, "currency": "SAR" },
+      "shipping_cost": { "amount": 25, "currency": "SAR" },
+      "tax": { "amount": 33.6, "currency": "SAR" },
+      "discounts": { "amount": 0, "currency": "SAR" },
+      "total": { "amount": 257.6, "currency": "SAR" }
+    },
+    "currency": "SAR",
+    "total_weight": 0.85,
+    "items": [
+      {
+        "id": 555,
+        "product_id": 1773648299,
+        "name": "Arabic Coffee Set — Riyadh Edition",
+        "sku": "ACS-RYD-001",
+        "quantity": 1,
+        "price": { "amount": 199, "currency": "SAR" }
+      }
+    ],
+    "customer": {
+      "id": 8821,
+      "first_name": "Ahmed",
+      "last_name": "Al-Otaibi",
+      "mobile": "555000111",
+      "mobile_code": "966",
+      "email": "ahmed@example.sa"
+    },
+    "shipping": {
+      "id": 1,
+      "company": "Aramex",
+      "city": "Riyadh",
+      "country": "SA"
+    },
+    "shipments": []
+  }
+}

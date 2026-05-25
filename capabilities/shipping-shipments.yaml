@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salla Shipping API — Shipments
+  description: Salla Shipping and Fulfillment API Shipments capability — create, retrieve, update, cancel shipments
+    and create returns.
+  tags: [Salla, Shipping, Shipments, Fulfillment]
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    SALLA_ACCESS_TOKEN: SALLA_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: shipping-shipments
+    baseUri: https://api.salla.dev/admin/v2
+    resources:
+    - name: shipments
+      path: /shipments
+      operations:
+      - name: createShipment
+        method: POST
+        inputParameters: [{ name: body, in: body, type: object, required: true }]
+        outputParameters: [{ name: result, type: object, value: $. }]
+      - name: listShipments
+        method: GET
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: shipment
+      path: /shipments/{shipment_id}
+      operations:
+      - name: getShipment
+        method: GET
+        inputParameters: [{ name: shipment_id, in: path, type: integer, required: true }]
+        outputParameters: [{ name: result, type: object, value: $. }]
+      - name: updateShipment
+        method: PUT
+        inputParameters:
+        - { name: shipment_id, in: path, type: integer, required: true }
+        - { name: body, in: body, type: object, required: true }
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: shipment-cancel
+      path: /shipments/{shipment_id}/cancel
+      operations:
+      - name: cancelShipment
+        method: POST
+        inputParameters: [{ name: shipment_id, in: path, type: integer, required: true }]
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: shipment-return
+      path: /shipments/{shipment_id}/return
+      operations:
+      - name: createShipmentReturn
+        method: POST
+        inputParameters:
+        - { name: shipment_id, in: path, type: integer, required: true }
+        - { name: body, in: body, type: object, required: true }
+        outputParameters: [{ name: result, type: object, value: $. }]
+    authentication: { type: bearer, value: '{{env.SALLA_ACCESS_TOKEN}}', placement: header }
+  exposes:
+  - type: mcp
+    namespace: shipping-shipments-mcp
+    port: 9090
+    transport: http
+    tools:
+    - name: salla-create-shipment
+      description: Create a Salla shipment.
+      hints: { readOnly: false, destructive: false, idempotent: false }
+      call: shipping-shipments.createShipment
+      with: { body: tools.body }
+    - name: salla-cancel-shipment
+      description: Cancel a Salla shipment.
+      hints: { readOnly: false, destructive: true, idempotent: true }
+      call: shipping-shipments.cancelShipment
+      with: { shipment_id: tools.shipment_id }
+    - name: salla-get-shipment
+      description: Get a Salla shipment by ID.
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: shipping-shipments.getShipment
+      with: { shipment_id: tools.shipment_id }
