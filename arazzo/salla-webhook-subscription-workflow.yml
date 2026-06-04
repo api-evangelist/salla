@@ -1,0 +1,73 @@
+arazzo: 1.0.1
+info:
+  title: Salla Webhook Subscription Setup
+  summary: Inspect existing webhook subscriptions, subscribe to an event, and confirm registration.
+  description: >-
+    The setup flow an app runs to start receiving Salla store events. The
+    existing webhook subscriptions are listed first, a new subscription is
+    created for the requested event and delivery URL, and the subscriptions are
+    listed again to confirm the new endpoint is registered. Each step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: merchantApi
+  url: ../openapi/salla-merchant-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: subscribe-webhook
+  summary: Subscribe to a Salla webhook event and confirm it registered.
+  description: >-
+    Lists current webhook subscriptions, creates a new subscription for the
+    requested event and URL, and re-lists subscriptions to confirm it
+    registered.
+  inputs:
+    type: object
+    required:
+    - name
+    - event
+    - url
+    properties:
+      name:
+        type: string
+        description: Friendly name for the subscription.
+      event:
+        type: string
+        description: Webhook event to subscribe to (e.g. order.created).
+      url:
+        type: string
+        description: HTTPS endpoint that will receive event deliveries.
+      securityStrategy:
+        type: string
+        description: Delivery verification strategy (signature or token).
+  steps:
+  - stepId: listExisting
+    description: >-
+      List the webhook subscriptions already registered for the store.
+    operationId: listWebhookSubscriptions
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: subscribe
+    description: >-
+      Create a new webhook subscription for the requested event and delivery
+      URL.
+    operationId: subscribeWebhook
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        event: $inputs.event
+        url: $inputs.url
+        security_strategy: $inputs.securityStrategy
+    successCriteria:
+    - condition: $statusCode == 201
+  - stepId: confirm
+    description: >-
+      Re-list the subscriptions to confirm the new endpoint is registered.
+    operationId: listWebhookSubscriptions
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      subscriptions: $response.body#/data
+  outputs:
+    subscriptions: $steps.confirm.outputs.subscriptions

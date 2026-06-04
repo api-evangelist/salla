@@ -1,0 +1,99 @@
+arazzo: 1.0.1
+info:
+  title: Salla Create and Verify Product
+  summary: Create a product, read it back, and confirm its generated SKUs.
+  description: >-
+    The canonical catalog onboarding pattern for a Salla store. A product is
+    created from the supplied attributes, the created product is fetched back
+    by its id to confirm persistence, and its generated SKUs are listed so an
+    integration can map them into downstream inventory systems. Each step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: merchantApi
+  url: ../openapi/salla-merchant-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-verify-product
+  summary: Create a product and verify it persisted with its SKUs.
+  description: >-
+    Creates a new catalog product, fetches it back by id, and lists the SKUs
+    Salla generated for it.
+  inputs:
+    type: object
+    required:
+    - name
+    - price
+    - productType
+    properties:
+      name:
+        type: string
+        description: Display name of the product.
+      price:
+        type: number
+        description: Base price of the product.
+      productType:
+        type: string
+        description: Product type (e.g. product, service, digital, food).
+      quantity:
+        type: integer
+        description: Initial stock quantity.
+      description:
+        type: string
+        description: Product description.
+      categories:
+        type: array
+        description: Category ids to assign the product to.
+        items:
+          type: integer
+  steps:
+  - stepId: createProduct
+    description: >-
+      Create the product from the supplied attributes and capture its
+      generated id.
+    operationId: createProduct
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        price: $inputs.price
+        product_type: $inputs.productType
+        quantity: $inputs.quantity
+        description: $inputs.description
+        categories: $inputs.categories
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      productId: $response.body#/data/id
+  - stepId: getProduct
+    description: >-
+      Fetch the newly created product by id to confirm it persisted and read
+      its canonical representation.
+    operationId: getProduct
+    parameters:
+    - name: product_id
+      in: path
+      value: $steps.createProduct.outputs.productId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/data/status
+      sku: $response.body#/data/sku
+  - stepId: listSkus
+    description: >-
+      List the SKUs Salla generated for the product so they can be mapped into
+      downstream inventory systems.
+    operationId: listProductSkus
+    parameters:
+    - name: product_id
+      in: path
+      value: $steps.createProduct.outputs.productId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      skus: $response.body#/data
+  outputs:
+    productId: $steps.createProduct.outputs.productId
+    productStatus: $steps.getProduct.outputs.status
+    skus: $steps.listSkus.outputs.skus

@@ -148,6 +148,42 @@ kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/salla-abandoned-cart-recovery-workflow.yml
+    name: Salla Abandoned Cart Recovery
+    summary: Find abandoned carts, look up the shopper, and issue a recovery coupon.
+  - url: arazzo/salla-catalog-taxonomy-setup-workflow.yml
+    name: Salla Catalog Taxonomy Setup
+    summary: Create a brand and category, then create a product assigned to both.
+  - url: arazzo/salla-customer-upsert-workflow.yml
+    name: Salla Upsert Customer
+    summary: Find a customer in a page of results and update them, otherwise create a new customer.
+  - url: arazzo/salla-oauth-token-exchange-workflow.yml
+    name: Salla OAuth Token Exchange
+    summary: Exchange an authorization code for an access token and confirm the merchant identity.
+  - url: arazzo/salla-order-fulfillment-workflow.yml
+    name: Salla Order Fulfillment
+    summary: Read an order, create its shipment, and advance the order status.
+  - url: arazzo/salla-order-monitor-workflow.yml
+    name: Salla Monitor and Audit Orders
+    summary: List orders by status, then pull the full detail, history, and invoices for one.
+  - url: arazzo/salla-product-create-verify-workflow.yml
+    name: Salla Create and Verify Product
+    summary: Create a product, read it back, and confirm its generated SKUs.
+  - url: arazzo/salla-product-upsert-workflow.yml
+    name: Salla Upsert Product by SKU
+    summary: Find a product by keyword and update it if it exists, otherwise create it.
+  - url: arazzo/salla-shipment-lifecycle-workflow.yml
+    name: Salla Shipment Lifecycle
+    summary: Resolve a courier, create a shipment, read it back, and branch on whether to cancel.
+  - url: arazzo/salla-shipping-zone-setup-workflow.yml
+    name: Salla Shipping Zone Setup
+    summary: Register a shipping company, create a delivery zone for it, and read the zone back.
+  - url: arazzo/salla-webhook-subscription-workflow.yml
+    name: Salla Webhook Subscription Setup
+    summary: Inspect existing webhook subscriptions, subscribe to an event, and confirm registration.
 - url: https://salla.com
   type: Portal
 - url: https://salla.dev

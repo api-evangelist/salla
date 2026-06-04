@@ -1,0 +1,73 @@
+arazzo: 1.0.1
+info:
+  title: Salla Abandoned Cart Recovery
+  summary: Find abandoned carts, look up the shopper, and issue a recovery coupon.
+  description: >-
+    A revenue-recovery flow for a Salla store. Abandoned carts are listed, the
+    flow branches only when at least one cart is found, the shopper behind the
+    first cart is read for their contact details, and a targeted recovery
+    coupon is created to win the order back. Each step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: merchantApi
+  url: ../openapi/salla-merchant-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: recover-abandoned-cart
+  summary: Issue a recovery coupon to a shopper who abandoned a cart.
+  description: >-
+    Lists abandoned carts, reads the customer behind the first one, and creates
+    a recovery coupon targeted at winning the order back.
+  inputs:
+    type: object
+    required:
+    - couponPayload
+    properties:
+      couponPayload:
+        type: object
+        description: The coupon body (code, type, amount, expiry) to create as the recovery incentive.
+  steps:
+  - stepId: listAbandonedCarts
+    description: >-
+      List abandoned carts and branch only when at least one cart is present.
+    operationId: listAbandonedCarts
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstCartCustomerId: $response.body#/data/0/customer/id
+    onSuccess:
+    - name: hasCarts
+      type: goto
+      stepId: getCustomer
+      criteria:
+      - context: $response.body
+        condition: $.data.length > 0
+        type: jsonpath
+  - stepId: getCustomer
+    description: >-
+      Read the shopper behind the first abandoned cart for their contact
+      details.
+    operationId: getCustomer
+    parameters:
+    - name: customer_id
+      in: path
+      value: $steps.listAbandonedCarts.outputs.firstCartCustomerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      customerEmail: $response.body#/data/email
+      customerMobile: $response.body#/data/mobile
+  - stepId: createCoupon
+    description: >-
+      Create a targeted recovery coupon to win the abandoned order back.
+    operationId: createCoupon
+    requestBody:
+      contentType: application/json
+      payload: $inputs.couponPayload
+    successCriteria:
+    - condition: $statusCode == 201
+  outputs:
+    customerId: $steps.listAbandonedCarts.outputs.firstCartCustomerId
+    customerEmail: $steps.getCustomer.outputs.customerEmail

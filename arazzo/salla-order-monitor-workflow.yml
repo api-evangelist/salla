@@ -1,0 +1,106 @@
+arazzo: 1.0.1
+info:
+  title: Salla Monitor and Audit Orders
+  summary: List orders by status, then pull the full detail, history, and invoices for one.
+  description: >-
+    An operations and auditing flow for a Salla store. Orders are listed
+    filtered by status and date window, the first matching order is read in
+    full, its complete status history is pulled, and its invoices are listed so
+    a back-office integration can reconcile and archive the order. Each step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: merchantApi
+  url: ../openapi/salla-merchant-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: monitor-orders
+  summary: Find an order by status and audit its detail, history, and invoices.
+  description: >-
+    Lists orders matching a status and date window, then reads the first
+    match's full detail, status history, and invoices.
+  inputs:
+    type: object
+    required:
+    - status
+    properties:
+      status:
+        type: string
+        description: Order status to filter the listing by.
+      fromDate:
+        type: string
+        description: Earliest order date (YYYY-MM-DD) to include.
+      toDate:
+        type: string
+        description: Latest order date (YYYY-MM-DD) to include.
+      perPage:
+        type: integer
+        description: Number of orders to return per page.
+  steps:
+  - stepId: listOrders
+    description: >-
+      List orders matching the supplied status and date window.
+    operationId: listOrders
+    parameters:
+    - name: status
+      in: query
+      value: $inputs.status
+    - name: from_date
+      in: query
+      value: $inputs.fromDate
+    - name: to_date
+      in: query
+      value: $inputs.toDate
+    - name: per_page
+      in: query
+      value: $inputs.perPage
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstOrderId: $response.body#/data/0/id
+    onSuccess:
+    - name: hasOrders
+      type: goto
+      stepId: getOrder
+      criteria:
+      - context: $response.body
+        condition: $.data.length > 0
+        type: jsonpath
+  - stepId: getOrder
+    description: >-
+      Read the first matching order in full.
+    operationId: getOrder
+    parameters:
+    - name: order_id
+      in: path
+      value: $steps.listOrders.outputs.firstOrderId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      total: $response.body#/data/amounts/total/amount
+      paymentMethod: $response.body#/data/payment_method
+  - stepId: listHistories
+    description: >-
+      Pull the complete status history for the order to reconstruct its
+      lifecycle.
+    operationId: listOrderHistories
+    parameters:
+    - name: order_id
+      in: path
+      value: $steps.listOrders.outputs.firstOrderId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: listInvoices
+    description: >-
+      List the invoices attached to the order so they can be archived.
+    operationId: listOrderInvoices
+    parameters:
+    - name: order_id
+      in: path
+      value: $steps.listOrders.outputs.firstOrderId
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    orderId: $steps.listOrders.outputs.firstOrderId
+    orderTotal: $steps.getOrder.outputs.total

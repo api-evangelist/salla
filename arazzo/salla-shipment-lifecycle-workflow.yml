@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Salla Shipment Lifecycle
+  summary: Resolve a courier, create a shipment, read it back, and branch on whether to cancel.
+  description: >-
+    The end-to-end courier flow for a Salla shipping app. The available
+    shipping companies are listed, a shipment is created against an order with
+    the chosen courier, the created shipment is read back to capture its
+    tracking detail, and the flow branches on a caller flag to cancel the
+    shipment when it should not proceed. Each step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: shippingApi
+  url: ../openapi/salla-shipping-fulfillment-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: shipment-lifecycle
+  summary: Create and track a shipment, optionally cancelling it.
+  description: >-
+    Lists shipping companies, creates a shipment, reads it back for tracking
+    detail, and cancels it when the caller flags that it should not proceed.
+  inputs:
+    type: object
+    required:
+    - orderId
+    - courierId
+    - cancel
+    properties:
+      orderId:
+        type: integer
+        description: The order to create the shipment for.
+      courierId:
+        type: integer
+        description: The shipping company id to ship with.
+      trackingNumber:
+        type: string
+        description: Optional tracking number to attach to the shipment.
+      cancel:
+        type: boolean
+        description: When true, the created shipment is cancelled after it is read back.
+  steps:
+  - stepId: listCouriers
+    description: >-
+      List the shipping companies available to the store so a courier can be
+      chosen.
+    operationId: listShippingCompanies
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: createShipment
+    description: >-
+      Create a shipment against the order with the chosen courier.
+    operationId: createShipment
+    requestBody:
+      contentType: application/json
+      payload:
+        order_id: $inputs.orderId
+        courier_id: $inputs.courierId
+        type: shipment
+        tracking_number: $inputs.trackingNumber
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      shipmentId: $response.body#/id
+  - stepId: getShipment
+    description: >-
+      Read the created shipment back to capture its tracking number and link.
+    operationId: getShipment
+    parameters:
+    - name: shipment_id
+      in: path
+      value: $steps.createShipment.outputs.shipmentId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      trackingNumber: $response.body#/tracking_number
+      trackingLink: $response.body#/tracking_link
+      status: $response.body#/status
+    onSuccess:
+    - name: cancelRequested
+      type: goto
+      stepId: cancelShipment
+      criteria:
+      - condition: $inputs.cancel == true
+    - name: keepShipment
+      type: end
+      criteria:
+      - condition: $inputs.cancel == false
+  - stepId: cancelShipment
+    description: >-
+      Cancel the shipment when the caller flagged that it should not proceed.
+    operationId: cancelShipment
+    parameters:
+    - name: shipment_id
+      in: path
+      value: $steps.createShipment.outputs.shipmentId
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    shipmentId: $steps.createShipment.outputs.shipmentId
+    trackingNumber: $steps.getShipment.outputs.trackingNumber
+    trackingLink: $steps.getShipment.outputs.trackingLink

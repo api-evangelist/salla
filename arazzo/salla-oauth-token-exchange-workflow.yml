@@ -1,0 +1,113 @@
+arazzo: 1.0.1
+info:
+  title: Salla OAuth Token Exchange
+  summary: Exchange an authorization code for an access token and confirm the merchant identity.
+  description: >-
+    The bootstrap flow every Salla app runs after a merchant grants
+    permission. The merchant is first sent to the authorization endpoint, the
+    returned authorization code is exchanged for an access and refresh token
+    pair, and the resulting token is used to read the authenticated merchant
+    and store profile. Each step spells out its request inline so the OAuth
+    handshake can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: appsApi
+  url: ../openapi/salla-apps-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: oauth-token-exchange
+  summary: Turn an authorization code into an access token and resolve the merchant.
+  description: >-
+    Initiates the merchant authorization redirect, exchanges the returned
+    authorization code for an access and refresh token, and then reads the
+    authenticated merchant profile to confirm the grant succeeded.
+  inputs:
+    type: object
+    required:
+    - clientId
+    - clientSecret
+    - redirectUri
+    - authorizationCode
+    properties:
+      clientId:
+        type: string
+        description: The OAuth client id issued to the Salla app.
+      clientSecret:
+        type: string
+        description: The OAuth client secret issued to the Salla app.
+      redirectUri:
+        type: string
+        description: The redirect URI registered for the app.
+      scope:
+        type: string
+        description: Space-delimited scopes requested (e.g. "offline_access orders.read").
+      state:
+        type: string
+        description: Opaque value echoed back on the authorization redirect.
+      authorizationCode:
+        type: string
+        description: The authorization code returned to the redirect URI.
+  steps:
+  - stepId: authorizeApp
+    description: >-
+      Send the merchant to the authorization endpoint to grant the requested
+      store data scopes; the endpoint redirects back with an authorization
+      code.
+    operationId: authorize
+    parameters:
+    - name: client_id
+      in: query
+      value: $inputs.clientId
+    - name: response_type
+      in: query
+      value: code
+    - name: redirect_uri
+      in: query
+      value: $inputs.redirectUri
+    - name: scope
+      in: query
+      value: $inputs.scope
+    - name: state
+      in: query
+      value: $inputs.state
+    successCriteria:
+    - condition: $statusCode == 302
+  - stepId: exchangeToken
+    description: >-
+      Exchange the authorization code for an access token and a refresh token
+      using the authorization_code grant.
+    operationId: token
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        client_id: $inputs.clientId
+        client_secret: $inputs.clientSecret
+        grant_type: authorization_code
+        code: $inputs.authorizationCode
+        redirect_uri: $inputs.redirectUri
+        scope: $inputs.scope
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      accessToken: $response.body#/access_token
+      refreshToken: $response.body#/refresh_token
+      expiresIn: $response.body#/expires_in
+  - stepId: getMerchant
+    description: >-
+      Read the authenticated merchant and store profile using the freshly
+      issued access token to confirm the grant succeeded.
+    operationId: getUserInfo
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $steps.exchangeToken.outputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      merchantId: $response.body#/data/id
+      merchantName: $response.body#/data/name
+  outputs:
+    accessToken: $steps.exchangeToken.outputs.accessToken
+    refreshToken: $steps.exchangeToken.outputs.refreshToken
+    merchantId: $steps.getMerchant.outputs.merchantId
