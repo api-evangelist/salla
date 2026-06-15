@@ -1,0 +1,988 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salla Merchant API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.salla.sa/oauth2/auth",
+      "accessTokenUrl": "https://accounts.salla.sa/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/products",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "keyword",
+                "value": "",
+                "type": "query",
+                "description": "Filter products matching a name or SKU value."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Use `light` for simplified product data."
+              }
+            ]
+          },
+          "docs": "List Products"
+        },
+        {
+          "info": {
+            "name": "Create Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/products",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Product"
+        },
+        {
+          "info": {
+            "name": "Get Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/products/:product_id",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Product"
+        },
+        {
+          "info": {
+            "name": "Update Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.salla.dev/admin/v2/products/:product_id",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Product"
+        },
+        {
+          "info": {
+            "name": "Delete Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.salla.dev/admin/v2/products/:product_id",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Product"
+        },
+        {
+          "info": {
+            "name": "List Product SKUs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/products/:product_id/skus",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Product SKUs"
+        },
+        {
+          "info": {
+            "name": "Create Product Option",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/products/options",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Product Option"
+        },
+        {
+          "info": {
+            "name": "Update Product Quantities",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.salla.dev/admin/v2/products/quantities",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Product Quantities"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/orders",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to_date",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Orders"
+        },
+        {
+          "info": {
+            "name": "Get Order Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/orders/:order_id",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Set to `light` to exclude shipments, items, pickup branch, and customer groups."
+              }
+            ]
+          },
+          "docs": "Get Order Details"
+        },
+        {
+          "info": {
+            "name": "Update Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.salla.dev/admin/v2/orders/:order_id",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Order"
+        },
+        {
+          "info": {
+            "name": "Update Order Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/orders/:order_id/status",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Order Status"
+        },
+        {
+          "info": {
+            "name": "List Order Histories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/orders/:order_id/histories",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Order Histories"
+        },
+        {
+          "info": {
+            "name": "List Order Invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/orders/:order_id/invoices",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Order Invoices"
+        },
+        {
+          "info": {
+            "name": "List Order Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/orders/:order_id/items",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Order Items"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Carts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Abandoned Carts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/abandoned-carts"
+          },
+          "docs": "List Abandoned Carts"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/customers",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Customers"
+        },
+        {
+          "info": {
+            "name": "Create Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/customers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Customer"
+        },
+        {
+          "info": {
+            "name": "Get Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/customers/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Customer"
+        },
+        {
+          "info": {
+            "name": "Update Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.salla.dev/admin/v2/customers/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Customer"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/categories"
+          },
+          "docs": "List Categories"
+        },
+        {
+          "info": {
+            "name": "Create Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/categories",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Category"
+        },
+        {
+          "info": {
+            "name": "Get Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/categories/:category_id",
+            "params": [
+              {
+                "name": "category_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Category"
+        },
+        {
+          "info": {
+            "name": "Update Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.salla.dev/admin/v2/categories/:category_id",
+            "params": [
+              {
+                "name": "category_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Category"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Brands",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Brands",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/brands"
+          },
+          "docs": "List Brands"
+        },
+        {
+          "info": {
+            "name": "Create Brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/brands",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Brand"
+        },
+        {
+          "info": {
+            "name": "Get Brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/brands/:brand_id",
+            "params": [
+              {
+                "name": "brand_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Brand"
+        },
+        {
+          "info": {
+            "name": "Update Brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.salla.dev/admin/v2/brands/:brand_id",
+            "params": [
+              {
+                "name": "brand_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Brand"
+        },
+        {
+          "info": {
+            "name": "Delete Brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.salla.dev/admin/v2/brands/:brand_id",
+            "params": [
+              {
+                "name": "brand_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Brand"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Branches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Store Branches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/branches"
+          },
+          "docs": "List Store Branches"
+        },
+        {
+          "info": {
+            "name": "Create Store Branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/branches",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Store Branch"
+        },
+        {
+          "info": {
+            "name": "Get Store Branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/branches/:branch_id",
+            "params": [
+              {
+                "name": "branch_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Store Branch"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Coupons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Coupons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/coupons"
+          },
+          "docs": "List Coupons"
+        },
+        {
+          "info": {
+            "name": "Create Coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/coupons",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Coupon"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Localization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Currencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/currencies"
+          },
+          "docs": "List Currencies"
+        },
+        {
+          "info": {
+            "name": "List Languages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/languages"
+          },
+          "docs": "List Languages"
+        },
+        {
+          "info": {
+            "name": "List Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/countries"
+          },
+          "docs": "List Countries"
+        },
+        {
+          "info": {
+            "name": "Get Country Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/countries/:country_id",
+            "params": [
+              {
+                "name": "country_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Country Details"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Financial",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Taxes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/taxes"
+          },
+          "docs": "List Taxes"
+        },
+        {
+          "info": {
+            "name": "Create Tax",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/taxes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Tax"
+        },
+        {
+          "info": {
+            "name": "List Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/transactions"
+          },
+          "docs": "List Transactions"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Shipping",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Shipments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/shipments"
+          },
+          "docs": "List Shipments"
+        },
+        {
+          "info": {
+            "name": "Create Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/shipments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Shipment"
+        },
+        {
+          "info": {
+            "name": "Get Shipment Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/shipments/:shipment_id",
+            "params": [
+              {
+                "name": "shipment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Shipment Details"
+        },
+        {
+          "info": {
+            "name": "List Shipping Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/shipping/zones"
+          },
+          "docs": "List Shipping Zones"
+        },
+        {
+          "info": {
+            "name": "Get Shipping Zone Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/shipping/zones/:zone_id",
+            "params": [
+              {
+                "name": "zone_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Shipping Zone Details"
+        },
+        {
+          "info": {
+            "name": "List Shipping Companies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/shipping/companies"
+          },
+          "docs": "List Shipping Companies"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Subscribe Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/webhooks/subscribe",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Subscribe Webhook"
+        },
+        {
+          "info": {
+            "name": "List Webhook Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/webhooks/subscriptions"
+          },
+          "docs": "List Webhook Subscriptions"
+        },
+        {
+          "info": {
+            "name": "Unsubscribe Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.salla.dev/admin/v2/webhooks/unsubscribe/:subscription_id",
+            "params": [
+              {
+                "name": "subscription_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Unsubscribe Webhook"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Store",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Store Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/store/info"
+          },
+          "docs": "Get Store Info"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

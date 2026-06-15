@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salla Apps API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OAuth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authorize App",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/oauth2/auth",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "response_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "redirect_uri",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Initiates the merchant permission request for store data access."
+        },
+        {
+          "info": {
+            "name": "Exchange Or Refresh Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://accounts.salla.sa/oauth2/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "client_secret",
+                  "value": ""
+                },
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "code",
+                  "value": ""
+                },
+                {
+                  "name": "refresh_token",
+                  "value": ""
+                },
+                {
+                  "name": "redirect_uri",
+                  "value": ""
+                },
+                {
+                  "name": "scope",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Exchanges an authorization code for an access token, or refreshes an expired token."
+        },
+        {
+          "info": {
+            "name": "Get Authenticated Merchant Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/oauth2/user/info",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Authenticated Merchant Info"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

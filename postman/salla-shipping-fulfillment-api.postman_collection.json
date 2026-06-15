@@ -1,0 +1,1402 @@
+{
+  "info": {
+    "_postman_id": "cbc9a766-1676-4bd2-b212-1b6449704346",
+    "name": "Salla Shipping and Fulfillment API",
+    "description": "REST surface for managing and tracking shipments, shipping zones, pickup\nbranches, and courier integrations across Salla merchant stores. Shipping\napps that implement this contract are listed in the Salla App Store and\nreceive shipment lifecycle webhooks (`shipment.creating`,\n`shipment.created`, `shipment.cancelled`).\n\n\nContact Support:\n Name: Salla Developers\n Email: support@salla.dev",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:16:13.000Z",
+    "updatedAt": "2026-06-05T15:16:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cbc9a766-1676-4bd2-b212-1b6449704346"
+  },
+  "item": [
+    {
+      "name": "shipping",
+      "item": [
+        {
+          "name": "companies",
+          "item": [
+            {
+              "name": "{company_id}",
+              "item": [
+                {
+                  "name": "Get Shipping Company",
+                  "id": "09efdf42-7e61-42dc-bceb-bd852f93a85e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/shipping/companies/:company_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shipping",
+                        "companies",
+                        ":company_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d9d62a9b-4eca-4ced-a6a3-49b5e204a658",
+                          "key": "company_id",
+                          "value": "<integer>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "43f72dee-4438-4a83-8d3d-eb5b5ff6084e",
+                      "name": "Shipping company details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shipping/companies/:company_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shipping",
+                            "companies",
+                            ":company_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "company_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:16:13.000Z",
+                      "updatedAt": "2026-06-05T15:16:13.000Z",
+                      "uid": "35240-43f72dee-4438-4a83-8d3d-eb5b5ff6084e"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:16:13.000Z",
+                  "updatedAt": "2026-06-05T15:16:13.000Z",
+                  "uid": "35240-09efdf42-7e61-42dc-bceb-bd852f93a85e"
+                },
+                {
+                  "name": "Update Shipping Company",
+                  "id": "ebe40995-eadc-45d9-81c1-fc4d6e9becee",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/shipping/companies/:company_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shipping",
+                        "companies",
+                        ":company_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4a6febc8-0646-4ca6-97d2-eebf8831590a",
+                          "key": "company_id",
+                          "value": "<integer>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "105e8af9-d17f-4a2b-a00c-e62f563c8012",
+                      "name": "Shipping company updated.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/shipping/companies/:company_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shipping",
+                            "companies",
+                            ":company_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "company_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:16:13.000Z",
+                      "updatedAt": "2026-06-05T15:16:13.000Z",
+                      "uid": "35240-105e8af9-d17f-4a2b-a00c-e62f563c8012"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:16:13.000Z",
+                  "updatedAt": "2026-06-05T15:16:13.000Z",
+                  "uid": "35240-ebe40995-eadc-45d9-81c1-fc4d6e9becee"
+                },
+                {
+                  "name": "Delete Shipping Company",
+                  "id": "448c1507-9055-4b33-b859-6db1be5d49bf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/shipping/companies/:company_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shipping",
+                        "companies",
+                        ":company_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "186dbfe4-9169-4aa1-ac58-50d4bd4e26cd",
+                          "key": "company_id",
+                          "value": "<integer>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "f8f469b6-a6f3-4ebb-98f9-cdafc0a4a8c3",
+                      "name": "Shipping company deleted.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shipping/companies/:company_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shipping",
+                            "companies",
+                            ":company_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "company_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:16:13.000Z",
+                      "updatedAt": "2026-06-05T15:16:13.000Z",
+                      "uid": "35240-f8f469b6-a6f3-4ebb-98f9-cdafc0a4a8c3"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:16:13.000Z",
+                  "updatedAt": "2026-06-05T15:16:13.000Z",
+                  "uid": "35240-448c1507-9055-4b33-b859-6db1be5d49bf"
+                }
+              ],
+              "id": "c02ac279-cc22-4c55-8421-8f490dcadcb0",
+              "createdAt": "2026-06-05T15:16:13.000Z",
+              "updatedAt": "2026-06-05T15:16:13.000Z",
+              "uid": "35240-c02ac279-cc22-4c55-8421-8f490dcadcb0"
+            },
+            {
+              "name": "List Shipping Companies",
+              "id": "3748c468-2fbc-4b3e-8ad0-02a7a64c2766",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/shipping/companies",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shipping",
+                    "companies"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "66e42ee9-65da-4c06-a775-09951fe8fec3",
+                  "name": "Shipping companies.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shipping/companies",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shipping",
+                        "companies"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:16:13.000Z",
+                  "updatedAt": "2026-06-05T15:16:13.000Z",
+                  "uid": "35240-66e42ee9-65da-4c06-a775-09951fe8fec3"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:13.000Z",
+              "updatedAt": "2026-06-05T15:16:13.000Z",
+              "uid": "35240-3748c468-2fbc-4b3e-8ad0-02a7a64c2766"
+            },
+            {
+              "name": "Create Shipping Company",
+              "id": "0861e2fa-6a27-4e3a-b426-73ade0dc4408",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/shipping/companies",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shipping",
+                    "companies"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "27419ccf-9f97-4b32-bcd1-d64bfb09374b",
+                  "name": "Shipping company created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/shipping/companies",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shipping",
+                        "companies"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:16:13.000Z",
+                  "updatedAt": "2026-06-05T15:16:13.000Z",
+                  "uid": "35240-27419ccf-9f97-4b32-bcd1-d64bfb09374b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:13.000Z",
+              "updatedAt": "2026-06-05T15:16:13.000Z",
+              "uid": "35240-0861e2fa-6a27-4e3a-b426-73ade0dc4408"
+            }
+          ],
+          "id": "39320b19-9797-4619-8641-da1778ca3dbc",
+          "createdAt": "2026-06-05T15:16:13.000Z",
+          "updatedAt": "2026-06-05T15:16:13.000Z",
+          "uid": "35240-39320b19-9797-4619-8641-da1778ca3dbc"
+        },
+        {
+          "name": "zones",
+          "item": [
+            {
+              "name": "{zone_id}",
+              "item": [
+                {
+                  "name": "Get Shipping Zone",
+                  "id": "1897fc44-b6e6-43c5-9549-157788967374",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shipping/zones/:zone_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shipping",
+                        "zones",
+                        ":zone_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3a8900ce-c165-4828-a242-5dcfa5d718b2",
+                          "key": "zone_id",
+                          "value": "<integer>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "845ecd7f-d082-411a-b6fe-25158b5b00af",
+                      "name": "Shipping zone details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shipping/zones/:zone_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shipping",
+                            "zones",
+                            ":zone_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "zone_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"countries\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cities\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cost\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"free_above\": \"<number>\"\n}",
+                      "createdAt": "2026-06-05T15:16:13.000Z",
+                      "updatedAt": "2026-06-05T15:16:13.000Z",
+                      "uid": "35240-845ecd7f-d082-411a-b6fe-25158b5b00af"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:16:13.000Z",
+                  "updatedAt": "2026-06-05T15:16:13.000Z",
+                  "uid": "35240-1897fc44-b6e6-43c5-9549-157788967374"
+                },
+                {
+                  "name": "Update Shipping Zone",
+                  "id": "6f64d046-dd72-4a00-bcdb-81e3f9372887",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/shipping/zones/:zone_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shipping",
+                        "zones",
+                        ":zone_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "239acaf8-6219-4a73-bccb-b83c63aba30d",
+                          "key": "zone_id",
+                          "value": "<integer>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b1e8554f-6579-4dc0-b339-cbd94144c71a",
+                      "name": "Shipping zone updated.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/shipping/zones/:zone_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shipping",
+                            "zones",
+                            ":zone_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "zone_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:16:13.000Z",
+                      "updatedAt": "2026-06-05T15:16:13.000Z",
+                      "uid": "35240-b1e8554f-6579-4dc0-b339-cbd94144c71a"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:16:13.000Z",
+                  "updatedAt": "2026-06-05T15:16:13.000Z",
+                  "uid": "35240-6f64d046-dd72-4a00-bcdb-81e3f9372887"
+                }
+              ],
+              "id": "65a91f9c-319e-4874-8aba-937c80724420",
+              "createdAt": "2026-06-05T15:16:13.000Z",
+              "updatedAt": "2026-06-05T15:16:13.000Z",
+              "uid": "35240-65a91f9c-319e-4874-8aba-937c80724420"
+            },
+            {
+              "name": "List Shipping Zones",
+              "id": "fe6b6549-44c2-4ff7-a7cd-4f59f0eece1b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/shipping/zones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shipping",
+                    "zones"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "4f94d001-4877-4813-b6e1-fe9c489d9168",
+                  "name": "Shipping zones.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shipping/zones",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shipping",
+                        "zones"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:16:13.000Z",
+                  "updatedAt": "2026-06-05T15:16:13.000Z",
+                  "uid": "35240-4f94d001-4877-4813-b6e1-fe9c489d9168"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:13.000Z",
+              "updatedAt": "2026-06-05T15:16:13.000Z",
+              "uid": "35240-fe6b6549-44c2-4ff7-a7cd-4f59f0eece1b"
+            },
+            {
+              "name": "Create Shipping Zone",
+              "id": "30be2306-e8da-4cf2-8d4d-84a31d7a2829",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/shipping/zones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shipping",
+                    "zones"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "149146b0-142c-447d-b091-f7082763b51d",
+                  "name": "Shipping zone created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/shipping/zones",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shipping",
+                        "zones"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:16:13.000Z",
+                  "updatedAt": "2026-06-05T15:16:13.000Z",
+                  "uid": "35240-149146b0-142c-447d-b091-f7082763b51d"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:13.000Z",
+              "updatedAt": "2026-06-05T15:16:13.000Z",
+              "uid": "35240-30be2306-e8da-4cf2-8d4d-84a31d7a2829"
+            }
+          ],
+          "id": "ecf33ab6-1c92-490f-a57a-e4eaee40baa5",
+          "createdAt": "2026-06-05T15:16:13.000Z",
+          "updatedAt": "2026-06-05T15:16:13.000Z",
+          "uid": "35240-ecf33ab6-1c92-490f-a57a-e4eaee40baa5"
+        }
+      ],
+      "id": "3dc962f5-4697-4e60-a427-f95fe04ac151",
+      "createdAt": "2026-06-05T15:16:13.000Z",
+      "updatedAt": "2026-06-05T15:16:13.000Z",
+      "uid": "35240-3dc962f5-4697-4e60-a427-f95fe04ac151"
+    },
+    {
+      "name": "shipments",
+      "item": [
+        {
+          "name": "{shipment_id}",
+          "item": [
+            {
+              "name": "cancel",
+              "item": [
+                {
+                  "name": "Cancel Shipment",
+                  "id": "f6a211bc-0076-4c7b-90cb-b10204d8eac9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/shipments/:shipment_id/cancel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shipments",
+                        ":shipment_id",
+                        "cancel"
+                      ],
+                      "variable": [
+                        {
+                          "id": "71a2d25d-5f5b-4ad7-bd5f-4da518faa106",
+                          "key": "shipment_id",
+                          "value": "<integer>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "73b7cf00-07d5-4f44-a54e-047f3e2c0dd4",
+                      "name": "Shipment cancelled.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shipments/:shipment_id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shipments",
+                            ":shipment_id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "shipment_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:16:13.000Z",
+                      "updatedAt": "2026-06-05T15:16:13.000Z",
+                      "uid": "35240-73b7cf00-07d5-4f44-a54e-047f3e2c0dd4"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:16:13.000Z",
+                  "updatedAt": "2026-06-05T15:16:13.000Z",
+                  "uid": "35240-f6a211bc-0076-4c7b-90cb-b10204d8eac9"
+                }
+              ],
+              "id": "af347dc9-0a4a-4234-b2c2-a049271262e9",
+              "createdAt": "2026-06-05T15:16:13.000Z",
+              "updatedAt": "2026-06-05T15:16:13.000Z",
+              "uid": "35240-af347dc9-0a4a-4234-b2c2-a049271262e9"
+            },
+            {
+              "name": "return",
+              "item": [
+                {
+                  "name": "Create Shipment Return",
+                  "id": "fe2f4dc6-2758-4d20-bbac-e1709beb6e23",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/shipments/:shipment_id/return",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shipments",
+                        ":shipment_id",
+                        "return"
+                      ],
+                      "variable": [
+                        {
+                          "id": "34023220-70eb-4b43-967b-d3aa7b07dc82",
+                          "key": "shipment_id",
+                          "value": "<integer>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "2818f83d-23c5-4d95-8e0d-8d31cbde1995",
+                      "name": "Shipment return created.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/shipments/:shipment_id/return",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shipments",
+                            ":shipment_id",
+                            "return"
+                          ],
+                          "variable": [
+                            {
+                              "key": "shipment_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:16:13.000Z",
+                      "updatedAt": "2026-06-05T15:16:13.000Z",
+                      "uid": "35240-2818f83d-23c5-4d95-8e0d-8d31cbde1995"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:16:13.000Z",
+                  "updatedAt": "2026-06-05T15:16:13.000Z",
+                  "uid": "35240-fe2f4dc6-2758-4d20-bbac-e1709beb6e23"
+                }
+              ],
+              "id": "2eb45977-ec26-4a97-87d6-f5de02fcfc2b",
+              "createdAt": "2026-06-05T15:16:13.000Z",
+              "updatedAt": "2026-06-05T15:16:13.000Z",
+              "uid": "35240-2eb45977-ec26-4a97-87d6-f5de02fcfc2b"
+            },
+            {
+              "name": "Get Shipment Details",
+              "id": "1c54726a-00fc-4913-8340-38f85ea52207",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shipments/:shipment_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shipments",
+                    ":shipment_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "0a008b3b-1e4d-4d2b-a9c1-222325faa936",
+                      "key": "shipment_id",
+                      "value": "<integer>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "fead41c0-9b06-4450-bfb6-fac06d332127",
+                  "name": "Shipment details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shipments/:shipment_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shipments",
+                        ":shipment_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "shipment_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"order_id\": \"<integer>\",\n  \"courier_id\": \"<integer>\",\n  \"courier_name\": \"<string>\",\n  \"tracking_number\": \"<string>\",\n  \"tracking_link\": \"<uri>\",\n  \"status\": \"<string>\",\n  \"type\": \"return\",\n  \"total\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:16:13.000Z",
+                  "updatedAt": "2026-06-05T15:16:13.000Z",
+                  "uid": "35240-fead41c0-9b06-4450-bfb6-fac06d332127"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:13.000Z",
+              "updatedAt": "2026-06-05T15:16:13.000Z",
+              "uid": "35240-1c54726a-00fc-4913-8340-38f85ea52207"
+            },
+            {
+              "name": "Update Shipment",
+              "id": "c5455f2a-4295-43a5-8eb5-00809a822c04",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/shipments/:shipment_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shipments",
+                    ":shipment_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "9e279053-9804-4e8b-ba3b-b45cedec72de",
+                      "key": "shipment_id",
+                      "value": "<integer>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "7cd81c8d-fab5-4668-977e-26664c65f6e4",
+                  "name": "Shipment updated.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/shipments/:shipment_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shipments",
+                        ":shipment_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "shipment_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:16:13.000Z",
+                  "updatedAt": "2026-06-05T15:16:13.000Z",
+                  "uid": "35240-7cd81c8d-fab5-4668-977e-26664c65f6e4"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:13.000Z",
+              "updatedAt": "2026-06-05T15:16:13.000Z",
+              "uid": "35240-c5455f2a-4295-43a5-8eb5-00809a822c04"
+            }
+          ],
+          "id": "eb1eaa8d-a670-4d1a-b917-f63b162e6442",
+          "createdAt": "2026-06-05T15:16:13.000Z",
+          "updatedAt": "2026-06-05T15:16:13.000Z",
+          "uid": "35240-eb1eaa8d-a670-4d1a-b917-f63b162e6442"
+        },
+        {
+          "name": "List Shipments",
+          "id": "c8e12102-4e38-4787-81d9-120337cad6e6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/shipments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "shipments"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "96862ac2-e88c-4bf9-af2c-3dd3bd9a9d0c",
+              "name": "Shipments list.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shipments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shipments"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:13.000Z",
+              "updatedAt": "2026-06-05T15:16:13.000Z",
+              "uid": "35240-96862ac2-e88c-4bf9-af2c-3dd3bd9a9d0c"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:13.000Z",
+          "updatedAt": "2026-06-05T15:16:13.000Z",
+          "uid": "35240-c8e12102-4e38-4787-81d9-120337cad6e6"
+        },
+        {
+          "name": "Create Shipment",
+          "id": "21996d3c-1de1-432d-8539-189b10a13e8f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_id\": \"<integer>\",\n  \"courier_id\": \"<integer>\",\n  \"type\": \"return\",\n  \"tracking_number\": \"<string>\",\n  \"tracking_link\": \"<uri>\",\n  \"cost\": \"<number>\",\n  \"pickup_address\": {},\n  \"ship_to\": {}\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/shipments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "shipments"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6c0202f9-06ce-4b07-baec-bbb9a3487a09",
+              "name": "Shipment created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"order_id\": \"<integer>\",\n  \"courier_id\": \"<integer>\",\n  \"type\": \"return\",\n  \"tracking_number\": \"<string>\",\n  \"tracking_link\": \"<uri>\",\n  \"cost\": \"<number>\",\n  \"pickup_address\": {},\n  \"ship_to\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/shipments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shipments"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<integer>\",\n  \"order_id\": \"<integer>\",\n  \"courier_id\": \"<integer>\",\n  \"courier_name\": \"<string>\",\n  \"tracking_number\": \"<string>\",\n  \"tracking_link\": \"<uri>\",\n  \"status\": \"<string>\",\n  \"type\": \"return\",\n  \"total\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "createdAt": "2026-06-05T15:16:13.000Z",
+              "updatedAt": "2026-06-05T15:16:13.000Z",
+              "uid": "35240-6c0202f9-06ce-4b07-baec-bbb9a3487a09"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:13.000Z",
+          "updatedAt": "2026-06-05T15:16:13.000Z",
+          "uid": "35240-21996d3c-1de1-432d-8539-189b10a13e8f"
+        }
+      ],
+      "id": "61476270-cbc2-430b-a660-2ab663f92347",
+      "createdAt": "2026-06-05T15:16:13.000Z",
+      "updatedAt": "2026-06-05T15:16:13.000Z",
+      "uid": "35240-61476270-cbc2-430b-a660-2ab663f92347"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "offline_access shipments.read shipments.read_write",
+        "type": "string"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://accounts.salla.sa/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://accounts.salla.sa/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.salla.sa/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.salla.dev/admin/v2"
+    }
+  ]
+}

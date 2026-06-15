@@ -1,382 +1,388 @@
 aid: salla
 url: https://raw.githubusercontent.com/api-evangelist/salla/refs/heads/main/apis.yml
 apis:
-- aid: salla:salla-merchant-api
-  name: Salla Merchant API
-  tags:
-  - E-Commerce
-  - Merchant
-  - Orders
-  - Products
-  - Customers
-  humanURL: https://docs.salla.dev/421117m0
-  baseURL: https://api.salla.dev/admin/v2
-  properties:
-  - url: https://docs.salla.dev/421117m0
-    type: Documentation
-  - url: https://docs.salla.dev/5394168e0
-    name: List Products
-    type: Documentation
-  - url: https://docs.salla.dev/5394147e0
-    name: Order Details
-    type: Documentation
-  - url: openapi/salla-merchant-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/salla-product-schema.json
-    type: JSONSchema
-  - url: json-schema/salla-order-schema.json
-    type: JSONSchema
-  - url: json-schema/salla-customer-schema.json
-    type: JSONSchema
-  - url: json-ld/salla-context.jsonld
-    type: JSON-LD
-  - url: examples/salla-list-products-example.json
-    type: Example
-  - url: examples/salla-create-order-example.json
-    type: Example
-  - type: NaftikoCapability
-    url: capabilities/merchant-products.yaml
-  - type: NaftikoCapability
-    url: capabilities/merchant-orders.yaml
-  - type: NaftikoCapability
-    url: capabilities/merchant-customers.yaml
-  - type: NaftikoCapability
-    url: capabilities/merchant-categories.yaml
-  - type: NaftikoCapability
-    url: capabilities/merchant-brands.yaml
-  - type: NaftikoCapability
-    url: capabilities/merchant-shipping.yaml
-  description: RESTful endpoints purpose-built for secure, fast, and easy access to Merchant data. Covers products,
-    orders, customers, branches, brands, categories, coupons, currencies, languages, taxes, shipping zones, shipments,
-    abandoned carts, marketing, and store configuration. All requests use the base URL https://api.salla.dev/admin/v2
-    and are authenticated with an OAuth 2.0 bearer token issued via Salla Partners.
-- aid: salla:salla-apps-api
-  name: Salla Apps API
-  tags:
-  - Apps
-  - E-Commerce
-  - OAuth
-  - Subscriptions
-  humanURL: https://docs.salla.dev/421118m0
-  baseURL: https://accounts.salla.sa
-  properties:
-  - url: https://docs.salla.dev/421118m0
-    type: Documentation
-  - url: openapi/salla-apps-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/apps-oauth.yaml
-  - type: NaftikoCapability
-    url: capabilities/apps-subscriptions.yaml
-  description: Manages app settings, OAuth 2.0 authorization flow, access and refresh tokens, merchant user info,
-    subscription lifecycle, and app event handling for apps installed from the Salla Partners Portal. OAuth endpoints
-    live at https://accounts.salla.sa/oauth2/{auth,token,user/info}.
-- aid: salla:salla-shipping-fulfillment-api
-  name: Salla Shipping and Fulfillment API
-  tags:
-  - E-Commerce
-  - Fulfillment
-  - Shipping
-  - Shipments
-  humanURL: https://docs.salla.dev/5394234e0
-  baseURL: https://api.salla.dev/admin/v2
-  properties:
-  - url: https://docs.salla.dev/5394234e0
-    name: Shipment Details
-    type: Documentation
-  - url: https://docs.salla.dev/5394248e0
-    name: Shipping Zone Details
-    type: Documentation
-  - url: openapi/salla-shipping-fulfillment-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/shipping-shipments.yaml
-  - type: NaftikoCapability
-    url: capabilities/shipping-zones.yaml
-  description: Enables shipping companies and fulfillment partners to manage and track shipments, shipping zones,
-    pickup branches, and courier integrations for Salla merchant stores. Implements the Shipping App contract that
-    Salla calls into when a merchant creates or cancels a shipment.
-- aid: salla:salla-webhooks
-  name: Salla Webhooks
-  tags:
-  - E-Commerce
-  - Events
-  - Webhooks
-  humanURL: https://docs.salla.dev/421119m0
-  properties:
-  - url: https://docs.salla.dev/421119m0
-    type: Documentation
-  - url: https://docs.salla.dev/433804m0
-    name: Orders Webhook Events Model
-    type: Documentation
-  - url: openapi/salla-webhooks-asyncapi.yml
-    type: AsyncAPI
-  description: Server-to-server event delivery covering order, product, customer, shipping, shipment, store branch,
-    category, brand, abandoned cart, coupon, invoice, special offer, and review lifecycle events. Payloads are signed
-    via HMAC SHA-256 — X-Salla-Security-Strategy and X-Salla-Signature headers (or token strategy with Authorization
-    header) — and developers can attach conditional rules per subscription.
-- aid: salla:twilight-sdk-api
-  name: Salla Twilight SDK
-  tags:
-  - E-Commerce
-  - Storefront
-  - SDK
-  - Themes
-  humanURL: https://docs.salla.dev/twilight
-  properties:
-  - url: https://docs.salla.dev/twilight
-    type: Documentation
-  - type: SDK
-    url: https://github.com/SallaApp/theme-raed
-  description: JavaScript SDK and Twig-based theme engine for the storefront. Provides helper methods and REST proxies
-    that let merchant themes and embedded components communicate with the Salla backend, plus a library of pre-built
-    web components (login, search, product display, cart, checkout).
+  - aid: salla:salla-merchant-api
+    name: Salla Merchant API
+    tags:
+      - E-Commerce
+      - Merchant
+      - Orders
+      - Products
+      - Customers
+    humanURL: https://docs.salla.dev/421117m0
+    baseURL: https://api.salla.dev/admin/v2
+    properties:
+      - url: https://docs.salla.dev/421117m0
+        type: Documentation
+      - url: https://docs.salla.dev/5394168e0
+        name: List Products
+        type: Documentation
+      - url: https://docs.salla.dev/5394147e0
+        name: Order Details
+        type: Documentation
+      - url: openapi/salla-merchant-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/salla-product-schema.json
+        type: JSONSchema
+      - url: json-schema/salla-order-schema.json
+        type: JSONSchema
+      - url: json-schema/salla-customer-schema.json
+        type: JSONSchema
+      - url: json-ld/salla-context.jsonld
+        type: JSON-LD
+      - url: examples/salla-list-products-example.json
+        type: Example
+      - url: examples/salla-create-order-example.json
+        type: Example
+    description: >-
+      RESTful endpoints purpose-built for secure, fast, and easy access to Merchant data. Covers products, orders,
+      customers, branches, brands, categories, coupons, currencies, languages, taxes, shipping zones, shipments,
+      abandoned carts, marketing, and store configuration. All requests use the base URL https://api.salla.dev/admin/v2
+      and are authenticated with an OAuth 2.0 bearer token issued via Salla Partners.
+  - aid: salla:salla-apps-api
+    name: Salla Apps API
+    tags:
+      - Apps
+      - E-Commerce
+      - OAuth
+      - Subscriptions
+    humanURL: https://docs.salla.dev/421118m0
+    baseURL: https://accounts.salla.sa
+    properties:
+      - url: https://docs.salla.dev/421118m0
+        type: Documentation
+      - url: openapi/salla-apps-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Manages app settings, OAuth 2.0 authorization flow, access and refresh tokens, merchant user info, subscription
+      lifecycle, and app event handling for apps installed from the Salla Partners Portal. OAuth endpoints live at
+      https://accounts.salla.sa/oauth2/{auth,token,user/info}.
+  - aid: salla:salla-shipping-fulfillment-api
+    name: Salla Shipping and Fulfillment API
+    tags:
+      - E-Commerce
+      - Fulfillment
+      - Shipping
+      - Shipments
+    humanURL: https://docs.salla.dev/5394234e0
+    baseURL: https://api.salla.dev/admin/v2
+    properties:
+      - url: https://docs.salla.dev/5394234e0
+        name: Shipment Details
+        type: Documentation
+      - url: https://docs.salla.dev/5394248e0
+        name: Shipping Zone Details
+        type: Documentation
+      - url: openapi/salla-shipping-fulfillment-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Enables shipping companies and fulfillment partners to manage and track shipments, shipping zones, pickup
+      branches, and courier integrations for Salla merchant stores. Implements the Shipping App contract that Salla
+      calls into when a merchant creates or cancels a shipment.
+  - aid: salla:salla-webhooks
+    name: Salla Webhooks
+    tags:
+      - E-Commerce
+      - Events
+      - Webhooks
+    humanURL: https://docs.salla.dev/421119m0
+    properties:
+      - url: https://docs.salla.dev/421119m0
+        type: Documentation
+      - url: https://docs.salla.dev/433804m0
+        name: Orders Webhook Events Model
+        type: Documentation
+      - url: openapi/salla-webhooks-asyncapi.yml
+        type: AsyncAPI
+    description: >-
+      Server-to-server event delivery covering order, product, customer, shipping, shipment, store branch, category,
+      brand, abandoned cart, coupon, invoice, special offer, and review lifecycle events. Payloads are signed via HMAC
+      SHA-256 — X-Salla-Security-Strategy and X-Salla-Signature headers (or token strategy with Authorization header) —
+      and developers can attach conditional rules per subscription.
+  - aid: salla:twilight-sdk-api
+    name: Salla Twilight SDK
+    tags:
+      - E-Commerce
+      - Storefront
+      - SDK
+      - Themes
+    humanURL: https://docs.salla.dev/twilight
+    properties:
+      - url: https://docs.salla.dev/twilight
+        type: Documentation
+      - type: SDK
+        url: https://github.com/SallaApp/theme-raed
+    description: >-
+      JavaScript SDK and Twig-based theme engine for the storefront. Provides helper methods and REST proxies that let
+      merchant themes and embedded components communicate with the Salla backend, plus a library of pre-built web
+      components (login, search, product display, cart, checkout).
 name: Salla
 tags:
-- Arabic
-- E-Commerce
-- GCC
-- Headless Commerce
-- Merchant
-- MENA
-- Online Stores
-- Retail
-- Saudi Arabia
-- SMB
-- Storefront
+  - Arabic
+  - E-Commerce
+  - GCC
+  - Headless Commerce
+  - Merchant
+  - MENA
+  - Online Stores
+  - Retail
+  - Saudi Arabia
+  - SMB
+  - Storefront
 kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
-- type: ArazzoWorkflows
-  url: arazzo/
-  workflows:
-  - url: arazzo/salla-abandoned-cart-recovery-workflow.yml
-    name: Salla Abandoned Cart Recovery
-    summary: Find abandoned carts, look up the shopper, and issue a recovery coupon.
-  - url: arazzo/salla-catalog-taxonomy-setup-workflow.yml
-    name: Salla Catalog Taxonomy Setup
-    summary: Create a brand and category, then create a product assigned to both.
-  - url: arazzo/salla-customer-upsert-workflow.yml
-    name: Salla Upsert Customer
-    summary: Find a customer in a page of results and update them, otherwise create a new customer.
-  - url: arazzo/salla-oauth-token-exchange-workflow.yml
-    name: Salla OAuth Token Exchange
-    summary: Exchange an authorization code for an access token and confirm the merchant identity.
-  - url: arazzo/salla-order-fulfillment-workflow.yml
-    name: Salla Order Fulfillment
-    summary: Read an order, create its shipment, and advance the order status.
-  - url: arazzo/salla-order-monitor-workflow.yml
-    name: Salla Monitor and Audit Orders
-    summary: List orders by status, then pull the full detail, history, and invoices for one.
-  - url: arazzo/salla-product-create-verify-workflow.yml
-    name: Salla Create and Verify Product
-    summary: Create a product, read it back, and confirm its generated SKUs.
-  - url: arazzo/salla-product-upsert-workflow.yml
-    name: Salla Upsert Product by SKU
-    summary: Find a product by keyword and update it if it exists, otherwise create it.
-  - url: arazzo/salla-shipment-lifecycle-workflow.yml
-    name: Salla Shipment Lifecycle
-    summary: Resolve a courier, create a shipment, read it back, and branch on whether to cancel.
-  - url: arazzo/salla-shipping-zone-setup-workflow.yml
-    name: Salla Shipping Zone Setup
-    summary: Register a shipping company, create a delivery zone for it, and read the zone back.
-  - url: arazzo/salla-webhook-subscription-workflow.yml
-    name: Salla Webhook Subscription Setup
-    summary: Inspect existing webhook subscriptions, subscribe to an event, and confirm registration.
-- url: https://salla.com
-  type: Portal
-- url: https://salla.dev
-  name: Salla Developers
-  type: Documentation
-- url: https://docs.salla.dev/
-  name: Salla Partners Documentation
-  type: Documentation
-- url: https://docs.salla.dev/421117m0
-  type: GettingStarted
-- url: https://salla.partners/login
-  name: Salla Partners Portal
-  type: SignUp
-- url: https://salla.partners
-  name: Salla Partners
-  type: Console
-- url: https://salla.com/pricing
-  type: Pricing
-- url: https://salla.com/terms
-  type: TermsOfService
-- url: https://salla.com/privacy
-  type: PrivacyPolicy
-- url: https://salla.com/blog
-  type: Blog
-- url: https://status.salla.sa/
-  type: StatusPage
-- url: mailto:support@salla.dev
-  type: Support
-- url: https://docs.salla.dev/421127m0
-  name: Merchant API Changelog
-  type: ChangeLog
-- url: https://github.com/SallaApp
-  type: GitHubOrganization
-- url: https://www.postman.com/salla-app/salla-e-commerce-platform/overview
-  name: Salla Postman Workspace
-  type: Documentation
-- url: https://www.postman.com/salla-app/salla-e-commerce-platform/collection/a2rh372/merchant-apis-v2-6-7
-  name: Merchant APIs v2.6.7 Postman Collection
-  type: Documentation
-- url: https://www.youtube.com/@sallaapp
-  type: YouTube
-- url: https://twitter.com/sallaApp
-  type: Twitter
-- url: https://www.linkedin.com/company/salla-app
-  type: LinkedIn
-- url: https://github.com/SallaApp/Salla-CLI
-  name: Salla CLI
-  type: CLI
-- url: https://github.com/SallaApp/laravel-starter-kit
-  name: Laravel Starter Kit
-  type: SDK
-- url: https://github.com/SallaApp/express-starter-kit
-  name: Express.js Starter Kit
-  type: SDK
-- url: https://github.com/SallaApp/oauth2-merchant
-  name: OAuth2 Merchant Client (PHP)
-  type: SDK
-- url: https://github.com/SallaApp/passport-strategy
-  name: Passport OAuth Strategy (Node.js)
-  type: SDK
-- url: https://github.com/SallaApp/webhook-actions-js
-  name: Webhook Actions (Node.js)
-  type: SDK
-- url: https://github.com/SallaApp/ZATCA
-  name: ZATCA (Fatoora) E-Invoicing QR Code (PHP)
-  type: SDK
-- url: https://github.com/SallaApp/theme-raed
-  name: Twilight Theme Raed
-  type: Tools
-- url: https://github.com/SallaApp/twilight-vscode-extension
-  name: Twilight VSCode Extension
-  type: Tools
-- url: https://github.com/SallaApp/embedded-sdk-playground
-  name: Embedded SDK Playground
-  type: Tools
-- url: https://github.com/SallaApp/store-events-tracker-starter-kit
-  name: Store Events Tracker Starter Kit
-  type: Tools
-- url: https://t.me/sallaDevelopers
-  name: Salla Developers Telegram
-  type: Forum
-- url: rules/salla-rules.yml
-  type: SpectralRules
-- url: vocabulary/salla-vocabulary.yml
-  type: Vocabulary
-- url: plans/salla-plans-pricing.yml
-  type: Plans
-- url: rate-limits/salla-rate-limits.yml
-  type: RateLimits
-- url: finops/salla-finops.yml
-  type: FinOps
-- type: Features
-  data:
-  - name: Arabic-First No-Code Store Builder
-    description: Storefront builder with Arabic-first UX, RTL support, and localized payment, shipping, and tax integrations
-      built for the GCC market.
-  - name: Salla Merchant API
-    description: REST API at https://api.salla.dev/admin/v2 covering products, orders, customers, branches, brands,
-      categories, currencies, languages, coupons, taxes, abandoned carts, shipping, and store settings.
-  - name: OAuth 2.0 Partners Authorization
-    description: OAuth 2.0 authorization with 14-day access tokens and 1-month refresh window; scoped per app via the
-      Partners Portal.
-  - name: Webhooks with Conditional Rules
-    description: HMAC SHA-256 signed webhooks (X-Salla-Signature / X-Salla-Security-Strategy headers) for order, product,
-      customer, shipping, shipment, store, category, brand, abandoned-cart, coupon, invoice, special offer, and review
-      events — with per-subscription conditional rules.
-  - name: Twilight Theme Engine and SDK
-    description: JavaScript SDK plus Twig-based theme engine with pre-built web components (cart, checkout, login,
-      search, product display) for storefront customization.
-  - name: Salla CLI
-    description: Command-line tool for scaffolding, developing, and publishing Salla apps and themes to the Partners
-      Portal.
-  - name: Shipping App Contract
-    description: A Shipping and Fulfillment API contract that lets logistics providers plug directly into the Salla
-      shipment flow.
-  - name: ZATCA E-Invoicing
-    description: First-class support for Saudi Arabia's ZATCA (Fatoora) e-invoicing QR code requirement via the
-      official open-source PHP package.
-  - name: Embedded SDK and Apps Marketplace
-    description: Embedded SDK lets partner apps render inside the merchant dashboard; the Salla App Store distributes
-      third-party apps to 80,000+ stores.
-  - name: Saudi Payments and Logistics
-    description: Native integrations with STC Pay, mada, Apple Pay, Tabby, Tamara, HyperPay, Mada Pay, Aramex, SMSA,
-      DHL, J&T, and other regional payment and logistics providers.
-- type: UseCases
-  data:
-  - name: Custom Merchant Apps
-    description: Build custom apps published in the Salla App Store that extend merchant capabilities — inventory sync,
-      order routing, marketing automation, ERP integration.
-  - name: ERP and Accounting Integrations
-    description: Sync orders, products, customers, and invoices to SAP, Oracle NetSuite, Odoo, Zoho Books, QuickBooks,
-      or custom accounting systems.
-  - name: Custom Storefronts and Themes
-    description: Build custom Twilight themes or headless storefronts that render Salla catalog and checkout through
-      a fully custom front end.
-  - name: Shipping Provider Onboarding
-    description: Logistics companies expose their pickup, label printing, tracking, and return surface as a Salla
-      Shipping App to serve every merchant on the platform.
-  - name: Marketing and CRM Automation
-    description: Subscribe to customer, order, and abandoned-cart webhooks to drive CRM, email, SMS, and WhatsApp
-      campaigns through Mailchimp, Klaviyo, or in-house automation.
-  - name: AI Shopping Assistants
-    description: Use the Merchant API plus Naftiko capabilities to power AI agents that browse catalog, place orders,
-      track shipments, and respond to merchant questions.
-  - name: ZATCA Compliance
-    description: Generate the Saudi ZATCA Phase-1 / Phase-2 e-invoicing QR code on every receipt to remain compliant
-      with Saudi Arabian tax authority requirements.
-- type: Integrations
-  data:
-  - name: STC Bank
-    description: Native STC Bank digital wallet payment option across all Salla-powered stores.
-  - name: Tabby and Tamara
-    description: Buy-now-pay-later integrations widely used in the GCC market.
-  - name: Apple Pay and mada
-    description: Apple Pay and the Saudi mada national payment network.
-  - name: HyperPay and Moyasar
-    description: Regional payment gateways supporting cards, wallets, and bank transfers.
-  - name: Aramex, SMSA, J&T, DHL
-    description: Pre-built shipping integrations for Saudi Arabia and GCC delivery.
-  - name: ZATCA
-    description: Saudi Arabian Zakat, Tax and Customs Authority e-invoicing.
-  - name: WhatsApp Business
-    description: Customer notifications and conversational commerce.
-  - name: Mailchimp and Klaviyo
-    description: Email and customer marketing automation.
-  - name: Snapchat and TikTok Pixels
-    description: Storefront pixels and conversion tracking for GCC-focused ad platforms.
-- type: Solutions
-  data:
-  - name: Sellers
-    description: Merchants of any size launching an online store with Arabic-first UX, regional payments, and built-in
-      logistics.
-  - name: Partners
-    description: Developers and agencies building apps, themes, and integrations distributed through the Salla
-      Partners Portal and App Store.
-  - name: Shipping Companies
-    description: Logistics providers offering their service to 80,000+ merchants by implementing the Salla Shipping
-      App contract.
-  - name: Enterprise
-    description: Larger brands needing custom themes, dedicated infrastructure, and bespoke commercial terms.
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/salla/overview
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+      - url: arazzo/salla-abandoned-cart-recovery-workflow.yml
+        name: Salla Abandoned Cart Recovery
+        summary: Find abandoned carts, look up the shopper, and issue a recovery coupon.
+      - url: arazzo/salla-catalog-taxonomy-setup-workflow.yml
+        name: Salla Catalog Taxonomy Setup
+        summary: Create a brand and category, then create a product assigned to both.
+      - url: arazzo/salla-customer-upsert-workflow.yml
+        name: Salla Upsert Customer
+        summary: Find a customer in a page of results and update them, otherwise create a new customer.
+      - url: arazzo/salla-oauth-token-exchange-workflow.yml
+        name: Salla OAuth Token Exchange
+        summary: Exchange an authorization code for an access token and confirm the merchant identity.
+      - url: arazzo/salla-order-fulfillment-workflow.yml
+        name: Salla Order Fulfillment
+        summary: Read an order, create its shipment, and advance the order status.
+      - url: arazzo/salla-order-monitor-workflow.yml
+        name: Salla Monitor and Audit Orders
+        summary: List orders by status, then pull the full detail, history, and invoices for one.
+      - url: arazzo/salla-product-create-verify-workflow.yml
+        name: Salla Create and Verify Product
+        summary: Create a product, read it back, and confirm its generated SKUs.
+      - url: arazzo/salla-product-upsert-workflow.yml
+        name: Salla Upsert Product by SKU
+        summary: Find a product by keyword and update it if it exists, otherwise create it.
+      - url: arazzo/salla-shipment-lifecycle-workflow.yml
+        name: Salla Shipment Lifecycle
+        summary: Resolve a courier, create a shipment, read it back, and branch on whether to cancel.
+      - url: arazzo/salla-shipping-zone-setup-workflow.yml
+        name: Salla Shipping Zone Setup
+        summary: Register a shipping company, create a delivery zone for it, and read the zone back.
+      - url: arazzo/salla-webhook-subscription-workflow.yml
+        name: Salla Webhook Subscription Setup
+        summary: Inspect existing webhook subscriptions, subscribe to an event, and confirm registration.
+  - url: https://salla.com
+    type: Portal
+  - url: https://salla.dev
+    name: Salla Developers
+    type: Documentation
+  - url: https://docs.salla.dev/
+    name: Salla Partners Documentation
+    type: Documentation
+  - url: https://docs.salla.dev/421117m0
+    type: GettingStarted
+  - url: https://salla.partners/login
+    name: Salla Partners Portal
+    type: SignUp
+  - url: https://salla.partners
+    name: Salla Partners
+    type: Console
+  - url: https://salla.com/pricing
+    type: Pricing
+  - url: https://salla.com/terms
+    type: TermsOfService
+  - url: https://salla.com/privacy
+    type: PrivacyPolicy
+  - url: https://salla.com/blog
+    type: Blog
+  - url: https://status.salla.sa/
+    type: StatusPage
+  - url: mailto:support@salla.dev
+    type: Support
+  - url: https://docs.salla.dev/421127m0
+    name: Merchant API Changelog
+    type: ChangeLog
+  - url: https://github.com/SallaApp
+    type: GitHubOrganization
+  - url: https://www.postman.com/salla-app/salla-e-commerce-platform/overview
+    name: Salla Postman Workspace
+    type: Documentation
+  - url: https://www.postman.com/salla-app/salla-e-commerce-platform/collection/a2rh372/merchant-apis-v2-6-7
+    name: Merchant APIs v2.6.7 Postman Collection
+    type: Documentation
+  - url: https://www.youtube.com/@sallaapp
+    type: YouTube
+  - url: https://twitter.com/sallaApp
+    type: Twitter
+  - url: https://www.linkedin.com/company/salla-app
+    type: LinkedIn
+  - url: https://github.com/SallaApp/Salla-CLI
+    name: Salla CLI
+    type: CLI
+  - url: https://github.com/SallaApp/laravel-starter-kit
+    name: Laravel Starter Kit
+    type: SDK
+  - url: https://github.com/SallaApp/express-starter-kit
+    name: Express.js Starter Kit
+    type: SDK
+  - url: https://github.com/SallaApp/oauth2-merchant
+    name: OAuth2 Merchant Client (PHP)
+    type: SDK
+  - url: https://github.com/SallaApp/passport-strategy
+    name: Passport OAuth Strategy (Node.js)
+    type: SDK
+  - url: https://github.com/SallaApp/webhook-actions-js
+    name: Webhook Actions (Node.js)
+    type: SDK
+  - url: https://github.com/SallaApp/ZATCA
+    name: ZATCA (Fatoora) E-Invoicing QR Code (PHP)
+    type: SDK
+  - url: https://github.com/SallaApp/theme-raed
+    name: Twilight Theme Raed
+    type: Tools
+  - url: https://github.com/SallaApp/twilight-vscode-extension
+    name: Twilight VSCode Extension
+    type: Tools
+  - url: https://github.com/SallaApp/embedded-sdk-playground
+    name: Embedded SDK Playground
+    type: Tools
+  - url: https://github.com/SallaApp/store-events-tracker-starter-kit
+    name: Store Events Tracker Starter Kit
+    type: Tools
+  - url: https://t.me/sallaDevelopers
+    name: Salla Developers Telegram
+    type: Forum
+  - url: rules/salla-rules.yml
+    type: SpectralRules
+  - url: vocabulary/salla-vocabulary.yml
+    type: Vocabulary
+  - url: plans/salla-plans-pricing.yml
+    type: Plans
+  - url: rate-limits/salla-rate-limits.yml
+    type: RateLimits
+  - url: finops/salla-finops.yml
+    type: FinOps
+  - type: Features
+    data:
+      - name: Arabic-First No-Code Store Builder
+        description: >-
+          Storefront builder with Arabic-first UX, RTL support, and localized payment, shipping, and tax integrations
+          built for the GCC market.
+      - name: Salla Merchant API
+        description: >-
+          REST API at https://api.salla.dev/admin/v2 covering products, orders, customers, branches, brands, categories,
+          currencies, languages, coupons, taxes, abandoned carts, shipping, and store settings.
+      - name: OAuth 2.0 Partners Authorization
+        description: >-
+          OAuth 2.0 authorization with 14-day access tokens and 1-month refresh window; scoped per app via the Partners
+          Portal.
+      - name: Webhooks with Conditional Rules
+        description: >-
+          HMAC SHA-256 signed webhooks (X-Salla-Signature / X-Salla-Security-Strategy headers) for order, product,
+          customer, shipping, shipment, store, category, brand, abandoned-cart, coupon, invoice, special offer, and
+          review events — with per-subscription conditional rules.
+      - name: Twilight Theme Engine and SDK
+        description: >-
+          JavaScript SDK plus Twig-based theme engine with pre-built web components (cart, checkout, login, search,
+          product display) for storefront customization.
+      - name: Salla CLI
+        description: Command-line tool for scaffolding, developing, and publishing Salla apps and themes to the Partners Portal.
+      - name: Shipping App Contract
+        description: >-
+          A Shipping and Fulfillment API contract that lets logistics providers plug directly into the Salla shipment
+          flow.
+      - name: ZATCA E-Invoicing
+        description: >-
+          First-class support for Saudi Arabia's ZATCA (Fatoora) e-invoicing QR code requirement via the official
+          open-source PHP package.
+      - name: Embedded SDK and Apps Marketplace
+        description: >-
+          Embedded SDK lets partner apps render inside the merchant dashboard; the Salla App Store distributes
+          third-party apps to 80,000+ stores.
+      - name: Saudi Payments and Logistics
+        description: >-
+          Native integrations with STC Pay, mada, Apple Pay, Tabby, Tamara, HyperPay, Mada Pay, Aramex, SMSA, DHL, J&T,
+          and other regional payment and logistics providers.
+  - type: UseCases
+    data:
+      - name: Custom Merchant Apps
+        description: >-
+          Build custom apps published in the Salla App Store that extend merchant capabilities — inventory sync, order
+          routing, marketing automation, ERP integration.
+      - name: ERP and Accounting Integrations
+        description: >-
+          Sync orders, products, customers, and invoices to SAP, Oracle NetSuite, Odoo, Zoho Books, QuickBooks, or
+          custom accounting systems.
+      - name: Custom Storefronts and Themes
+        description: >-
+          Build custom Twilight themes or headless storefronts that render Salla catalog and checkout through a fully
+          custom front end.
+      - name: Shipping Provider Onboarding
+        description: >-
+          Logistics companies expose their pickup, label printing, tracking, and return surface as a Salla Shipping App
+          to serve every merchant on the platform.
+      - name: Marketing and CRM Automation
+        description: >-
+          Subscribe to customer, order, and abandoned-cart webhooks to drive CRM, email, SMS, and WhatsApp campaigns
+          through Mailchimp, Klaviyo, or in-house automation.
+      - name: AI Shopping Assistants
+        description: >-
+          Use the Merchant API plus Naftiko capabilities to power AI agents that browse catalog, place orders, track
+          shipments, and respond to merchant questions.
+      - name: ZATCA Compliance
+        description: >-
+          Generate the Saudi ZATCA Phase-1 / Phase-2 e-invoicing QR code on every receipt to remain compliant with Saudi
+          Arabian tax authority requirements.
+  - type: Integrations
+    data:
+      - name: STC Bank
+        description: Native STC Bank digital wallet payment option across all Salla-powered stores.
+      - name: Tabby and Tamara
+        description: Buy-now-pay-later integrations widely used in the GCC market.
+      - name: Apple Pay and mada
+        description: Apple Pay and the Saudi mada national payment network.
+      - name: HyperPay and Moyasar
+        description: Regional payment gateways supporting cards, wallets, and bank transfers.
+      - name: Aramex, SMSA, J&T, DHL
+        description: Pre-built shipping integrations for Saudi Arabia and GCC delivery.
+      - name: ZATCA
+        description: Saudi Arabian Zakat, Tax and Customs Authority e-invoicing.
+      - name: WhatsApp Business
+        description: Customer notifications and conversational commerce.
+      - name: Mailchimp and Klaviyo
+        description: Email and customer marketing automation.
+      - name: Snapchat and TikTok Pixels
+        description: Storefront pixels and conversion tracking for GCC-focused ad platforms.
+  - type: Solutions
+    data:
+      - name: Sellers
+        description: >-
+          Merchants of any size launching an online store with Arabic-first UX, regional payments, and built-in
+          logistics.
+      - name: Partners
+        description: >-
+          Developers and agencies building apps, themes, and integrations distributed through the Salla Partners Portal
+          and App Store.
+      - name: Shipping Companies
+        description: >-
+          Logistics providers offering their service to 80,000+ merchants by implementing the Salla Shipping App
+          contract.
+      - name: Enterprise
+        description: Larger brands needing custom themes, dedicated infrastructure, and bespoke commercial terms.
 created: '2026-05-24'
 modified: '2026-05-24'
 position: Producing
-description: Salla is a Saudi Arabia-based e-commerce platform — often called the Shopify of the Middle East — that
-  lets merchants launch, operate, and grow Arabic-first online stores without code. Founded in 2016 in Makkah by
-  Nawaf Hariri and Salman Butt, Salla now powers more than 80,000 active stores. The platform exposes a Merchant
-  REST API (https://api.salla.dev/admin/v2), an OAuth 2.0 Partners authorization service, signed webhooks for the
-  full storefront lifecycle, a Shipping and Fulfillment app contract, the Twilight theme engine and JavaScript SDK,
-  the Salla CLI, and official starter kits for PHP/Laravel and Node.js/Express. Backed by Sanabil (PIF), STV, Investcorp,
-  Vision Ventures, and Raed Ventures, Salla raised a $130M pre-IPO round in 2024.
+description: >-
+  Salla is a Saudi Arabia-based e-commerce platform — often called the Shopify of the Middle East — that lets merchants
+  launch, operate, and grow Arabic-first online stores without code. Founded in 2016 in Makkah by Nawaf Hariri and
+  Salman Butt, Salla now powers more than 80,000 active stores. The platform exposes a Merchant REST API
+  (https://api.salla.dev/admin/v2), an OAuth 2.0 Partners authorization service, signed webhooks for the full storefront
+  lifecycle, a Shipping and Fulfillment app contract, the Twilight theme engine and JavaScript SDK, the Salla CLI, and
+  official starter kits for PHP/Laravel and Node.js/Express. Backed by Sanabil (PIF), STV, Investcorp, Vision Ventures,
+  and Raed Ventures, Salla raised a $130M pre-IPO round in 2024.
 maintainers:
-- FN: Kin Lane
-  email: info@apievangelist.com
-  X: apievangelist
-  url: https://apievangelist.com
+  - FN: Kin Lane
+    email: info@apievangelist.com
+    X: apievangelist
+    url: https://apievangelist.com
 specificationVersion: '0.16'

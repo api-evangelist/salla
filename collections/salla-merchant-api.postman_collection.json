@@ -1,0 +1,4742 @@
+{
+  "item": [
+    {
+      "id": "87d4ab3f-fb5e-4097-a9b5-a21d4e48602b",
+      "name": "Products",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2e91f12-c29f-4531-b9ca-f3a7d556e267",
+          "name": "List Products",
+          "request": {
+            "name": "List Products",
+            "description": {},
+            "url": {
+              "path": [
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "keyword",
+                  "value": "<string>",
+                  "description": "Filter products matching a name or SKU value."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Use `light` for simplified product data."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5df7197a-2e67-4d33-b975-0e9193dc40d8",
+              "name": "Paginated list of products.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3686,\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 4618,\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"mpn\": \"string\",\n      \"gtin\": \"string\",\n      \"type\": \"product\",\n      \"status\": \"sale\",\n      \"price\": {\n        \"amount\": 7133.872020636735,\n        \"currency\": \"SAR\"\n      },\n      \"sale_price\": {\n        \"amount\": 4385.4170181097215,\n        \"currency\": \"SAR\"\n      },\n      \"cost_price\": {\n        \"amount\": 3076.758648823491,\n        \"currency\": \"SAR\"\n      },\n      \"quantity\": 2275,\n      \"description\": \"string\",\n      \"url\": \"https://yueokuMkhdlYG.auiowTdC\",\n      \"images\": [\n        {\n          \"id\": 356,\n          \"original\": \"https://setqjULFiBLTYekDHelBsMbNRMNc.uuzmf.3Rfmg.ItTxB,ce+2yJgGPtLE2.3jIqJ2Qf\",\n          \"thumbnail\": \"http://efiPaRcYSusNkMSmrvQFrATgiUqoG.nhyrxJQMIvOlJi4Mh8fqHSYgZuUm-eU+L7\",\n          \"alt\": \"string\",\n          \"sort\": 3476\n        },\n        {\n          \"id\": 5212,\n          \"original\": \"http://CohJOkfbATkjnHKTtEPvgoF.meuxQKP\",\n          \"thumbnail\": \"https://CBmGIgpImniKjlFHztTUuKdhtZcRw.yzjjee\",\n          \"alt\": \"string\",\n          \"sort\": 7192\n        }\n      ],\n      \"categories\": [\n        3610,\n        3905\n      ],\n      \"brand_id\": 5692,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"updated_at\": \"1980-08-28T20:14:30.072Z\"\n    },\n    {\n      \"id\": 8485,\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"mpn\": \"string\",\n      \"gtin\": \"string\",\n      \"type\": \"service\",\n      \"status\": \"out\",\n      \"price\": {\n        \"amount\": 3059.8004518918274,\n        \"currency\": \"SAR\"\n      },\n      \"sale_price\": {\n        \"amount\": 4317.795183252293,\n        \"currency\": \"SAR\"\n      },\n      \"cost_price\": {\n        \"amount\": 9619.756197127526,\n        \"currency\": \"SAR\"\n      },\n      \"quantity\": 5735,\n      \"description\": \"string\",\n      \"url\": \"http://NDzAapBgEQoWULeDcsoOLWAXanckuZqe.eumxqzw+xrbdqEQinkI2AkdCuHnEgxZcqp0ETQFgw9EUlIa9GJjfbWWlDdu\",\n      \"images\": [\n        {\n          \"id\": 3636,\n          \"original\": \"http://RWDpBRzNqisHsAuQQDFIvg.sqtISpt\",\n          \"thumbnail\": \"https://GrMtDH.jmdR3xp6nEWDvlARrhWLv,jQgpDObitQVoD4xZMZkEyh.i7jI+5RWb+KLyr8o6LLk\",\n          \"alt\": \"string\",\n          \"sort\": 2458\n        },\n        {\n          \"id\": 9542,\n          \"original\": \"https://gcxOsfyATPLzzxJNemYazHsF.mmvmjDYpOFcxT9nxOfSLFaLsCMgp8Bqp0MWdo2YFnO4o\",\n          \"thumbnail\": \"http://sjqmpsYaZpRmfaNXM.kkbEHzij7T56UJMOUEvA8.QVOYR9+8mEGsFHOoM.DkzCTh+\",\n          \"alt\": \"string\",\n          \"sort\": 3038\n        }\n      ],\n      \"categories\": [\n        6507,\n        4073\n      ],\n      \"brand_id\": 2703,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"updated_at\": \"1965-06-29T10:19:00.177Z\"\n    }\n  ],\n  \"pagination\": {\n    \"count\": 3057,\n    \"current\": 6752,\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "875a911b-9b6c-4cc9-82fd-1eef6f0ce4f0",
+              "name": "Invalid or missing access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 9044,\n  \"success\": false,\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"fields\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95e43e35-ffbc-4e45-b940-5d48c3504ea4",
+          "name": "Create Product",
+          "request": {
+            "name": "Create Product",
+            "description": {},
+            "url": {
+              "path": [
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"price\": \"<number>\",\n  \"product_type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sale_price\": \"<number>\",\n  \"cost_price\": \"<number>\",\n  \"sale_start\": \"<dateTime>\",\n  \"sale_end\": \"<dateTime>\",\n  \"sku\": \"<string>\",\n  \"mpn\": \"<string>\",\n  \"gtin\": \"<string>\",\n  \"brand_id\": \"<integer>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"images\": [\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata_title\": \"<string>\",\n  \"metadata_description\": \"<string>\",\n  \"metadata_url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a1d2c39a-ab39-464a-adb5-88c0dcc4353d",
+              "name": "Product created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"price\": \"<number>\",\n  \"product_type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sale_price\": \"<number>\",\n  \"cost_price\": \"<number>\",\n  \"sale_start\": \"<dateTime>\",\n  \"sale_end\": \"<dateTime>\",\n  \"sku\": \"<string>\",\n  \"mpn\": \"<string>\",\n  \"gtin\": \"<string>\",\n  \"brand_id\": \"<integer>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"images\": [\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata_title\": \"<string>\",\n  \"metadata_description\": \"<string>\",\n  \"metadata_url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7018,\n  \"success\": true,\n  \"data\": {\n    \"id\": 9763,\n    \"name\": \"string\",\n    \"sku\": \"string\",\n    \"mpn\": \"string\",\n    \"gtin\": \"string\",\n    \"type\": \"codes\",\n    \"status\": \"sale\",\n    \"price\": {\n      \"amount\": 9100.639715241317,\n      \"currency\": \"SAR\"\n    },\n    \"sale_price\": {\n      \"amount\": 5609.364490177425,\n      \"currency\": \"SAR\"\n    },\n    \"cost_price\": {\n      \"amount\": 5676.208686906721,\n      \"currency\": \"SAR\"\n    },\n    \"quantity\": 9823,\n    \"description\": \"string\",\n    \"url\": \"http://HYcODTAJY.eoeuclg5j35dEqcHQPMzPSsBMVwDa5zbXNdgBJ+Ab8U-jQIeFHy6hSPc\",\n    \"images\": [\n      {\n        \"id\": \"<integer>\",\n        \"original\": \"<uri>\",\n        \"thumbnail\": \"<uri>\",\n        \"alt\": \"<string>\",\n        \"sort\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"original\": \"<uri>\",\n        \"thumbnail\": \"<uri>\",\n        \"alt\": \"<string>\",\n        \"sort\": \"<integer>\"\n      }\n    ],\n    \"categories\": [\n      3269,\n      3238\n    ],\n    \"brand_id\": 3758,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"updated_at\": \"2000-04-18T01:56:26.844Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ae78e30-9619-4b89-a563-7828a1d1ea8f",
+              "name": "Request validation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"price\": \"<number>\",\n  \"product_type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sale_price\": \"<number>\",\n  \"cost_price\": \"<number>\",\n  \"sale_start\": \"<dateTime>\",\n  \"sale_end\": \"<dateTime>\",\n  \"sku\": \"<string>\",\n  \"mpn\": \"<string>\",\n  \"gtin\": \"<string>\",\n  \"brand_id\": \"<integer>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"images\": [\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata_title\": \"<string>\",\n  \"metadata_description\": \"<string>\",\n  \"metadata_url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 9044,\n  \"success\": false,\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"fields\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be3c8300-f899-4b80-a1a3-8d14129fa833",
+          "name": "Get Product",
+          "request": {
+            "name": "Get Product",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ":product_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "product_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "012293b8-542f-4d75-a7e7-d16ccc00cc70",
+              "name": "Product details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":product_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "product_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7018,\n  \"success\": true,\n  \"data\": {\n    \"id\": 9763,\n    \"name\": \"string\",\n    \"sku\": \"string\",\n    \"mpn\": \"string\",\n    \"gtin\": \"string\",\n    \"type\": \"codes\",\n    \"status\": \"sale\",\n    \"price\": {\n      \"amount\": 9100.639715241317,\n      \"currency\": \"SAR\"\n    },\n    \"sale_price\": {\n      \"amount\": 5609.364490177425,\n      \"currency\": \"SAR\"\n    },\n    \"cost_price\": {\n      \"amount\": 5676.208686906721,\n      \"currency\": \"SAR\"\n    },\n    \"quantity\": 9823,\n    \"description\": \"string\",\n    \"url\": \"http://HYcODTAJY.eoeuclg5j35dEqcHQPMzPSsBMVwDa5zbXNdgBJ+Ab8U-jQIeFHy6hSPc\",\n    \"images\": [\n      {\n        \"id\": \"<integer>\",\n        \"original\": \"<uri>\",\n        \"thumbnail\": \"<uri>\",\n        \"alt\": \"<string>\",\n        \"sort\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"original\": \"<uri>\",\n        \"thumbnail\": \"<uri>\",\n        \"alt\": \"<string>\",\n        \"sort\": \"<integer>\"\n      }\n    ],\n    \"categories\": [\n      3269,\n      3238\n    ],\n    \"brand_id\": 3758,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"updated_at\": \"2000-04-18T01:56:26.844Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f12c1158-3cb5-4ce9-8986-4d304a424630",
+          "name": "Update Product",
+          "request": {
+            "name": "Update Product",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ":product_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "product_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"price\": \"<number>\",\n  \"product_type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sale_price\": \"<number>\",\n  \"cost_price\": \"<number>\",\n  \"sale_start\": \"<dateTime>\",\n  \"sale_end\": \"<dateTime>\",\n  \"sku\": \"<string>\",\n  \"mpn\": \"<string>\",\n  \"gtin\": \"<string>\",\n  \"brand_id\": \"<integer>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"images\": [\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata_title\": \"<string>\",\n  \"metadata_description\": \"<string>\",\n  \"metadata_url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "47024d24-1287-47ea-aea5-7e9601fcd3b4",
+              "name": "Product updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":product_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "product_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"price\": \"<number>\",\n  \"product_type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sale_price\": \"<number>\",\n  \"cost_price\": \"<number>\",\n  \"sale_start\": \"<dateTime>\",\n  \"sale_end\": \"<dateTime>\",\n  \"sku\": \"<string>\",\n  \"mpn\": \"<string>\",\n  \"gtin\": \"<string>\",\n  \"brand_id\": \"<integer>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"images\": [\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata_title\": \"<string>\",\n  \"metadata_description\": \"<string>\",\n  \"metadata_url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7018,\n  \"success\": true,\n  \"data\": {\n    \"id\": 9763,\n    \"name\": \"string\",\n    \"sku\": \"string\",\n    \"mpn\": \"string\",\n    \"gtin\": \"string\",\n    \"type\": \"codes\",\n    \"status\": \"sale\",\n    \"price\": {\n      \"amount\": 9100.639715241317,\n      \"currency\": \"SAR\"\n    },\n    \"sale_price\": {\n      \"amount\": 5609.364490177425,\n      \"currency\": \"SAR\"\n    },\n    \"cost_price\": {\n      \"amount\": 5676.208686906721,\n      \"currency\": \"SAR\"\n    },\n    \"quantity\": 9823,\n    \"description\": \"string\",\n    \"url\": \"http://HYcODTAJY.eoeuclg5j35dEqcHQPMzPSsBMVwDa5zbXNdgBJ+Ab8U-jQIeFHy6hSPc\",\n    \"images\": [\n      {\n        \"id\": \"<integer>\",\n        \"original\": \"<uri>\",\n        \"thumbnail\": \"<uri>\",\n        \"alt\": \"<string>\",\n        \"sort\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"original\": \"<uri>\",\n        \"thumbnail\": \"<uri>\",\n        \"alt\": \"<string>\",\n        \"sort\": \"<integer>\"\n      }\n    ],\n    \"categories\": [\n      3269,\n      3238\n    ],\n    \"brand_id\": 3758,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"updated_at\": \"2000-04-18T01:56:26.844Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3994b680-bd98-4a87-b72f-6ca3f4a1083c",
+          "name": "Delete Product",
+          "request": {
+            "name": "Delete Product",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ":product_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "product_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9588e938-d37d-4da5-bc0e-9143013396a0",
+              "name": "Product deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":product_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "product_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fea78834-5109-4e41-8b83-1f124dce3668",
+          "name": "List Product SKUs",
+          "request": {
+            "name": "List Product SKUs",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ":product_id",
+                "skus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "product_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4bcf6543-0dfb-4ed3-acfd-d90ae17b1739",
+              "name": "List of SKUs for the product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":product_id",
+                    "skus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "product_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9a6cd8e-34b8-4321-8793-6dae522ff954",
+          "name": "Create Product Option",
+          "request": {
+            "name": "Create Product Option",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6c6af4c6-cc2e-4569-b2b6-9c960ad588ef",
+              "name": "Option created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9d3ce7d-fff6-4024-a2b4-15605591b69a",
+          "name": "Update Product Quantities",
+          "request": {
+            "name": "Update Product Quantities",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                "quantities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "028a920a-4a60-45dc-b4c3-26c1ecb6e4aa",
+              "name": "Quantities updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "quantities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a0037747-f6e7-487d-8389-fbc777ea726d",
+      "name": "Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "37e0cc94-2c22-4df9-9f2a-26716e404be2",
+          "name": "List Orders",
+          "request": {
+            "name": "List Orders",
+            "description": {},
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "from_date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to_date",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84b79bca-f7e6-42a7-975e-8fa24be7a221",
+              "name": "Paginated list of orders.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "to_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2785,\n  \"success\": false,\n  \"data\": [\n    {\n      \"id\": 5282,\n      \"reference_id\": 6627,\n      \"urls\": {},\n      \"date\": {\n        \"date\": \"2013-02-15T21:36:42.209Z\",\n        \"timezone\": \"string\"\n      },\n      \"source\": \"string\",\n      \"status\": {\n        \"id\": 2986,\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"customized\": {}\n      },\n      \"can_cancel\": false,\n      \"can_reorder\": false,\n      \"is_pending_payment\": true,\n      \"payment_method\": \"string\",\n      \"amounts\": {\n        \"sub_total\": {\n          \"amount\": 8892.513166586778,\n          \"currency\": \"SAR\"\n        },\n        \"shipping_cost\": {\n          \"amount\": 7739.041410908833,\n          \"currency\": \"SAR\"\n        },\n        \"tax\": {\n          \"amount\": 1552.80944996554,\n          \"currency\": \"SAR\"\n        },\n        \"discounts\": {\n          \"amount\": 5542.463587540631,\n          \"currency\": \"SAR\"\n        },\n        \"total\": {\n          \"amount\": 201.48823566588203,\n          \"currency\": \"SAR\"\n        }\n      },\n      \"shipping\": {},\n      \"total_weight\": 5256.393528885605,\n      \"currency\": \"string\",\n      \"customer\": {\n        \"id\": 787,\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"mobile\": \"string\",\n        \"mobile_code\": \"string\",\n        \"email\": \"hzy9@i.ur\",\n        \"gender\": \"male\",\n        \"birthday\": \"1962-05-08\",\n        \"avatar\": \"http://FCUfwmBHBnifv.qvtqs9WGMp\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"currency\": \"string\",\n        \"updated_at\": \"1990-03-13T06:12:41.621Z\"\n      }\n    },\n    {\n      \"id\": 4329,\n      \"reference_id\": 6889,\n      \"urls\": {},\n      \"date\": {\n        \"date\": \"1969-10-22T06:21:09.585Z\",\n        \"timezone\": \"string\"\n      },\n      \"source\": \"string\",\n      \"status\": {\n        \"id\": 6978,\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"customized\": {}\n      },\n      \"can_cancel\": true,\n      \"can_reorder\": false,\n      \"is_pending_payment\": false,\n      \"payment_method\": \"string\",\n      \"amounts\": {\n        \"sub_total\": {\n          \"amount\": 9544.177557164843,\n          \"currency\": \"SAR\"\n        },\n        \"shipping_cost\": {\n          \"amount\": 4052.453444338937,\n          \"currency\": \"SAR\"\n        },\n        \"tax\": {\n          \"amount\": 3392.5491008499052,\n          \"currency\": \"SAR\"\n        },\n        \"discounts\": {\n          \"amount\": 5948.977794994603,\n          \"currency\": \"SAR\"\n        },\n        \"total\": {\n          \"amount\": 6162.507703995904,\n          \"currency\": \"SAR\"\n        }\n      },\n      \"shipping\": {},\n      \"total_weight\": 3689.499552325992,\n      \"currency\": \"string\",\n      \"customer\": {\n        \"id\": 9657,\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"mobile\": \"string\",\n        \"mobile_code\": \"string\",\n        \"email\": \"CQmL@Mq.lw\",\n        \"gender\": \"male\",\n        \"birthday\": \"1963-05-05\",\n        \"avatar\": \"http://SXwdUlzAECyAb.jutCT0CbbD-xteKH8eyMc8.uRPdTDJvtsCxAXymk2oblpoJAaHn6KU4\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"currency\": \"string\",\n        \"updated_at\": \"1973-10-03T20:20:36.007Z\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"count\": 4959,\n    \"current\": 2016,\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "542ad113-d959-407a-ba7a-0dceacc06b89",
+          "name": "Get Order Details",
+          "request": {
+            "name": "Get Order Details",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Set to `light` to exclude shipments, items, pickup branch, and customer groups."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aecc1d0c-eded-403e-b9ff-18e1d5b2ada1",
+              "name": "Order details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 588,\n  \"success\": false,\n  \"data\": {\n    \"id\": 7114,\n    \"reference_id\": 1292,\n    \"urls\": {},\n    \"date\": {\n      \"date\": \"1967-09-08T12:37:04.557Z\",\n      \"timezone\": \"string\"\n    },\n    \"source\": \"string\",\n    \"status\": {\n      \"id\": 8000,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"customized\": {}\n    },\n    \"can_cancel\": false,\n    \"can_reorder\": true,\n    \"is_pending_payment\": true,\n    \"payment_method\": \"string\",\n    \"amounts\": {\n      \"sub_total\": {\n        \"amount\": 3624.3559078026556,\n        \"currency\": \"SAR\"\n      },\n      \"shipping_cost\": {\n        \"amount\": 7215.990828724248,\n        \"currency\": \"SAR\"\n      },\n      \"tax\": {\n        \"amount\": 3894.692805190546,\n        \"currency\": \"SAR\"\n      },\n      \"discounts\": {\n        \"amount\": 4417.583871792721,\n        \"currency\": \"SAR\"\n      },\n      \"total\": {\n        \"amount\": 1114.7539872148482,\n        \"currency\": \"SAR\"\n      }\n    },\n    \"shipping\": {},\n    \"total_weight\": 4149.147205307063,\n    \"currency\": \"string\",\n    \"customer\": {\n      \"id\": 2965,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"mobile\": \"string\",\n      \"mobile_code\": \"string\",\n      \"email\": \"iYc7Xjq5@EPwDihUxzCELHqUwEqdJvQOKzWnKZCZ.gfff\",\n      \"gender\": \"female\",\n      \"birthday\": \"1990-08-29\",\n      \"avatar\": \"https://rqVsANUWUjkkbmqEsXNSOhQpZdKmuxk.ccOO7lel0LWXqRrmNwXHbnWsumfBW5\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"currency\": \"string\",\n      \"updated_at\": \"1995-11-15T11:54:02.895Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80c7b935-939c-4b84-9c75-dd145c046e9d",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 9044,\n  \"success\": false,\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"fields\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f64c046-1c10-45b6-bb08-48b3919ec1ad",
+          "name": "Update Order",
+          "request": {
+            "name": "Update Order",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "60641bba-2400-48b3-8c40-27615d831fd3",
+              "name": "Order updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 588,\n  \"success\": false,\n  \"data\": {\n    \"id\": 7114,\n    \"reference_id\": 1292,\n    \"urls\": {},\n    \"date\": {\n      \"date\": \"1967-09-08T12:37:04.557Z\",\n      \"timezone\": \"string\"\n    },\n    \"source\": \"string\",\n    \"status\": {\n      \"id\": 8000,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"customized\": {}\n    },\n    \"can_cancel\": false,\n    \"can_reorder\": true,\n    \"is_pending_payment\": true,\n    \"payment_method\": \"string\",\n    \"amounts\": {\n      \"sub_total\": {\n        \"amount\": 3624.3559078026556,\n        \"currency\": \"SAR\"\n      },\n      \"shipping_cost\": {\n        \"amount\": 7215.990828724248,\n        \"currency\": \"SAR\"\n      },\n      \"tax\": {\n        \"amount\": 3894.692805190546,\n        \"currency\": \"SAR\"\n      },\n      \"discounts\": {\n        \"amount\": 4417.583871792721,\n        \"currency\": \"SAR\"\n      },\n      \"total\": {\n        \"amount\": 1114.7539872148482,\n        \"currency\": \"SAR\"\n      }\n    },\n    \"shipping\": {},\n    \"total_weight\": 4149.147205307063,\n    \"currency\": \"string\",\n    \"customer\": {\n      \"id\": 2965,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"mobile\": \"string\",\n      \"mobile_code\": \"string\",\n      \"email\": \"iYc7Xjq5@EPwDihUxzCELHqUwEqdJvQOKzWnKZCZ.gfff\",\n      \"gender\": \"female\",\n      \"birthday\": \"1990-08-29\",\n      \"avatar\": \"https://rqVsANUWUjkkbmqEsXNSOhQpZdKmuxk.ccOO7lel0LWXqRrmNwXHbnWsumfBW5\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"currency\": \"string\",\n      \"updated_at\": \"1995-11-15T11:54:02.895Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1cc9cb2-fe6c-4ec0-b91a-42a94b48b8a8",
+          "name": "Update Order Status",
+          "request": {
+            "name": "Update Order Status",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":order_id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"slug\": \"<string>\",\n  \"note\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "28f57404-ffd2-47b0-8664-a30924243644",
+              "name": "Order status updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"slug\": \"<string>\",\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e946ab64-2eeb-45ec-9c36-51162d138a6f",
+          "name": "List Order Histories",
+          "request": {
+            "name": "List Order Histories",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":order_id",
+                "histories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f660b4f6-02f7-470f-b5f6-052f18b272f8",
+              "name": "Order history entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id",
+                    "histories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f29f621-1445-44dd-9557-53173f5854c2",
+          "name": "List Order Invoices",
+          "request": {
+            "name": "List Order Invoices",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":order_id",
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2c780ed-ebf9-4778-874c-47e5f9942581",
+              "name": "Order invoices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ee4bb30-907a-43e8-a575-8917d5b3376e",
+          "name": "List Order Items",
+          "request": {
+            "name": "List Order Items",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":order_id",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c7cc657-3892-4fec-8966-f4f8758f94f1",
+              "name": "Order items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c8ca9948-2a07-46ea-9fa4-afb439974ad8",
+      "name": "Carts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c260f2ca-2c16-40ae-9763-76702cd66411",
+          "name": "List Abandoned Carts",
+          "request": {
+            "name": "List Abandoned Carts",
+            "description": {},
+            "url": {
+              "path": [
+                "abandoned-carts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "511cb81b-7371-4280-8a30-709a7ce188bc",
+              "name": "Abandoned cart list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "abandoned-carts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "923e5d84-04d2-460d-9c0b-87c11efa9162",
+      "name": "Customers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "344d95ea-9e9b-4b4f-b2c3-8b61606ad13b",
+          "name": "List Customers",
+          "request": {
+            "name": "List Customers",
+            "description": {},
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2085bc01-774e-4665-8187-2b1b929c497a",
+              "name": "Paginated list of customers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3484,\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 7055,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"mobile\": \"string\",\n      \"mobile_code\": \"string\",\n      \"email\": \"zQUNt@LopdvQYVOtMPkHDObLBUULuF.vo\",\n      \"gender\": \"male\",\n      \"birthday\": \"1962-10-26\",\n      \"avatar\": \"http://gISrqMpzNNMMWMjiGvYRuGHY.pkdySsza9i-hBIHMqerPPotcpJohhz8q\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"currency\": \"string\",\n      \"updated_at\": \"1987-02-01T07:22:21.880Z\"\n    },\n    {\n      \"id\": 9812,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"mobile\": \"string\",\n      \"mobile_code\": \"string\",\n      \"email\": \"5xERfczDJMCgu@ea.wavo\",\n      \"gender\": \"female\",\n      \"birthday\": \"1993-01-03\",\n      \"avatar\": \"https://meJonBjuKKQ.hvkmBusT7kB.qzG-GtMvcSgajEi4t.YCTjWFqMY0YD9RkTXa-+P1j8g0aq-VYlNlDR\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"currency\": \"string\",\n      \"updated_at\": \"1982-06-24T00:33:42.049Z\"\n    }\n  ],\n  \"pagination\": {\n    \"count\": 9158,\n    \"current\": 9391,\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "256a9c4f-64ca-4aa4-8a5f-824493525d77",
+          "name": "Create Customer",
+          "request": {
+            "name": "Create Customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"mobile_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"gender\": \"<string>\",\n  \"birthday\": \"<date>\",\n  \"city\": \"<string>\",\n  \"country\": \"<string>\",\n  \"groups\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8e4390d3-df59-45c3-b122-4ab87ad00056",
+              "name": "Customer created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"mobile_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"gender\": \"<string>\",\n  \"birthday\": \"<date>\",\n  \"city\": \"<string>\",\n  \"country\": \"<string>\",\n  \"groups\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7177,\n  \"success\": true,\n  \"data\": {\n    \"id\": 2037,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"mobile\": \"string\",\n    \"mobile_code\": \"string\",\n    \"email\": \"KUlV@PXeLCBwSbQaifOvseOLQnMHYUeP.cj\",\n    \"gender\": \"female\",\n    \"birthday\": \"1964-07-26\",\n    \"avatar\": \"http://LVDxWfRziFdkmIMBHpBPnmDZHdxbmk.eozsYlh1xcvy7rNbcGAjcI33Qb1,e+Z.MeA,+wYsHIV,hvPyzfJyolSo72pzyXA\",\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"currency\": \"string\",\n    \"updated_at\": \"1978-01-14T00:48:31.219Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51e1485d-a8c6-43a9-b60e-5460db7f4e63",
+          "name": "Get Customer",
+          "request": {
+            "name": "Get Customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "196e1ea5-9c16-4b9b-b799-96f9c12eed63",
+              "name": "Customer details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7177,\n  \"success\": true,\n  \"data\": {\n    \"id\": 2037,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"mobile\": \"string\",\n    \"mobile_code\": \"string\",\n    \"email\": \"KUlV@PXeLCBwSbQaifOvseOLQnMHYUeP.cj\",\n    \"gender\": \"female\",\n    \"birthday\": \"1964-07-26\",\n    \"avatar\": \"http://LVDxWfRziFdkmIMBHpBPnmDZHdxbmk.eozsYlh1xcvy7rNbcGAjcI33Qb1,e+Z.MeA,+wYsHIV,hvPyzfJyolSo72pzyXA\",\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"currency\": \"string\",\n    \"updated_at\": \"1978-01-14T00:48:31.219Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9682cb63-7348-46a5-9c4a-ec9179d7b56d",
+          "name": "Update Customer",
+          "request": {
+            "name": "Update Customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"mobile_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"gender\": \"<string>\",\n  \"birthday\": \"<date>\",\n  \"city\": \"<string>\",\n  \"country\": \"<string>\",\n  \"groups\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b2c41e2-70f9-4e5f-812a-5ecc2be89a4f",
+              "name": "Customer updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"mobile_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"gender\": \"<string>\",\n  \"birthday\": \"<date>\",\n  \"city\": \"<string>\",\n  \"country\": \"<string>\",\n  \"groups\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7177,\n  \"success\": true,\n  \"data\": {\n    \"id\": 2037,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"mobile\": \"string\",\n    \"mobile_code\": \"string\",\n    \"email\": \"KUlV@PXeLCBwSbQaifOvseOLQnMHYUeP.cj\",\n    \"gender\": \"female\",\n    \"birthday\": \"1964-07-26\",\n    \"avatar\": \"http://LVDxWfRziFdkmIMBHpBPnmDZHdxbmk.eozsYlh1xcvy7rNbcGAjcI33Qb1,e+Z.MeA,+wYsHIV,hvPyzfJyolSo72pzyXA\",\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"currency\": \"string\",\n    \"updated_at\": \"1978-01-14T00:48:31.219Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3c8aa052-e3dc-453e-9aa6-334acbc5d27d",
+      "name": "Categories",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ee663f6a-0204-485b-aecb-9a893635ea41",
+          "name": "List Categories",
+          "request": {
+            "name": "List Categories",
+            "description": {},
+            "url": {
+              "path": [
+                "categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b231d80-ca93-4da5-955e-7317649662ca",
+              "name": "Category list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d03e62fd-c829-4533-b76e-06087a1d9f39",
+          "name": "Create Category",
+          "request": {
+            "name": "Create Category",
+            "description": {},
+            "url": {
+              "path": [
+                "categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fd7e14fa-99fe-4439-9148-46c55614e7fa",
+              "name": "Category created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2dc53d7f-9008-41b8-a1c0-f758a6d6852b",
+          "name": "Get Category",
+          "request": {
+            "name": "Get Category",
+            "description": {},
+            "url": {
+              "path": [
+                "categories",
+                ":category_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "category_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b87f09ce-eda4-4aa6-8ad7-1e81572727f0",
+              "name": "Category details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":category_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "category_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46974011-7778-4f04-8762-f4669e7a0866",
+          "name": "Update Category",
+          "request": {
+            "name": "Update Category",
+            "description": {},
+            "url": {
+              "path": [
+                "categories",
+                ":category_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "category_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "19266871-b20c-403b-9247-70e7f8d67e13",
+              "name": "Category updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":category_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "category_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b6cf2706-8480-43ef-81ec-af4c61adbc1f",
+      "name": "Brands",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aa69edd4-04f1-4102-ac40-404dfa1cfa3d",
+          "name": "List Brands",
+          "request": {
+            "name": "List Brands",
+            "description": {},
+            "url": {
+              "path": [
+                "brands"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5e48e8c-8539-44ca-9b76-073931d7ce02",
+              "name": "Brand list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "brands"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac6ffa33-9c9f-4e70-86ac-e21dc5969e86",
+          "name": "Create Brand",
+          "request": {
+            "name": "Create Brand",
+            "description": {},
+            "url": {
+              "path": [
+                "brands"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4183c662-d4de-44d1-aa4b-8c6db925ff77",
+              "name": "Brand created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "brands"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5c3294a-eba7-42e2-b79a-aaef26ad4c05",
+          "name": "Get Brand",
+          "request": {
+            "name": "Get Brand",
+            "description": {},
+            "url": {
+              "path": [
+                "brands",
+                ":brand_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "brand_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f72c371-3587-4236-983d-7a79b7935284",
+              "name": "Brand details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "brands",
+                    ":brand_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "brand_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3652557e-8fe6-443c-9a91-d4e7bf22fc40",
+          "name": "Update Brand",
+          "request": {
+            "name": "Update Brand",
+            "description": {},
+            "url": {
+              "path": [
+                "brands",
+                ":brand_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "brand_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "248c024d-32e6-4a21-80ec-ed28ae017a5f",
+              "name": "Brand updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "brands",
+                    ":brand_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "brand_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "587981bb-bffb-4c8c-bcd7-557c8e1c6e32",
+          "name": "Delete Brand",
+          "request": {
+            "name": "Delete Brand",
+            "description": {},
+            "url": {
+              "path": [
+                "brands",
+                ":brand_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "brand_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1fb5965a-1a0c-4c43-becc-904fff175acb",
+              "name": "Brand deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "brands",
+                    ":brand_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "brand_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "794238af-568b-432f-9e96-81ac5dd2da34",
+      "name": "Branches",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "43641207-63a4-4cf6-8c86-036634661e1a",
+          "name": "List Store Branches",
+          "request": {
+            "name": "List Store Branches",
+            "description": {},
+            "url": {
+              "path": [
+                "branches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "978a5031-33b3-40ab-9a27-3d9c34cb7d36",
+              "name": "Branch list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "branches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43f00166-970e-498d-9b73-8c932f42931b",
+          "name": "Create Store Branch",
+          "request": {
+            "name": "Create Store Branch",
+            "description": {},
+            "url": {
+              "path": [
+                "branches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e28f24d-2047-48be-8879-b2794d3ca028",
+              "name": "Branch created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "branches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3b57c30-b853-4a2f-86a3-24b2259e7ef5",
+          "name": "Get Store Branch",
+          "request": {
+            "name": "Get Store Branch",
+            "description": {},
+            "url": {
+              "path": [
+                "branches",
+                ":branch_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "branch_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a79c2da-f301-4f6f-92a3-1d87c2ed46c5",
+              "name": "Branch details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "branches",
+                    ":branch_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "branch_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f31e9601-519d-4d70-9e59-c401917a65ed",
+      "name": "Coupons",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0af79ca5-0dae-4f6f-aaee-757ce9991197",
+          "name": "List Coupons",
+          "request": {
+            "name": "List Coupons",
+            "description": {},
+            "url": {
+              "path": [
+                "coupons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac296032-03b1-464b-b77a-997dd7300713",
+              "name": "Coupon list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2af434e-7ff4-4532-8d8f-b5abb598714b",
+          "name": "Create Coupon",
+          "request": {
+            "name": "Create Coupon",
+            "description": {},
+            "url": {
+              "path": [
+                "coupons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ae015dc2-442d-4656-a7c3-9ab8162c28e1",
+              "name": "Coupon created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6ef1c747-db46-4a08-840c-a84a920cbba7",
+      "name": "Localization",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2b725707-44b8-4873-8c87-39ecf7655732",
+          "name": "List Currencies",
+          "request": {
+            "name": "List Currencies",
+            "description": {},
+            "url": {
+              "path": [
+                "currencies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3139a61e-7926-46f2-8ba2-0eb81e973279",
+              "name": "Currency list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6c128a0-6179-4e19-87e5-9d95a243b258",
+          "name": "List Languages",
+          "request": {
+            "name": "List Languages",
+            "description": {},
+            "url": {
+              "path": [
+                "languages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65d1d2d7-1eb5-4bdd-aaea-0a3b5428b784",
+              "name": "Language list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "languages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0a29b53-dcad-41a6-8ad8-ebef1a818b10",
+          "name": "List Countries",
+          "request": {
+            "name": "List Countries",
+            "description": {},
+            "url": {
+              "path": [
+                "countries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d91c397-013e-43a5-ba58-b1a3a6e9f35a",
+              "name": "Country list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d4f19bb-68cc-4d49-9d4c-f3a375e2fb64",
+          "name": "Get Country Details",
+          "request": {
+            "name": "Get Country Details",
+            "description": {},
+            "url": {
+              "path": [
+                "countries",
+                ":country_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "country_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4adfb101-02f2-4317-98dd-8fd5ef2a1ad3",
+              "name": "Country details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "countries",
+                    ":country_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "country_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1a4921c0-5b47-49f7-b9fa-f83e77d0db81",
+      "name": "Financial",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b892c8bc-c2df-40ba-a592-ac5bd30b570c",
+          "name": "List Taxes",
+          "request": {
+            "name": "List Taxes",
+            "description": {},
+            "url": {
+              "path": [
+                "taxes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa4281c8-1538-4c56-a1e5-f898b04d303b",
+              "name": "Tax list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "taxes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "381345e8-2224-41f0-adcd-766263c20a56",
+          "name": "Create Tax",
+          "request": {
+            "name": "Create Tax",
+            "description": {},
+            "url": {
+              "path": [
+                "taxes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "65a771cd-de96-4789-a970-08788223aa53",
+              "name": "Tax created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "taxes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de13fc13-d7ad-46aa-87f2-6df1f1d02952",
+          "name": "List Transactions",
+          "request": {
+            "name": "List Transactions",
+            "description": {},
+            "url": {
+              "path": [
+                "transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09a7b26e-ffac-4c4b-8efb-592ebea57d40",
+              "name": "Transaction list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a2acdadd-b076-4ba4-81ae-711bb4b22baf",
+      "name": "Shipping",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "18d65598-bbe5-407c-a21d-fc6f4be8910a",
+          "name": "List Shipments",
+          "request": {
+            "name": "List Shipments",
+            "description": {},
+            "url": {
+              "path": [
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95e86e44-9c1f-4f5c-a92d-7c19a09e6808",
+              "name": "Shipment list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54e365b3-621e-4b0b-9df4-9293ea7b7857",
+          "name": "Create Shipment",
+          "request": {
+            "name": "Create Shipment",
+            "description": {},
+            "url": {
+              "path": [
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "89758f00-3ce3-4269-aa9d-43ecb9343fff",
+              "name": "Shipment created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d3aaf33-6328-4e91-b013-9363488d466d",
+          "name": "Get Shipment Details",
+          "request": {
+            "name": "Get Shipment Details",
+            "description": {},
+            "url": {
+              "path": [
+                "shipments",
+                ":shipment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shipment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "54bd8f58-8a9e-4005-85fb-42127292aa99",
+              "name": "Shipment details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments",
+                    ":shipment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shipment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21c57cb7-96aa-476f-91d3-c2d2996254e1",
+          "name": "List Shipping Zones",
+          "request": {
+            "name": "List Shipping Zones",
+            "description": {},
+            "url": {
+              "path": [
+                "shipping",
+                "zones"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "92d999a5-c271-4f11-9bea-d38cb863df7b",
+              "name": "Shipping zone list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipping",
+                    "zones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd736954-4956-4456-92e3-10887a544037",
+          "name": "Get Shipping Zone Details",
+          "request": {
+            "name": "Get Shipping Zone Details",
+            "description": {},
+            "url": {
+              "path": [
+                "shipping",
+                "zones",
+                ":zone_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "zone_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4d936d0f-2ab1-4b4b-a81a-d1f1740f3059",
+              "name": "Shipping zone details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipping",
+                    "zones",
+                    ":zone_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "zone_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd57a3c9-c552-4bb0-8752-6337fcdf49ae",
+          "name": "List Shipping Companies",
+          "request": {
+            "name": "List Shipping Companies",
+            "description": {},
+            "url": {
+              "path": [
+                "shipping",
+                "companies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c4c115d-7c0b-41f8-b559-e7da0f0f6076",
+              "name": "Shipping company list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipping",
+                    "companies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d9571c96-7c6f-489b-926a-e2eacde66db9",
+      "name": "Webhooks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "531c9187-d1c4-48ed-a584-6dbaeef0da53",
+          "name": "Subscribe Webhook",
+          "request": {
+            "name": "Subscribe Webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"event\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"version\": \"<integer>\",\n  \"rule\": \"<string>\",\n  \"headers\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"security_strategy\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3797e6ac-e481-4b26-8b4e-b910fefbe092",
+              "name": "Webhook subscription created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"event\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"version\": \"<integer>\",\n  \"rule\": \"<string>\",\n  \"headers\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"security_strategy\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fbd632ab-880d-411f-99e6-51f37d39aea7",
+          "name": "List Webhook Subscriptions",
+          "request": {
+            "name": "List Webhook Subscriptions",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe24ea95-6e29-447c-aa8c-59b8f1d18c90",
+              "name": "Webhook subscriptions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f0c156f-6c84-4252-b8d9-2f2a46ff1c7d",
+          "name": "Unsubscribe Webhook",
+          "request": {
+            "name": "Unsubscribe Webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                "unsubscribe",
+                ":subscription_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "subscription_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "007a3e92-5c5f-4c1c-a23a-45a5f4415a1f",
+              "name": "Webhook subscription deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "unsubscribe",
+                    ":subscription_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "subscription_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "56c20be4-ad0a-461d-91ca-a60d72ff8670",
+      "name": "Store",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "57e156f8-303d-4c27-8def-f0a800454f82",
+          "name": "Get Store Info",
+          "request": {
+            "name": "Get Store Info",
+            "description": {},
+            "url": {
+              "path": [
+                "store",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ccc1e265-98df-4225-93fa-54a56e8765b9",
+              "name": "Store information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.salla.dev/admin/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "offline_access orders.read orders.read_write products.read products.read_write customers.read customers.read_write settings.read webhooks.read_write"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://accounts.salla.sa/oauth2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://accounts.salla.sa/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.salla.sa/oauth2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "21bbf721-1872-48e9-b0d3-13f0130aff0b",
+    "name": "Salla Merchant API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful endpoints purpose-built for secure, fast, and easy access to Salla\nMerchant store data. Covers products, orders, customers, branches, brands,\ncategories, currencies, languages, coupons, taxes, abandoned carts,\nshipping, shipments, and store configuration.\n\nAll requests use the base URL `https://api.salla.dev/admin/v2` and are\nauthenticated with an OAuth 2.0 bearer token issued via the Salla Partners\nPortal.\n\n\nContact Support:\n Name: Salla Developers\n Email: support@salla.dev",
+      "type": "text/plain"
+    }
+  }
+}

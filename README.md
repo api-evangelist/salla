@@ -1,14 +1,27 @@
 # Salla (salla)
 
-Salla is a Saudi Arabia-based e-commerce platform — often called the Shopify of the Middle East — that lets merchants launch, operate, and grow Arabic-first online stores without code. Founded in 2016 in Makkah by Nawaf Hariri and Salman Butt, Salla now powers more than 80,000 active stores. The platform exposes a Merchant REST API (`https://api.salla.dev/admin/v2`), an OAuth 2.0 Partners authorization service, signed webhooks for the full storefront lifecycle, a Shipping and Fulfillment app contract, the Twilight theme engine and JavaScript SDK, the Salla CLI, and official starter kits for PHP/Laravel and Node.js/Express. Backed by Sanabil (PIF), STV, Investcorp, Vision Ventures, and Raed Ventures, Salla raised a $130M pre-IPO round in 2024.
+Salla is a Saudi Arabia-based e-commerce platform — often called the Shopify of the Middle East — that lets merchants launch, operate, and grow Arabic-first online stores without code. Founded in 2016 in Makkah by Nawaf Hariri and Salman Butt, Salla now powers more than 80,000 active stores. The platform exposes a Merchant REST API (https://api.salla.dev/admin/v2), an OAuth 2.0 Partners authorization service, signed webhooks for the full storefront lifecycle, a Shipping and Fulfillment app contract, the Twilight theme engine and JavaScript SDK, the Salla CLI, and official starter kits for PHP/Laravel and Node.js/Express. Backed by Sanabil (PIF), STV, Investcorp, Vision Ventures, and Raed Ventures, Salla raised a $130M pre-IPO round in 2024.
 
-**URL:** [Visit APIs.json](https://raw.githubusercontent.com/api-evangelist/salla/refs/heads/main/apis.yml)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/salla/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/salla/refs/heads/main/apis.yml)
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Scope
+
+- **Position:** Producing
+- **Access:** 3rd-Party
 
 ## Tags
 
-Arabic, E-Commerce, GCC, Headless Commerce, Merchant, MENA, Online Stores, Retail, Saudi Arabia, SMB, Storefront
+- Arabic
+- E-Commerce
+- GCC
+- Headless Commerce
+- Merchant
+- MENA
+- Online Stores
+- Retail
+- Saudi Arabia
+- SMB
+- Storefront
 
 ## Timestamps
 
@@ -18,115 +31,172 @@ Arabic, E-Commerce, GCC, Headless Commerce, Merchant, MENA, Online Stores, Retai
 ## APIs
 
 ### Salla Merchant API
-RESTful endpoints for products, orders, customers, branches, brands, categories, coupons, currencies, languages, taxes, shipping zones, shipments, abandoned carts, marketing, and store configuration. Base URL `https://api.salla.dev/admin/v2`. OAuth 2.0 bearer authentication.
 
-**Human URL:** [https://docs.salla.dev/421117m0](https://docs.salla.dev/421117m0)
+RESTful endpoints purpose-built for secure, fast, and easy access to Merchant data. Covers products, orders, customers, branches, brands, categories, coupons, currencies, languages, taxes, shipping zones, shipments, abandoned carts, marketing, and store configuration. All requests use the base URL https://api.salla.dev/admin/v2 and are authenticated with an OAuth 2.0 bearer token issued via Salla Partners.
+
+- **Human URL:** [https://docs.salla.dev/421117m0](https://docs.salla.dev/421117m0)
+- **Base URL:** `https://api.salla.dev/admin/v2`
+
+#### Tags
+
+- E-Commerce
+- Merchant
+- Orders
+- Products
+- Customers
+
+#### Properties
 
 - [Documentation](https://docs.salla.dev/421117m0)
-- [OpenAPI](openapi/salla-merchant-api-openapi.yml)
-- [JSON Schema — Product](json-schema/salla-product-schema.json)
-- [JSON Schema — Order](json-schema/salla-order-schema.json)
-- [JSON Schema — Customer](json-schema/salla-customer-schema.json)
-- [JSON-LD Context](json-ld/salla-context.jsonld)
-- [Example — List Products](examples/salla-list-products-example.json)
-- [Example — Create Order](examples/salla-create-order-example.json)
-- [Naftiko Capability — Products](capabilities/merchant-products.yaml)
-- [Naftiko Capability — Orders](capabilities/merchant-orders.yaml)
-- [Naftiko Capability — Customers](capabilities/merchant-customers.yaml)
-- [Naftiko Capability — Categories](capabilities/merchant-categories.yaml)
-- [Naftiko Capability — Brands](capabilities/merchant-brands.yaml)
-- [Naftiko Capability — Shipping](capabilities/merchant-shipping.yaml)
+- [Documentation](https://docs.salla.dev/5394168e0)
+- [Documentation](https://docs.salla.dev/5394147e0)
+- [OpenAPI](openapi/salla-merchant-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/salla-merchant-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/salla-merchant-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/salla-product-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/salla-order-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/salla-customer-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [J S O N- L D](json-ld/salla-context.jsonld)
+- [Example](examples/salla-list-products-example.json)
+- [Example](examples/salla-create-order-example.json)
 
 ### Salla Apps API
-OAuth 2.0 authorization server at `https://accounts.salla.sa` — handles the merchant consent flow, access and refresh token exchange (14-day access, 1-month refresh window), and merchant user info lookup for apps installed from the Salla Partners Portal.
 
-**Human URL:** [https://docs.salla.dev/421118m0](https://docs.salla.dev/421118m0)
+Manages app settings, OAuth 2.0 authorization flow, access and refresh tokens, merchant user info, subscription lifecycle, and app event handling for apps installed from the Salla Partners Portal. OAuth endpoints live at https://accounts.salla.sa/oauth2/{auth,token,user/info}.
+
+- **Human URL:** [https://docs.salla.dev/421118m0](https://docs.salla.dev/421118m0)
+- **Base URL:** `https://accounts.salla.sa`
+
+#### Tags
+
+- Apps
+- E-Commerce
+- OAuth
+- Subscriptions
+
+#### Properties
 
 - [Documentation](https://docs.salla.dev/421118m0)
-- [OpenAPI](openapi/salla-apps-api-openapi.yml)
-- [Naftiko Capability — OAuth](capabilities/apps-oauth.yaml)
-- [Naftiko Capability — Subscriptions](capabilities/apps-subscriptions.yaml)
+- [OpenAPI](openapi/salla-apps-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/salla-apps-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/salla-apps-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### Salla Shipping and Fulfillment API
-REST contract that logistics providers implement to plug a courier into the Salla shipment flow — list and update zones, companies, and shipments; receive `shipment.creating` / `shipment.created` / `shipment.cancelled` webhooks.
 
-**Human URL:** [https://docs.salla.dev/5394234e0](https://docs.salla.dev/5394234e0)
+Enables shipping companies and fulfillment partners to manage and track shipments, shipping zones, pickup branches, and courier integrations for Salla merchant stores. Implements the Shipping App contract that Salla calls into when a merchant creates or cancels a shipment.
 
-- [OpenAPI](openapi/salla-shipping-fulfillment-api-openapi.yml)
-- [Naftiko Capability — Shipments](capabilities/shipping-shipments.yaml)
-- [Naftiko Capability — Zones](capabilities/shipping-zones.yaml)
+- **Human URL:** [https://docs.salla.dev/5394234e0](https://docs.salla.dev/5394234e0)
+- **Base URL:** `https://api.salla.dev/admin/v2`
+
+#### Tags
+
+- E-Commerce
+- Fulfillment
+- Shipping
+- Shipments
+
+#### Properties
+
+- [Documentation](https://docs.salla.dev/5394234e0)
+- [Documentation](https://docs.salla.dev/5394248e0)
+- [OpenAPI](openapi/salla-shipping-fulfillment-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/salla-shipping-fulfillment-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/salla-shipping-fulfillment-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### Salla Webhooks
-Server-to-server event delivery covering order, product, customer, shipping, shipment, store branch, category, brand, abandoned cart, coupon, invoice, special offer, and review lifecycle events. HMAC SHA-256 signed via `X-Salla-Security-Strategy` / `X-Salla-Signature` headers (or token strategy with `Authorization`). Supports per-subscription conditional rules.
 
-**Human URL:** [https://docs.salla.dev/421119m0](https://docs.salla.dev/421119m0)
+Server-to-server event delivery covering order, product, customer, shipping, shipment, store branch, category, brand, abandoned cart, coupon, invoice, special offer, and review lifecycle events. Payloads are signed via HMAC SHA-256 — X-Salla-Security-Strategy and X-Salla-Signature headers (or token strategy with Authorization header) — and developers can attach conditional rules per subscription.
+
+- **Human URL:** [https://docs.salla.dev/421119m0](https://docs.salla.dev/421119m0)
+
+#### Tags
+
+- E-Commerce
+- Events
+- Webhooks
+
+#### Properties
 
 - [Documentation](https://docs.salla.dev/421119m0)
-- [AsyncAPI](openapi/salla-webhooks-asyncapi.yml)
+- [Documentation](https://docs.salla.dev/433804m0)
+- [AsyncAPI](openapi/salla-webhooks-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
+- [Postman Collection](collections/salla-apps-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/salla-apps-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/salla-merchant-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/salla-merchant-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/salla-shipping-fulfillment-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/salla-shipping-fulfillment-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### Salla Twilight SDK
-JavaScript SDK and Twig-based theme engine for the storefront. Helper methods, REST proxies, and a library of pre-built web components (login, search, product display, cart, checkout) for merchant themes and embedded apps.
 
-**Human URL:** [https://docs.salla.dev/twilight](https://docs.salla.dev/twilight)
+JavaScript SDK and Twig-based theme engine for the storefront. Provides helper methods and REST proxies that let merchant themes and embedded components communicate with the Salla backend, plus a library of pre-built web components (login, search, product display, cart, checkout).
 
-## Common Resources
+- **Human URL:** [https://docs.salla.dev/twilight](https://docs.salla.dev/twilight)
 
+#### Tags
+
+- E-Commerce
+- Storefront
+- SDK
+- Themes
+
+#### Properties
+
+- [Documentation](https://docs.salla.dev/twilight)
+- [SDK](https://github.com/SallaApp/theme-raed)
+- [Postman Collection](collections/salla-apps-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/salla-apps-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/salla-merchant-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/salla-merchant-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/salla-shipping-fulfillment-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/salla-shipping-fulfillment-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+## Common Properties
+
+- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
 - [Portal](https://salla.com)
-- [Developer Site](https://salla.dev)
-- [Partners Documentation](https://docs.salla.dev/)
+- [Documentation](https://salla.dev)
+- [Documentation](https://docs.salla.dev/)
 - [Getting Started](https://docs.salla.dev/421117m0)
-- [Salla Partners Console](https://salla.partners)
+- [Sign Up](https://salla.partners/login)
+- [Console](https://salla.partners)
 - [Pricing](https://salla.com/pricing)
+- [Terms of Service](https://salla.com/terms)
+- [Privacy Policy](https://salla.com/privacy)
+- [Blog](https://salla.com/blog)
 - [Status Page](https://status.salla.sa/)
-- [Merchant API Changelog](https://docs.salla.dev/421127m0)
+- [Support](mailto:support@salla.dev)
+- [Changelog](https://docs.salla.dev/421127m0)
 - [GitHub Organization](https://github.com/SallaApp)
-- [Salla Postman Workspace](https://www.postman.com/salla-app/salla-e-commerce-platform/overview)
-- [Merchant APIs v2.6.7 Postman Collection](https://www.postman.com/salla-app/salla-e-commerce-platform/collection/a2rh372/merchant-apis-v2-6-7)
-- [Salla CLI](https://github.com/SallaApp/Salla-CLI)
-- [Laravel Starter Kit](https://github.com/SallaApp/laravel-starter-kit)
-- [Express.js Starter Kit](https://github.com/SallaApp/express-starter-kit)
-- [OAuth2 Merchant Client (PHP)](https://github.com/SallaApp/oauth2-merchant)
-- [Passport OAuth Strategy (Node.js)](https://github.com/SallaApp/passport-strategy)
-- [ZATCA E-Invoicing QR (PHP)](https://github.com/SallaApp/ZATCA)
+- [Documentation](https://www.postman.com/salla-app/salla-e-commerce-platform/overview)
+- [Documentation](https://www.postman.com/salla-app/salla-e-commerce-platform/collection/a2rh372/merchant-apis-v2-6-7)
+- [YouTube](https://www.youtube.com/@sallaapp)
+- [Twitter](https://twitter.com/sallaApp)
+- [LinkedIn](https://www.linkedin.com/company/salla-app)
+- [C L I](https://github.com/SallaApp/Salla-CLI)
+- [SDK](https://github.com/SallaApp/laravel-starter-kit)
+- [SDK](https://github.com/SallaApp/express-starter-kit)
+- [SDK](https://github.com/SallaApp/oauth2-merchant)
+- [SDK](https://github.com/SallaApp/passport-strategy)
+- [SDK](https://github.com/SallaApp/webhook-actions-js)
+- [SDK](https://github.com/SallaApp/ZATCA)
+- [Tools](https://github.com/SallaApp/theme-raed)
+- [Tools](https://github.com/SallaApp/twilight-vscode-extension)
+- [Tools](https://github.com/SallaApp/embedded-sdk-playground)
+- [Tools](https://github.com/SallaApp/store-events-tracker-starter-kit)
+- [Forum](https://t.me/sallaDevelopers)
 - [Spectral Rules](rules/salla-rules.yml)
 - [Vocabulary](vocabulary/salla-vocabulary.yml)
-- [Plans and Pricing](plans/salla-plans-pricing.yml)
+- [Plans](plans/salla-plans-pricing.yml)
 - [Rate Limits](rate-limits/salla-rate-limits.yml)
-- [FinOps Profile](finops/salla-finops.yml)
+- [Fin Ops](finops/salla-finops.yml)
+- [Features](undefined)
+- [Use Cases](undefined)
+- [Integrations](undefined)
+- [Solutions](undefined)
 
-## Features
+## Maintainers
 
-- Arabic-First No-Code Store Builder
-- Salla Merchant API (`https://api.salla.dev/admin/v2`)
-- OAuth 2.0 Partners Authorization with 14-day access tokens, 1-month refresh window
-- HMAC SHA-256 signed webhooks with per-subscription conditional rules
-- Twilight Theme Engine and JavaScript SDK
-- Salla CLI for app and theme scaffolding and publishing
-- Shipping App contract for courier integrations
-- ZATCA Phase-1 / Phase-2 e-invoicing support
-- Embedded SDK and the Salla App Store
-- Native Saudi/GCC payments (mada, STC Pay, Apple Pay, Tabby, Tamara, STC Bank) and logistics (Aramex, SMSA, J&T, DHL)
-
-## Use Cases
-
-- Custom merchant apps published in the Salla App Store
-- ERP, accounting, and CRM integrations
-- Custom Twilight themes and headless storefronts
-- Shipping provider onboarding
-- Marketing and abandoned-cart automation
-- AI shopping assistants and merchant copilots
-- ZATCA compliance
-
-## Solutions
-
-- **Sellers** — merchants launching online stores with Arabic-first UX, regional payments, and built-in logistics
-- **Partners** — developers and agencies building apps, themes, and integrations distributed through the Salla Partners Portal
-- **Shipping Companies** — logistics providers reaching 80,000+ merchants by implementing the Salla Shipping App contract
-- **Enterprise** — larger brands with custom themes, dedicated infrastructure, and bespoke commercial terms
-
-## Maintainer
-
-- **FN:** Kin Lane
-- **Email:** info@apievangelist.com
-- **X:** [@apievangelist](https://twitter.com/apievangelist)
-- **URL:** https://apievangelist.com
+**FN:** Kin Lane
+**Email:** info@apievangelist.com
+**URL:** https://apievangelist.com

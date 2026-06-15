@@ -1,0 +1,406 @@
+{
+  "info": {
+    "_postman_id": "1e0efa0a-0abc-4598-9505-48203e048a72",
+    "name": "Salla Apps API",
+    "description": "OAuth 2.0 authorization server for Salla apps. Handles the merchant\nconsent flow, access and refresh token exchange, and merchant user info\nlookup. Apps obtain a 14-day access token plus a refresh token valid\nwithin a one-month window.\n\nOAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated\nREST calls then go to the Merchant API base URL\n`https://api.salla.dev/admin/v2`.\n\n\nContact Support:\n Name: Salla Developers\n Email: support@salla.dev",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:16:01.000Z",
+    "updatedAt": "2026-06-05T15:16:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1e0efa0a-0abc-4598-9505-48203e048a72"
+  },
+  "item": [
+    {
+      "name": "oauth2",
+      "item": [
+        {
+          "name": "auth",
+          "item": [
+            {
+              "name": "Authorize App",
+              "id": "a256d0df-7d09-4daa-8205-af315f965682",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/oauth2/auth?client_id=<string>&response_type=code&redirect_uri=<uri>&scope=<string>&state=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "oauth2",
+                    "auth"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "response_type",
+                      "value": "code"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "redirect_uri",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Initiates the merchant permission request for store data access."
+              },
+              "response": [
+                {
+                  "id": "e1cb36d6-015a-4144-b492-12260ae42af0",
+                  "name": "Redirect to the redirect_uri with an authorization code.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth2/auth?client_id=<string>&response_type=code&redirect_uri=<uri>&scope=<string>&state=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth2",
+                        "auth"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "response_type",
+                          "value": "code"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "redirect_uri",
+                          "value": "<uri>"
+                        },
+                        {
+                          "key": "scope",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "state",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Found",
+                  "code": 302,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:16:02.000Z",
+                  "updatedAt": "2026-06-05T15:16:02.000Z",
+                  "uid": "35240-e1cb36d6-015a-4144-b492-12260ae42af0"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:02.000Z",
+              "updatedAt": "2026-06-05T15:16:02.000Z",
+              "uid": "35240-a256d0df-7d09-4daa-8205-af315f965682"
+            }
+          ],
+          "id": "9a5bdcaf-5aca-41c3-9d4b-10870f3bf57a",
+          "createdAt": "2026-06-05T15:16:02.000Z",
+          "updatedAt": "2026-06-05T15:16:02.000Z",
+          "uid": "35240-9a5bdcaf-5aca-41c3-9d4b-10870f3bf57a"
+        },
+        {
+          "name": "token",
+          "item": [
+            {
+              "name": "Exchange Or Refresh Token",
+              "id": "0db11fe6-8bae-4cc6-8466-9a930d738520",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) ",
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "client_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "grant_type",
+                      "value": "authorization_code"
+                    },
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "refresh_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/oauth2/token",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "oauth2",
+                    "token"
+                  ]
+                },
+                "description": "Exchanges an authorization code for an access token, or refreshes an expired token."
+              },
+              "response": [
+                {
+                  "id": "454b7c59-cab8-4c92-bddf-035de5454ae8",
+                  "name": "Token response.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) ",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "client_secret",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "grant_type",
+                          "value": "authorization_code"
+                        },
+                        {
+                          "key": "code",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "refresh_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "redirect_uri",
+                          "value": "<uri>"
+                        },
+                        {
+                          "key": "scope",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth2/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth2",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"access_token\": \"<string>\",\n  \"refresh_token\": \"<string>\",\n  \"token_type\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"scope\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:16:02.000Z",
+                  "updatedAt": "2026-06-05T15:16:02.000Z",
+                  "uid": "35240-454b7c59-cab8-4c92-bddf-035de5454ae8"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:02.000Z",
+              "updatedAt": "2026-06-05T15:16:02.000Z",
+              "uid": "35240-0db11fe6-8bae-4cc6-8466-9a930d738520"
+            }
+          ],
+          "id": "ee1fbc86-2913-44d1-a10f-6cbe7b43054e",
+          "createdAt": "2026-06-05T15:16:02.000Z",
+          "updatedAt": "2026-06-05T15:16:02.000Z",
+          "uid": "35240-ee1fbc86-2913-44d1-a10f-6cbe7b43054e"
+        },
+        {
+          "name": "user",
+          "item": [
+            {
+              "name": "info",
+              "item": [
+                {
+                  "name": "Get Authenticated Merchant Info",
+                  "id": "5391dd20-994d-433d-9d70-975b92b5252c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth2/user/info",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth2",
+                        "user",
+                        "info"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "5434124f-83d6-48b0-b8bf-0b8c15c0c2ee",
+                      "name": "Merchant and store information for the authenticated token.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/oauth2/user/info",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "oauth2",
+                            "user",
+                            "info"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<integer>\",\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"mobile\": \"<string>\",\n    \"role\": \"<string>\",\n    \"merchant\": {\n      \"id\": \"<integer>\",\n      \"username\": \"<string>\",\n      \"name\": \"<string>\",\n      \"avatar\": \"<uri>\",\n      \"store\": {\n        \"id\": \"<integer>\",\n        \"owner_name\": \"<string>\",\n        \"owner_email\": \"<email>\",\n        \"plan\": \"<string>\",\n        \"status\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"avatar\": \"<uri>\",\n        \"currency\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:16:02.000Z",
+                      "updatedAt": "2026-06-05T15:16:02.000Z",
+                      "uid": "35240-5434124f-83d6-48b0-b8bf-0b8c15c0c2ee"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:16:02.000Z",
+                  "updatedAt": "2026-06-05T15:16:02.000Z",
+                  "uid": "35240-5391dd20-994d-433d-9d70-975b92b5252c"
+                }
+              ],
+              "id": "9ba3e022-d91f-40da-95e9-b32b705eef8f",
+              "createdAt": "2026-06-05T15:16:02.000Z",
+              "updatedAt": "2026-06-05T15:16:02.000Z",
+              "uid": "35240-9ba3e022-d91f-40da-95e9-b32b705eef8f"
+            }
+          ],
+          "id": "4e54228b-9e67-4ed8-a2d5-51ba4410e88d",
+          "createdAt": "2026-06-05T15:16:02.000Z",
+          "updatedAt": "2026-06-05T15:16:02.000Z",
+          "uid": "35240-4e54228b-9e67-4ed8-a2d5-51ba4410e88d"
+        }
+      ],
+      "id": "2ebded38-cc82-4c8c-8471-2608a9106ed7",
+      "createdAt": "2026-06-05T15:16:02.000Z",
+      "updatedAt": "2026-06-05T15:16:02.000Z",
+      "uid": "35240-2ebded38-cc82-4c8c-8471-2608a9106ed7"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://accounts.salla.sa"
+    }
+  ]
+}

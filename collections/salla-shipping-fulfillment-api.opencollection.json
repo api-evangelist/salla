@@ -1,0 +1,302 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salla Shipping and Fulfillment API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.salla.sa/oauth2/auth",
+      "accessTokenUrl": "https://accounts.salla.sa/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipping",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Shipping Companies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/shipping/companies"
+          },
+          "docs": "List Shipping Companies"
+        },
+        {
+          "info": {
+            "name": "Create Shipping Company",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/shipping/companies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Shipping Company"
+        },
+        {
+          "info": {
+            "name": "Get Shipping Company",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/shipping/companies/:company_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Shipping Company"
+        },
+        {
+          "info": {
+            "name": "Update Shipping Company",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.salla.dev/admin/v2/shipping/companies/:company_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Shipping Company"
+        },
+        {
+          "info": {
+            "name": "Delete Shipping Company",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.salla.dev/admin/v2/shipping/companies/:company_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Shipping Company"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Shipping Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/shipping/zones"
+          },
+          "docs": "List Shipping Zones"
+        },
+        {
+          "info": {
+            "name": "Create Shipping Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/shipping/zones",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Shipping Zone"
+        },
+        {
+          "info": {
+            "name": "Get Shipping Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/shipping/zones/:zone_id",
+            "params": [
+              {
+                "name": "zone_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Shipping Zone"
+        },
+        {
+          "info": {
+            "name": "Update Shipping Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.salla.dev/admin/v2/shipping/zones/:zone_id",
+            "params": [
+              {
+                "name": "zone_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Shipping Zone"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Shipments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Shipments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/shipments"
+          },
+          "docs": "List Shipments"
+        },
+        {
+          "info": {
+            "name": "Create Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/shipments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Shipment"
+        },
+        {
+          "info": {
+            "name": "Get Shipment Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.salla.dev/admin/v2/shipments/:shipment_id",
+            "params": [
+              {
+                "name": "shipment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Shipment Details"
+        },
+        {
+          "info": {
+            "name": "Update Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.salla.dev/admin/v2/shipments/:shipment_id",
+            "params": [
+              {
+                "name": "shipment_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Shipment"
+        },
+        {
+          "info": {
+            "name": "Cancel Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/shipments/:shipment_id/cancel",
+            "params": [
+              {
+                "name": "shipment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel Shipment"
+        },
+        {
+          "info": {
+            "name": "Create Shipment Return",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.salla.dev/admin/v2/shipments/:shipment_id/return",
+            "params": [
+              {
+                "name": "shipment_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Shipment Return"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
