@@ -29,11 +29,11 @@ apis:
       - url: json-schema/salla-customer-schema.json
         type: JSONSchema
       - url: json-ld/salla-context.jsonld
-        type: JSON-LD
+        type: JSONLD
       - url: examples/salla-list-products-example.json
-        type: Example
+        type: Examples
       - url: examples/salla-create-order-example.json
-        type: Example
+        type: Examples
     description: >-
       RESTful endpoints purpose-built for secure, fast, and easy access to Merchant data. Covers products, orders,
       customers, branches, brands, categories, coupons, currencies, languages, taxes, shipping zones, shipments,
@@ -110,7 +110,7 @@ apis:
     properties:
       - url: https://docs.salla.dev/twilight
         type: Documentation
-      - type: SDK
+      - type: SDKs
         url: https://github.com/SallaApp/theme-raed
     description: >-
       JavaScript SDK and Twig-based theme engine for the storefront. Provides helper methods and REST proxies that let
@@ -135,42 +135,39 @@ access: 3rd-Party
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/salla/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/salla-abandoned-cart-recovery-workflow.yml
-        name: Salla Abandoned Cart Recovery
-        summary: Find abandoned carts, look up the shopper, and issue a recovery coupon.
-      - url: arazzo/salla-catalog-taxonomy-setup-workflow.yml
-        name: Salla Catalog Taxonomy Setup
-        summary: Create a brand and category, then create a product assigned to both.
-      - url: arazzo/salla-customer-upsert-workflow.yml
-        name: Salla Upsert Customer
-        summary: Find a customer in a page of results and update them, otherwise create a new customer.
-      - url: arazzo/salla-oauth-token-exchange-workflow.yml
-        name: Salla OAuth Token Exchange
-        summary: Exchange an authorization code for an access token and confirm the merchant identity.
-      - url: arazzo/salla-order-fulfillment-workflow.yml
-        name: Salla Order Fulfillment
-        summary: Read an order, create its shipment, and advance the order status.
-      - url: arazzo/salla-order-monitor-workflow.yml
-        name: Salla Monitor and Audit Orders
-        summary: List orders by status, then pull the full detail, history, and invoices for one.
-      - url: arazzo/salla-product-create-verify-workflow.yml
-        name: Salla Create and Verify Product
-        summary: Create a product, read it back, and confirm its generated SKUs.
-      - url: arazzo/salla-product-upsert-workflow.yml
-        name: Salla Upsert Product by SKU
-        summary: Find a product by keyword and update it if it exists, otherwise create it.
-      - url: arazzo/salla-shipment-lifecycle-workflow.yml
-        name: Salla Shipment Lifecycle
-        summary: Resolve a courier, create a shipment, read it back, and branch on whether to cancel.
-      - url: arazzo/salla-shipping-zone-setup-workflow.yml
-        name: Salla Shipping Zone Setup
-        summary: Register a shipping company, create a delivery zone for it, and read the zone back.
-      - url: arazzo/salla-webhook-subscription-workflow.yml
-        name: Salla Webhook Subscription Setup
-        summary: Inspect existing webhook subscriptions, subscribe to an event, and confirm registration.
+  - type: Arazzo
+    url: arazzo/salla-abandoned-cart-recovery-workflow.yml
+    name: Salla Abandoned Cart Recovery
+  - type: Arazzo
+    url: arazzo/salla-catalog-taxonomy-setup-workflow.yml
+    name: Salla Catalog Taxonomy Setup
+  - type: Arazzo
+    url: arazzo/salla-customer-upsert-workflow.yml
+    name: Salla Upsert Customer
+  - type: Arazzo
+    url: arazzo/salla-oauth-token-exchange-workflow.yml
+    name: Salla OAuth Token Exchange
+  - type: Arazzo
+    url: arazzo/salla-order-fulfillment-workflow.yml
+    name: Salla Order Fulfillment
+  - type: Arazzo
+    url: arazzo/salla-order-monitor-workflow.yml
+    name: Salla Monitor and Audit Orders
+  - type: Arazzo
+    url: arazzo/salla-product-create-verify-workflow.yml
+    name: Salla Create and Verify Product
+  - type: Arazzo
+    url: arazzo/salla-product-upsert-workflow.yml
+    name: Salla Upsert Product by SKU
+  - type: Arazzo
+    url: arazzo/salla-shipment-lifecycle-workflow.yml
+    name: Salla Shipment Lifecycle
+  - type: Arazzo
+    url: arazzo/salla-shipping-zone-setup-workflow.yml
+    name: Salla Shipping Zone Setup
+  - type: Arazzo
+    url: arazzo/salla-webhook-subscription-workflow.yml
+    name: Salla Webhook Subscription Setup
   - url: https://salla.com
     type: Portal
   - url: https://salla.dev
@@ -183,7 +180,7 @@ common:
     type: GettingStarted
   - url: https://salla.partners/login
     name: Salla Partners Portal
-    type: SignUp
+    type: Signup
   - url: https://salla.partners
     name: Salla Partners
     type: Console
@@ -221,22 +218,22 @@ common:
     type: CLI
   - url: https://github.com/SallaApp/laravel-starter-kit
     name: Laravel Starter Kit
-    type: SDK
+    type: SDKs
   - url: https://github.com/SallaApp/express-starter-kit
     name: Express.js Starter Kit
-    type: SDK
+    type: SDKs
   - url: https://github.com/SallaApp/oauth2-merchant
     name: OAuth2 Merchant Client (PHP)
-    type: SDK
+    type: SDKs
   - url: https://github.com/SallaApp/passport-strategy
     name: Passport OAuth Strategy (Node.js)
-    type: SDK
+    type: SDKs
   - url: https://github.com/SallaApp/webhook-actions-js
     name: Webhook Actions (Node.js)
-    type: SDK
+    type: SDKs
   - url: https://github.com/SallaApp/ZATCA
     name: ZATCA (Fatoora) E-Invoicing QR Code (PHP)
-    type: SDK
+    type: SDKs
   - url: https://github.com/SallaApp/theme-raed
     name: Twilight Theme Raed
     type: Tools
@@ -251,7 +248,7 @@ common:
     type: Tools
   - url: https://t.me/sallaDevelopers
     name: Salla Developers Telegram
-    type: Forum
+    type: Forums
   - url: rules/salla-rules.yml
     type: SpectralRules
   - url: vocabulary/salla-vocabulary.yml
