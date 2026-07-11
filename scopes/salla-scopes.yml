@@ -1,0 +1,84 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/salla-merchant-api-openapi.yml, openapi/salla-shipping-fulfillment-api-openapi.yml
+schemes:
+- name: OAuth2
+  source: openapi/salla-merchant-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.salla.sa/oauth2/auth
+    tokenUrl: https://accounts.salla.sa/oauth2/token
+- name: OAuth2
+  source: openapi/salla-shipping-fulfillment-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.salla.sa/oauth2/auth
+    tokenUrl: https://accounts.salla.sa/oauth2/token
+scopes:
+- scope: customers.read
+  description: Read customers.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/salla-merchant-api-openapi.yml
+- scope: customers.read_write
+  description: Read and write customers.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/salla-merchant-api-openapi.yml
+- scope: offline_access
+  description: Required to receive a refresh token.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/salla-merchant-api-openapi.yml
+  - openapi/salla-shipping-fulfillment-api-openapi.yml
+- scope: orders.read
+  description: Read orders.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/salla-merchant-api-openapi.yml
+- scope: orders.read_write
+  description: Read and write orders.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/salla-merchant-api-openapi.yml
+- scope: products.read
+  description: Read products.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/salla-merchant-api-openapi.yml
+- scope: products.read_write
+  description: Read and write products.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/salla-merchant-api-openapi.yml
+- scope: settings.read
+  description: Read store settings.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/salla-merchant-api-openapi.yml
+- scope: shipments.read
+  description: Read shipments.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/salla-shipping-fulfillment-api-openapi.yml
+- scope: shipments.read_write
+  description: Read and write shipments.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/salla-shipping-fulfillment-api-openapi.yml
+- scope: webhooks.read_write
+  description: Manage webhook subscriptions.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/salla-merchant-api-openapi.yml
