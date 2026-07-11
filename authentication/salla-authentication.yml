@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/salla-apps-api-openapi.yml, openapi/salla-merchant-api-openapi.yml, openapi/salla-shipping-fulfillment-api-openapi.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/salla-apps-api-openapi.yml
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.salla.sa/oauth2/auth
+    tokenUrl: https://accounts.salla.sa/oauth2/token
+    scopes: 9
+  sources:
+  - openapi/salla-merchant-api-openapi.yml
+  - openapi/salla-shipping-fulfillment-api-openapi.yml
