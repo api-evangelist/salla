@@ -1,0 +1,360 @@
+openapi: 3.0.3
+info:
+  title: Salla Apps Branches Orders API
+  description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
+
+    consent flow, access and refresh token exchange, and merchant user info
+
+    lookup. Apps obtain a 14-day access token plus a refresh token valid
+
+    within a one-month window.
+
+
+    OAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated
+
+    REST calls then go to the Merchant API base URL
+
+    `https://api.salla.dev/admin/v2`.
+
+    '
+  version: '2'
+  contact:
+    name: Salla Developers
+    url: https://docs.salla.dev/
+    email: support@salla.dev
+servers:
+- url: https://accounts.salla.sa
+  description: Salla OAuth and account endpoints
+tags:
+- name: Orders
+paths:
+  /orders:
+    get:
+      summary: List Orders
+      operationId: listOrders
+      tags:
+      - Orders
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+      - name: status
+        in: query
+        schema:
+          type: string
+      - name: from_date
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: to_date
+        in: query
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: Paginated list of orders.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+  /orders/{order_id}:
+    parameters:
+    - name: order_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Get Order Details
+      operationId: getOrder
+      tags:
+      - Orders
+      parameters:
+      - name: format
+        in: query
+        description: Set to `light` to exclude shipments, items, pickup branch, and customer groups.
+        schema:
+          type: string
+          enum:
+          - light
+      responses:
+        '200':
+          description: Order details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update Order
+      operationId: updateOrder
+      tags:
+      - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Order updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+  /orders/{order_id}/status:
+    parameters:
+    - name: order_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    post:
+      summary: Update Order Status
+      operationId: updateOrderStatus
+      tags:
+      - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - slug
+              properties:
+                slug:
+                  type: string
+                  description: Status slug.
+                note:
+                  type: string
+      responses:
+        '200':
+          description: Order status updated.
+  /orders/{order_id}/histories:
+    parameters:
+    - name: order_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: List Order Histories
+      operationId: listOrderHistories
+      tags:
+      - Orders
+      responses:
+        '200':
+          description: Order history entries.
+  /orders/{order_id}/invoices:
+    parameters:
+    - name: order_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: List Order Invoices
+      operationId: listOrderInvoices
+      tags:
+      - Orders
+      responses:
+        '200':
+          description: Order invoices.
+  /orders/{order_id}/items:
+    parameters:
+    - name: order_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: List Order Items
+      operationId: listOrderItems
+      tags:
+      - Orders
+      responses:
+        '200':
+          description: Order items.
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+        reference_id:
+          type: integer
+        urls:
+          type: object
+        date:
+          type: object
+          properties:
+            date:
+              type: string
+              format: date-time
+            timezone:
+              type: string
+        source:
+          type: string
+        status:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            slug:
+              type: string
+            customized:
+              type: object
+        can_cancel:
+          type: boolean
+        can_reorder:
+          type: boolean
+        is_pending_payment:
+          type: boolean
+        payment_method:
+          type: string
+        amounts:
+          type: object
+          properties:
+            sub_total:
+              $ref: '#/components/schemas/Money'
+            shipping_cost:
+              $ref: '#/components/schemas/Money'
+            tax:
+              $ref: '#/components/schemas/Money'
+            discounts:
+              $ref: '#/components/schemas/Money'
+            total:
+              $ref: '#/components/schemas/Money'
+        shipping:
+          type: object
+        shipments:
+          type: array
+          items:
+            type: object
+        items:
+          type: array
+          items:
+            type: object
+        total_weight:
+          type: number
+        currency:
+          type: string
+        customer:
+          $ref: '#/components/schemas/Customer'
+    OrderList:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        mobile:
+          type: string
+        mobile_code:
+          type: string
+        email:
+          type: string
+          format: email
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+        birthday:
+          type: string
+          format: date
+        avatar:
+          type: string
+          format: uri
+        city:
+          type: string
+        country:
+          type: string
+        currency:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+    Money:
+      type: object
+      properties:
+        amount:
+          type: number
+        currency:
+          type: string
+          example: SAR
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        current:
+          type: integer
+        next:
+          type: string
+          nullable: true
+    OrderResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Order'
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            fields:
+              type: object
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

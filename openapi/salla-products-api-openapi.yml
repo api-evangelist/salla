@@ -1,0 +1,417 @@
+openapi: 3.0.3
+info:
+  title: Salla Apps Branches Products API
+  description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
+
+    consent flow, access and refresh token exchange, and merchant user info
+
+    lookup. Apps obtain a 14-day access token plus a refresh token valid
+
+    within a one-month window.
+
+
+    OAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated
+
+    REST calls then go to the Merchant API base URL
+
+    `https://api.salla.dev/admin/v2`.
+
+    '
+  version: '2'
+  contact:
+    name: Salla Developers
+    url: https://docs.salla.dev/
+    email: support@salla.dev
+servers:
+- url: https://accounts.salla.sa
+  description: Salla OAuth and account endpoints
+tags:
+- name: Products
+paths:
+  /products:
+    get:
+      summary: List Products
+      operationId: listProducts
+      tags:
+      - Products
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+      - name: keyword
+        in: query
+        description: Filter products matching a name or SKU value.
+        schema:
+          type: string
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - hidden
+          - sale
+          - out
+      - name: category
+        in: query
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: Use `light` for simplified product data.
+        schema:
+          type: string
+          enum:
+          - light
+      responses:
+        '200':
+          description: Paginated list of products.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create Product
+      operationId: createProduct
+      tags:
+      - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+      responses:
+        '201':
+          description: Product created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+  /products/{product_id}:
+    parameters:
+    - name: product_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Get Product
+      operationId: getProduct
+      tags:
+      - Products
+      responses:
+        '200':
+          description: Product details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+    put:
+      summary: Update Product
+      operationId: updateProduct
+      tags:
+      - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+      responses:
+        '200':
+          description: Product updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+    delete:
+      summary: Delete Product
+      operationId: deleteProduct
+      tags:
+      - Products
+      responses:
+        '200':
+          description: Product deleted.
+  /products/{product_id}/skus:
+    parameters:
+    - name: product_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: List Product SKUs
+      operationId: listProductSkus
+      tags:
+      - Products
+      responses:
+        '200':
+          description: List of SKUs for the product.
+          content:
+            application/json:
+              schema:
+                type: object
+  /products/options:
+    post:
+      summary: Create Product Option
+      operationId: createProductOption
+      tags:
+      - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Option created.
+  /products/quantities:
+    put:
+      summary: Update Product Quantities
+      operationId: updateProductQuantities
+      tags:
+      - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Quantities updated.
+components:
+  responses:
+    ValidationError:
+      description: Request validation failed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Invalid or missing access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Image:
+      type: object
+      properties:
+        id:
+          type: integer
+        original:
+          type: string
+          format: uri
+        thumbnail:
+          type: string
+          format: uri
+        alt:
+          type: string
+        sort:
+          type: integer
+    ProductResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Product'
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            fields:
+              type: object
+    Money:
+      type: object
+      properties:
+        amount:
+          type: number
+        currency:
+          type: string
+          example: SAR
+    ProductCreate:
+      type: object
+      required:
+      - name
+      - price
+      - product_type
+      properties:
+        name:
+          type: string
+        price:
+          type: number
+        product_type:
+          type: string
+          enum:
+          - product
+          - service
+          - group_products
+          - codes
+          - digital
+          - food
+          - booking
+          - donating
+        status:
+          type: string
+          enum:
+          - sale
+          - out
+          - hidden
+          - deleted
+        quantity:
+          type: integer
+        description:
+          type: string
+        categories:
+          type: array
+          items:
+            type: integer
+        sale_price:
+          type: number
+        cost_price:
+          type: number
+        sale_start:
+          type: string
+          format: date-time
+        sale_end:
+          type: string
+          format: date-time
+        sku:
+          type: string
+        mpn:
+          type: string
+        gtin:
+          type: string
+        brand_id:
+          type: integer
+        tags:
+          type: array
+          items:
+            type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        options:
+          type: array
+          items:
+            type: object
+        metadata_title:
+          type: string
+        metadata_description:
+          type: string
+        metadata_url:
+          type: string
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        current:
+          type: integer
+        next:
+          type: string
+          nullable: true
+    ProductList:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        sku:
+          type: string
+        mpn:
+          type: string
+        gtin:
+          type: string
+        type:
+          type: string
+          enum:
+          - product
+          - service
+          - group_products
+          - codes
+          - digital
+          - food
+          - booking
+          - donating
+        status:
+          type: string
+          enum:
+          - sale
+          - out
+          - hidden
+          - deleted
+        price:
+          $ref: '#/components/schemas/Money'
+        sale_price:
+          $ref: '#/components/schemas/Money'
+        cost_price:
+          $ref: '#/components/schemas/Money'
+        quantity:
+          type: integer
+        description:
+          type: string
+        url:
+          type: string
+          format: uri
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        categories:
+          type: array
+          items:
+            type: integer
+        brand_id:
+          type: integer
+        tags:
+          type: array
+          items:
+            type: string
+        updated_at:
+          type: string
+          format: date-time
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

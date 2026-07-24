@@ -1,0 +1,96 @@
+openapi: 3.0.3
+info:
+  title: Salla Apps Branches Brands API
+  description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
+
+    consent flow, access and refresh token exchange, and merchant user info
+
+    lookup. Apps obtain a 14-day access token plus a refresh token valid
+
+    within a one-month window.
+
+
+    OAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated
+
+    REST calls then go to the Merchant API base URL
+
+    `https://api.salla.dev/admin/v2`.
+
+    '
+  version: '2'
+  contact:
+    name: Salla Developers
+    url: https://docs.salla.dev/
+    email: support@salla.dev
+servers:
+- url: https://accounts.salla.sa
+  description: Salla OAuth and account endpoints
+tags:
+- name: Brands
+paths:
+  /brands:
+    get:
+      summary: List Brands
+      operationId: listBrands
+      tags:
+      - Brands
+      responses:
+        '200':
+          description: Brand list.
+    post:
+      summary: Create Brand
+      operationId: createBrand
+      tags:
+      - Brands
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Brand created.
+  /brands/{brand_id}:
+    parameters:
+    - name: brand_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Get Brand
+      operationId: getBrand
+      tags:
+      - Brands
+      responses:
+        '200':
+          description: Brand details.
+    put:
+      summary: Update Brand
+      operationId: updateBrand
+      tags:
+      - Brands
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Brand updated.
+    delete:
+      summary: Delete Brand
+      operationId: deleteBrand
+      tags:
+      - Brands
+      responses:
+        '200':
+          description: Brand deleted.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

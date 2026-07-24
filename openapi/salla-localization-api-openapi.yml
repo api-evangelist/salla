@@ -1,0 +1,78 @@
+openapi: 3.0.3
+info:
+  title: Salla Apps Branches Localization API
+  description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
+
+    consent flow, access and refresh token exchange, and merchant user info
+
+    lookup. Apps obtain a 14-day access token plus a refresh token valid
+
+    within a one-month window.
+
+
+    OAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated
+
+    REST calls then go to the Merchant API base URL
+
+    `https://api.salla.dev/admin/v2`.
+
+    '
+  version: '2'
+  contact:
+    name: Salla Developers
+    url: https://docs.salla.dev/
+    email: support@salla.dev
+servers:
+- url: https://accounts.salla.sa
+  description: Salla OAuth and account endpoints
+tags:
+- name: Localization
+paths:
+  /currencies:
+    get:
+      summary: List Currencies
+      operationId: listCurrencies
+      tags:
+      - Localization
+      responses:
+        '200':
+          description: Currency list.
+  /languages:
+    get:
+      summary: List Languages
+      operationId: listLanguages
+      tags:
+      - Localization
+      responses:
+        '200':
+          description: Language list.
+  /countries:
+    get:
+      summary: List Countries
+      operationId: listCountries
+      tags:
+      - Localization
+      responses:
+        '200':
+          description: Country list.
+  /countries/{country_id}:
+    parameters:
+    - name: country_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Get Country Details
+      operationId: getCountry
+      tags:
+      - Localization
+      responses:
+        '200':
+          description: Country details.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

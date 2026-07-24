@@ -1,0 +1,102 @@
+openapi: 3.0.3
+info:
+  title: Salla Apps Branches Webhooks API
+  description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
+
+    consent flow, access and refresh token exchange, and merchant user info
+
+    lookup. Apps obtain a 14-day access token plus a refresh token valid
+
+    within a one-month window.
+
+
+    OAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated
+
+    REST calls then go to the Merchant API base URL
+
+    `https://api.salla.dev/admin/v2`.
+
+    '
+  version: '2'
+  contact:
+    name: Salla Developers
+    url: https://docs.salla.dev/
+    email: support@salla.dev
+servers:
+- url: https://accounts.salla.sa
+  description: Salla OAuth and account endpoints
+tags:
+- name: Webhooks
+paths:
+  /webhooks/subscribe:
+    post:
+      summary: Subscribe Webhook
+      operationId: subscribeWebhook
+      tags:
+      - Webhooks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - event
+              - url
+              properties:
+                name:
+                  type: string
+                event:
+                  type: string
+                  description: Webhook event name (e.g. `order.created`).
+                url:
+                  type: string
+                  format: uri
+                version:
+                  type: integer
+                rule:
+                  type: string
+                  description: Optional conditional rule.
+                headers:
+                  type: array
+                  items:
+                    type: object
+                security_strategy:
+                  type: string
+                  enum:
+                  - signature
+                  - token
+      responses:
+        '201':
+          description: Webhook subscription created.
+  /webhooks/subscriptions:
+    get:
+      summary: List Webhook Subscriptions
+      operationId: listWebhookSubscriptions
+      tags:
+      - Webhooks
+      responses:
+        '200':
+          description: Webhook subscriptions.
+  /webhooks/unsubscribe/{subscription_id}:
+    parameters:
+    - name: subscription_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    delete:
+      summary: Unsubscribe Webhook
+      operationId: unsubscribeWebhook
+      tags:
+      - Webhooks
+      responses:
+        '200':
+          description: Webhook subscription deleted.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

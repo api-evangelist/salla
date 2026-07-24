@@ -1,0 +1,158 @@
+openapi: 3.0.3
+info:
+  title: Salla Apps Branches Shipping API
+  description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
+
+    consent flow, access and refresh token exchange, and merchant user info
+
+    lookup. Apps obtain a 14-day access token plus a refresh token valid
+
+    within a one-month window.
+
+
+    OAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated
+
+    REST calls then go to the Merchant API base URL
+
+    `https://api.salla.dev/admin/v2`.
+
+    '
+  version: '2'
+  contact:
+    name: Salla Developers
+    url: https://docs.salla.dev/
+    email: support@salla.dev
+servers:
+- url: https://accounts.salla.sa
+  description: Salla OAuth and account endpoints
+tags:
+- name: Shipping
+paths:
+  /shipments:
+    get:
+      summary: List Shipments
+      operationId: listShipments
+      tags:
+      - Shipping
+      responses:
+        '200':
+          description: Shipment list.
+    post:
+      summary: Create Shipment
+      operationId: createShipment
+      tags:
+      - Shipping
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Shipment created.
+  /shipments/{shipment_id}:
+    parameters:
+    - name: shipment_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Get Shipment Details
+      operationId: getShipment
+      tags:
+      - Shipping
+      responses:
+        '200':
+          description: Shipment details.
+  /shipping/zones:
+    get:
+      summary: List Shipping Zones
+      operationId: listShippingZones
+      tags:
+      - Shipping
+      responses:
+        '200':
+          description: Shipping zone list.
+  /shipping/zones/{zone_id}:
+    parameters:
+    - name: zone_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Get Shipping Zone Details
+      operationId: getShippingZone
+      tags:
+      - Shipping
+      responses:
+        '200':
+          description: Shipping zone details.
+  /shipping/companies:
+    get:
+      summary: List Shipping Companies
+      operationId: listShippingCompanies
+      tags:
+      - Shipping
+      responses:
+        '200':
+          description: Shipping company list.
+    post:
+      summary: Create Shipping Company
+      operationId: createShippingCompany
+      tags:
+      - Shipping
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Shipping company created.
+  /shipping/companies/{company_id}:
+    parameters:
+    - name: company_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Get Shipping Company
+      operationId: getShippingCompany
+      tags:
+      - Shipping
+      responses:
+        '200':
+          description: Shipping company details.
+    put:
+      summary: Update Shipping Company
+      operationId: updateShippingCompany
+      tags:
+      - Shipping
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Shipping company updated.
+    delete:
+      summary: Delete Shipping Company
+      operationId: deleteShippingCompany
+      tags:
+      - Shipping
+      responses:
+        '200':
+          description: Shipping company deleted.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

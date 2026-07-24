@@ -1,0 +1,216 @@
+openapi: 3.0.3
+info:
+  title: Salla Apps Branches Customers API
+  description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
+
+    consent flow, access and refresh token exchange, and merchant user info
+
+    lookup. Apps obtain a 14-day access token plus a refresh token valid
+
+    within a one-month window.
+
+
+    OAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated
+
+    REST calls then go to the Merchant API base URL
+
+    `https://api.salla.dev/admin/v2`.
+
+    '
+  version: '2'
+  contact:
+    name: Salla Developers
+    url: https://docs.salla.dev/
+    email: support@salla.dev
+servers:
+- url: https://accounts.salla.sa
+  description: Salla OAuth and account endpoints
+tags:
+- name: Customers
+paths:
+  /customers:
+    get:
+      summary: List Customers
+      operationId: listCustomers
+      tags:
+      - Customers
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Paginated list of customers.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerList'
+    post:
+      summary: Create Customer
+      operationId: createCustomer
+      tags:
+      - Customers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerCreate'
+      responses:
+        '201':
+          description: Customer created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+  /customers/{customer_id}:
+    parameters:
+    - name: customer_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Get Customer
+      operationId: getCustomer
+      tags:
+      - Customers
+      responses:
+        '200':
+          description: Customer details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+    put:
+      summary: Update Customer
+      operationId: updateCustomer
+      tags:
+      - Customers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerCreate'
+      responses:
+        '200':
+          description: Customer updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+components:
+  schemas:
+    CustomerResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Customer'
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        mobile:
+          type: string
+        mobile_code:
+          type: string
+        email:
+          type: string
+          format: email
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+        birthday:
+          type: string
+          format: date
+        avatar:
+          type: string
+          format: uri
+        city:
+          type: string
+        country:
+          type: string
+        currency:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+    CustomerCreate:
+      type: object
+      required:
+      - first_name
+      - mobile
+      - mobile_code
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        mobile:
+          type: string
+        mobile_code:
+          type: string
+        email:
+          type: string
+          format: email
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+        birthday:
+          type: string
+          format: date
+        city:
+          type: string
+        country:
+          type: string
+        groups:
+          type: array
+          items:
+            type: integer
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        current:
+          type: integer
+        next:
+          type: string
+          nullable: true
+    CustomerList:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,59 @@
+openapi: 3.0.3
+info:
+  title: Salla Apps Branches Coupons API
+  description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
+
+    consent flow, access and refresh token exchange, and merchant user info
+
+    lookup. Apps obtain a 14-day access token plus a refresh token valid
+
+    within a one-month window.
+
+
+    OAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated
+
+    REST calls then go to the Merchant API base URL
+
+    `https://api.salla.dev/admin/v2`.
+
+    '
+  version: '2'
+  contact:
+    name: Salla Developers
+    url: https://docs.salla.dev/
+    email: support@salla.dev
+servers:
+- url: https://accounts.salla.sa
+  description: Salla OAuth and account endpoints
+tags:
+- name: Coupons
+paths:
+  /coupons:
+    get:
+      summary: List Coupons
+      operationId: listCoupons
+      tags:
+      - Coupons
+      responses:
+        '200':
+          description: Coupon list.
+    post:
+      summary: Create Coupon
+      operationId: createCoupon
+      tags:
+      - Coupons
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Coupon created.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

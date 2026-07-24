@@ -1,0 +1,116 @@
+openapi: 3.0.3
+info:
+  title: Salla Apps Branches Zones API
+  description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
+
+    consent flow, access and refresh token exchange, and merchant user info
+
+    lookup. Apps obtain a 14-day access token plus a refresh token valid
+
+    within a one-month window.
+
+
+    OAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated
+
+    REST calls then go to the Merchant API base URL
+
+    `https://api.salla.dev/admin/v2`.
+
+    '
+  version: '2'
+  contact:
+    name: Salla Developers
+    url: https://docs.salla.dev/
+    email: support@salla.dev
+servers:
+- url: https://accounts.salla.sa
+  description: Salla OAuth and account endpoints
+tags:
+- name: Zones
+paths:
+  /shipping/zones:
+    get:
+      summary: List Shipping Zones
+      operationId: listShippingZones
+      tags:
+      - Zones
+      responses:
+        '200':
+          description: Shipping zones.
+    post:
+      summary: Create Shipping Zone
+      operationId: createShippingZone
+      tags:
+      - Zones
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Shipping zone created.
+  /shipping/zones/{zone_id}:
+    parameters:
+    - name: zone_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Get Shipping Zone
+      operationId: getShippingZone
+      tags:
+      - Zones
+      responses:
+        '200':
+          description: Shipping zone details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingZone'
+    put:
+      summary: Update Shipping Zone
+      operationId: updateShippingZone
+      tags:
+      - Zones
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Shipping zone updated.
+components:
+  schemas:
+    ShippingZone:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        countries:
+          type: array
+          items:
+            type: string
+            description: ISO 3166-1 alpha-2 country code.
+        cities:
+          type: array
+          items:
+            type: string
+        cost:
+          type: number
+        currency:
+          type: string
+        free_above:
+          type: number
+          nullable: true
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

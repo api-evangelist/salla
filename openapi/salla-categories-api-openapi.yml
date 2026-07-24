@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: Salla Apps Branches Categories API
+  description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
+
+    consent flow, access and refresh token exchange, and merchant user info
+
+    lookup. Apps obtain a 14-day access token plus a refresh token valid
+
+    within a one-month window.
+
+
+    OAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated
+
+    REST calls then go to the Merchant API base URL
+
+    `https://api.salla.dev/admin/v2`.
+
+    '
+  version: '2'
+  contact:
+    name: Salla Developers
+    url: https://docs.salla.dev/
+    email: support@salla.dev
+servers:
+- url: https://accounts.salla.sa
+  description: Salla OAuth and account endpoints
+tags:
+- name: Categories
+paths:
+  /categories:
+    get:
+      summary: List Categories
+      operationId: listCategories
+      tags:
+      - Categories
+      responses:
+        '200':
+          description: Category list.
+    post:
+      summary: Create Category
+      operationId: createCategory
+      tags:
+      - Categories
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Category created.
+  /categories/{category_id}:
+    parameters:
+    - name: category_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Get Category
+      operationId: getCategory
+      tags:
+      - Categories
+      responses:
+        '200':
+          description: Category details.
+    put:
+      summary: Update Category
+      operationId: updateCategory
+      tags:
+      - Categories
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Category updated.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

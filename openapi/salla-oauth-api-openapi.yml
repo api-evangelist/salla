@@ -1,0 +1,209 @@
+openapi: 3.0.3
+info:
+  title: Salla Apps Branches OAuth API
+  description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
+
+    consent flow, access and refresh token exchange, and merchant user info
+
+    lookup. Apps obtain a 14-day access token plus a refresh token valid
+
+    within a one-month window.
+
+
+    OAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated
+
+    REST calls then go to the Merchant API base URL
+
+    `https://api.salla.dev/admin/v2`.
+
+    '
+  version: '2'
+  contact:
+    name: Salla Developers
+    url: https://docs.salla.dev/
+    email: support@salla.dev
+servers:
+- url: https://accounts.salla.sa
+  description: Salla OAuth and account endpoints
+tags:
+- name: OAuth
+paths:
+  /oauth2/auth:
+    get:
+      summary: Authorize App
+      operationId: authorize
+      tags:
+      - OAuth
+      description: Initiates the merchant permission request for store data access.
+      parameters:
+      - name: client_id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: response_type
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - code
+      - name: redirect_uri
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uri
+      - name: scope
+        in: query
+        schema:
+          type: string
+          example: offline_access
+      - name: state
+        in: query
+        schema:
+          type: string
+      responses:
+        '302':
+          description: Redirect to the redirect_uri with an authorization code.
+  /oauth2/token:
+    post:
+      summary: Exchange Or Refresh Token
+      operationId: token
+      tags:
+      - OAuth
+      description: Exchanges an authorization code for an access token, or refreshes an expired token.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - client_id
+              - client_secret
+              - grant_type
+              properties:
+                client_id:
+                  type: string
+                client_secret:
+                  type: string
+                grant_type:
+                  type: string
+                  enum:
+                  - authorization_code
+                  - refresh_token
+                code:
+                  type: string
+                refresh_token:
+                  type: string
+                redirect_uri:
+                  type: string
+                  format: uri
+                scope:
+                  type: string
+      responses:
+        '200':
+          description: Token response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+  /oauth2/user/info:
+    get:
+      summary: Get Authenticated Merchant Info
+      operationId: getUserInfo
+      tags:
+      - OAuth
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          description: Merchant and store information for the authenticated token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfo'
+components:
+  schemas:
+    UserInfo:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            email:
+              type: string
+              format: email
+            mobile:
+              type: string
+            role:
+              type: string
+            merchant:
+              type: object
+              properties:
+                id:
+                  type: integer
+                username:
+                  type: string
+                name:
+                  type: string
+                avatar:
+                  type: string
+                  format: uri
+                store:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    owner_name:
+                      type: string
+                    owner_email:
+                      type: string
+                      format: email
+                    plan:
+                      type: string
+                    status:
+                      type: string
+                    domain:
+                      type: string
+                    url:
+                      type: string
+                      format: uri
+                    avatar:
+                      type: string
+                      format: uri
+                    currency:
+                      type: string
+                    location:
+                      type: string
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        refresh_token:
+          type: string
+        token_type:
+          type: string
+          example: Bearer
+        expires_in:
+          type: integer
+          description: Token lifetime in seconds (typically 1
+          209: null
+          600 = 14 days).: null
+        scope:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

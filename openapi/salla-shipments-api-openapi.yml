@@ -1,0 +1,196 @@
+openapi: 3.0.3
+info:
+  title: Salla Apps Branches Shipments API
+  description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
+
+    consent flow, access and refresh token exchange, and merchant user info
+
+    lookup. Apps obtain a 14-day access token plus a refresh token valid
+
+    within a one-month window.
+
+
+    OAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated
+
+    REST calls then go to the Merchant API base URL
+
+    `https://api.salla.dev/admin/v2`.
+
+    '
+  version: '2'
+  contact:
+    name: Salla Developers
+    url: https://docs.salla.dev/
+    email: support@salla.dev
+servers:
+- url: https://accounts.salla.sa
+  description: Salla OAuth and account endpoints
+tags:
+- name: Shipments
+paths:
+  /shipments:
+    get:
+      summary: List Shipments
+      operationId: listShipments
+      tags:
+      - Shipments
+      responses:
+        '200':
+          description: Shipments list.
+    post:
+      summary: Create Shipment
+      operationId: createShipment
+      tags:
+      - Shipments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShipmentCreate'
+      responses:
+        '201':
+          description: Shipment created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+  /shipments/{shipment_id}:
+    parameters:
+    - name: shipment_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Get Shipment Details
+      operationId: getShipment
+      tags:
+      - Shipments
+      responses:
+        '200':
+          description: Shipment details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+    put:
+      summary: Update Shipment
+      operationId: updateShipment
+      tags:
+      - Shipments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Shipment updated.
+  /shipments/{shipment_id}/cancel:
+    parameters:
+    - name: shipment_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    post:
+      summary: Cancel Shipment
+      operationId: cancelShipment
+      tags:
+      - Shipments
+      responses:
+        '200':
+          description: Shipment cancelled.
+  /shipments/{shipment_id}/return:
+    parameters:
+    - name: shipment_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    post:
+      summary: Create Shipment Return
+      operationId: createShipmentReturn
+      tags:
+      - Shipments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Shipment return created.
+components:
+  schemas:
+    Shipment:
+      type: object
+      properties:
+        id:
+          type: integer
+        order_id:
+          type: integer
+        courier_id:
+          type: integer
+        courier_name:
+          type: string
+        tracking_number:
+          type: string
+        tracking_link:
+          type: string
+          format: uri
+        status:
+          type: string
+        type:
+          type: string
+          enum:
+          - shipment
+          - return
+        total:
+          type: number
+        currency:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    ShipmentCreate:
+      type: object
+      required:
+      - order_id
+      - courier_id
+      properties:
+        order_id:
+          type: integer
+        courier_id:
+          type: integer
+        type:
+          type: string
+          enum:
+          - shipment
+          - return
+        tracking_number:
+          type: string
+        tracking_link:
+          type: string
+          format: uri
+        cost:
+          type: number
+        pickup_address:
+          type: object
+        ship_to:
+          type: object
+        packages:
+          type: array
+          items:
+            type: object
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
