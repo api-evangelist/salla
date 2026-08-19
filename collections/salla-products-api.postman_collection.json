@@ -1,0 +1,859 @@
+{
+  "item": [
+    {
+      "id": "4ce10f43-a300-45c9-8058-fbf57cfdbf4c",
+      "name": "Products",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e9917d0e-4c4b-4eb2-8d20-1097f486a2a9",
+          "name": "List Products",
+          "request": {
+            "name": "List Products",
+            "description": {},
+            "url": {
+              "path": [
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "keyword",
+                  "value": "<string>",
+                  "description": "Filter products matching a name or SKU value."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Use `light` for simplified product data."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2bf28a9e-4777-4f0d-ae7b-45ce9ec92a73",
+              "name": "Paginated list of products.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3629,\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 4186,\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"mpn\": \"string\",\n      \"gtin\": \"string\",\n      \"type\": \"group_products\",\n      \"status\": \"out\",\n      \"price\": {\n        \"amount\": 4242.692111560618,\n        \"currency\": \"SAR\"\n      },\n      \"sale_price\": {\n        \"amount\": 1897.0332679219505,\n        \"currency\": \"SAR\"\n      },\n      \"cost_price\": {\n        \"amount\": 3330.4262398050446,\n        \"currency\": \"SAR\"\n      },\n      \"quantity\": 9563,\n      \"description\": \"string\",\n      \"url\": \"http://CCYpTsRyUnPQmHHLbFbStjfK.ssQGIrhLhBdWoeN47-+5KkDJP6zpMZI,0KlcbMwFwVVJ7ISr.D\",\n      \"images\": [\n        {\n          \"id\": 7980,\n          \"original\": \"http://lhGAFFBwtPYLgeynMJf.jpnQg9euKdwnlXhc4OEJ\",\n          \"thumbnail\": \"https://iRdBeXzjbUvHMBbpdWDDDTOegSlAfq.ppbun4OHqKHHF0QPkZaJb6ToNutxC-GlU9gZsKRlz\",\n          \"alt\": \"string\",\n          \"sort\": 5046\n        },\n        {\n          \"id\": 8063,\n          \"original\": \"http://x.iuy-Rj6kP,A7B-JPJ.Rd,.s3TBxtPFW2pxRs3aD\",\n          \"thumbnail\": \"http://TdaOUXaDdQaCpXSvhkz.hlty\",\n          \"alt\": \"string\",\n          \"sort\": 9777\n        }\n      ],\n      \"categories\": [\n        6791,\n        2863\n      ],\n      \"brand_id\": 7398,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"updated_at\": \"1973-06-06T02:25:36.521Z\"\n    },\n    {\n      \"id\": 9721,\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"mpn\": \"string\",\n      \"gtin\": \"string\",\n      \"type\": \"booking\",\n      \"status\": \"out\",\n      \"price\": {\n        \"amount\": 6121.689836379557,\n        \"currency\": \"SAR\"\n      },\n      \"sale_price\": {\n        \"amount\": 6822.626534226708,\n        \"currency\": \"SAR\"\n      },\n      \"cost_price\": {\n        \"amount\": 5727.734831039635,\n        \"currency\": \"SAR\"\n      },\n      \"quantity\": 3901,\n      \"description\": \"string\",\n      \"url\": \"http://wXSqDLdTvtQcPsvMls.qrWH1YxN9BvJ+Z4mkxAsPi6gUwUcBxjnkI2JMZAyXi8yn\",\n      \"images\": [\n        {\n          \"id\": 9212,\n          \"original\": \"http://drLjBjyVOoNuzopbtjrc.uytVoHY7tctpZOmBFWt,iDydsgzSF\",\n          \"thumbnail\": \"http://MTfmtErNtKDtisUMIXCpHWULRBQ.glvi-pHMip5cOsMWIpggeSzrKGsUt4A\",\n          \"alt\": \"string\",\n          \"sort\": 3107\n        },\n        {\n          \"id\": 7028,\n          \"original\": \"https://nxvKisQRTSfsvCAINPUkSbbMDUWRmF.uygqYYcCZc1Y4s6mPK3gmpcceWywVELo8aJMTwCg.E6Jl8InynbMQwWz.mmhoqgNe,ma\",\n          \"thumbnail\": \"http://C.kcqHpm,KX8FCuLEiZUR\",\n          \"alt\": \"string\",\n          \"sort\": 9426\n        }\n      ],\n      \"categories\": [\n        4277,\n        4812\n      ],\n      \"brand_id\": 9264,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"updated_at\": \"2003-10-29T20:57:05.388Z\"\n    }\n  ],\n  \"pagination\": {\n    \"count\": 3010,\n    \"current\": 7348,\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af895e1c-676b-43fe-a3f4-f8e10f1ca6fa",
+              "name": "Invalid or missing access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3894,\n  \"success\": true,\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"fields\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40f1ad97-12db-453b-bede-2863dad8b511",
+          "name": "Create Product",
+          "request": {
+            "name": "Create Product",
+            "description": {},
+            "url": {
+              "path": [
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"price\": \"<number>\",\n  \"product_type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sale_price\": \"<number>\",\n  \"cost_price\": \"<number>\",\n  \"sale_start\": \"<dateTime>\",\n  \"sale_end\": \"<dateTime>\",\n  \"sku\": \"<string>\",\n  \"mpn\": \"<string>\",\n  \"gtin\": \"<string>\",\n  \"brand_id\": \"<integer>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"images\": [\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata_title\": \"<string>\",\n  \"metadata_description\": \"<string>\",\n  \"metadata_url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a4431dcb-135c-4a98-a48c-ef48e2cfc096",
+              "name": "Product created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"price\": \"<number>\",\n  \"product_type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sale_price\": \"<number>\",\n  \"cost_price\": \"<number>\",\n  \"sale_start\": \"<dateTime>\",\n  \"sale_end\": \"<dateTime>\",\n  \"sku\": \"<string>\",\n  \"mpn\": \"<string>\",\n  \"gtin\": \"<string>\",\n  \"brand_id\": \"<integer>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"images\": [\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata_title\": \"<string>\",\n  \"metadata_description\": \"<string>\",\n  \"metadata_url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4730,\n  \"success\": true,\n  \"data\": {\n    \"id\": 8754,\n    \"name\": \"string\",\n    \"sku\": \"string\",\n    \"mpn\": \"string\",\n    \"gtin\": \"string\",\n    \"type\": \"food\",\n    \"status\": \"deleted\",\n    \"price\": {\n      \"amount\": 6331.383869975218,\n      \"currency\": \"SAR\"\n    },\n    \"sale_price\": {\n      \"amount\": 8159.292690119937,\n      \"currency\": \"SAR\"\n    },\n    \"cost_price\": {\n      \"amount\": 6594.871902835712,\n      \"currency\": \"SAR\"\n    },\n    \"quantity\": 1069,\n    \"description\": \"string\",\n    \"url\": \"http://GxB.eyuxawSuMmrEGG,2BzHncqdQeK\",\n    \"images\": [\n      {\n        \"id\": \"<integer>\",\n        \"original\": \"<uri>\",\n        \"thumbnail\": \"<uri>\",\n        \"alt\": \"<string>\",\n        \"sort\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"original\": \"<uri>\",\n        \"thumbnail\": \"<uri>\",\n        \"alt\": \"<string>\",\n        \"sort\": \"<integer>\"\n      }\n    ],\n    \"categories\": [\n      8435,\n      6707\n    ],\n    \"brand_id\": 5898,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"updated_at\": \"1978-12-12T16:09:35.799Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "987a41a5-a05e-498d-ab9b-f8abe3c5054e",
+              "name": "Request validation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"price\": \"<number>\",\n  \"product_type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sale_price\": \"<number>\",\n  \"cost_price\": \"<number>\",\n  \"sale_start\": \"<dateTime>\",\n  \"sale_end\": \"<dateTime>\",\n  \"sku\": \"<string>\",\n  \"mpn\": \"<string>\",\n  \"gtin\": \"<string>\",\n  \"brand_id\": \"<integer>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"images\": [\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata_title\": \"<string>\",\n  \"metadata_description\": \"<string>\",\n  \"metadata_url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3894,\n  \"success\": true,\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"fields\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "836d885d-a76f-4e24-8c73-09042b2dd68a",
+          "name": "Get Product",
+          "request": {
+            "name": "Get Product",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ":product_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "product_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d1265b87-a3a2-4025-9459-28348218be63",
+              "name": "Product details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":product_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "product_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4730,\n  \"success\": true,\n  \"data\": {\n    \"id\": 8754,\n    \"name\": \"string\",\n    \"sku\": \"string\",\n    \"mpn\": \"string\",\n    \"gtin\": \"string\",\n    \"type\": \"food\",\n    \"status\": \"deleted\",\n    \"price\": {\n      \"amount\": 6331.383869975218,\n      \"currency\": \"SAR\"\n    },\n    \"sale_price\": {\n      \"amount\": 8159.292690119937,\n      \"currency\": \"SAR\"\n    },\n    \"cost_price\": {\n      \"amount\": 6594.871902835712,\n      \"currency\": \"SAR\"\n    },\n    \"quantity\": 1069,\n    \"description\": \"string\",\n    \"url\": \"http://GxB.eyuxawSuMmrEGG,2BzHncqdQeK\",\n    \"images\": [\n      {\n        \"id\": \"<integer>\",\n        \"original\": \"<uri>\",\n        \"thumbnail\": \"<uri>\",\n        \"alt\": \"<string>\",\n        \"sort\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"original\": \"<uri>\",\n        \"thumbnail\": \"<uri>\",\n        \"alt\": \"<string>\",\n        \"sort\": \"<integer>\"\n      }\n    ],\n    \"categories\": [\n      8435,\n      6707\n    ],\n    \"brand_id\": 5898,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"updated_at\": \"1978-12-12T16:09:35.799Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8eeeeeb-2c63-4d64-b449-c29997ff9ee9",
+          "name": "Update Product",
+          "request": {
+            "name": "Update Product",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ":product_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "product_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"price\": \"<number>\",\n  \"product_type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sale_price\": \"<number>\",\n  \"cost_price\": \"<number>\",\n  \"sale_start\": \"<dateTime>\",\n  \"sale_end\": \"<dateTime>\",\n  \"sku\": \"<string>\",\n  \"mpn\": \"<string>\",\n  \"gtin\": \"<string>\",\n  \"brand_id\": \"<integer>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"images\": [\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata_title\": \"<string>\",\n  \"metadata_description\": \"<string>\",\n  \"metadata_url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d1161d65-7833-43ea-9466-1bb53a18e97f",
+              "name": "Product updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":product_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "product_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"price\": \"<number>\",\n  \"product_type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sale_price\": \"<number>\",\n  \"cost_price\": \"<number>\",\n  \"sale_start\": \"<dateTime>\",\n  \"sale_end\": \"<dateTime>\",\n  \"sku\": \"<string>\",\n  \"mpn\": \"<string>\",\n  \"gtin\": \"<string>\",\n  \"brand_id\": \"<integer>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"images\": [\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"original\": \"<uri>\",\n      \"thumbnail\": \"<uri>\",\n      \"alt\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata_title\": \"<string>\",\n  \"metadata_description\": \"<string>\",\n  \"metadata_url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4730,\n  \"success\": true,\n  \"data\": {\n    \"id\": 8754,\n    \"name\": \"string\",\n    \"sku\": \"string\",\n    \"mpn\": \"string\",\n    \"gtin\": \"string\",\n    \"type\": \"food\",\n    \"status\": \"deleted\",\n    \"price\": {\n      \"amount\": 6331.383869975218,\n      \"currency\": \"SAR\"\n    },\n    \"sale_price\": {\n      \"amount\": 8159.292690119937,\n      \"currency\": \"SAR\"\n    },\n    \"cost_price\": {\n      \"amount\": 6594.871902835712,\n      \"currency\": \"SAR\"\n    },\n    \"quantity\": 1069,\n    \"description\": \"string\",\n    \"url\": \"http://GxB.eyuxawSuMmrEGG,2BzHncqdQeK\",\n    \"images\": [\n      {\n        \"id\": \"<integer>\",\n        \"original\": \"<uri>\",\n        \"thumbnail\": \"<uri>\",\n        \"alt\": \"<string>\",\n        \"sort\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"original\": \"<uri>\",\n        \"thumbnail\": \"<uri>\",\n        \"alt\": \"<string>\",\n        \"sort\": \"<integer>\"\n      }\n    ],\n    \"categories\": [\n      8435,\n      6707\n    ],\n    \"brand_id\": 5898,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"updated_at\": \"1978-12-12T16:09:35.799Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2aaf9b64-0479-4193-b456-5069d8380a1a",
+          "name": "Delete Product",
+          "request": {
+            "name": "Delete Product",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ":product_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "product_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3bcbe7d-8180-4144-9dcc-bfc6f3daa169",
+              "name": "Product deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":product_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "product_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5ba6642-5126-498b-9432-44df1ec3d95d",
+          "name": "List Product SKUs",
+          "request": {
+            "name": "List Product SKUs",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ":product_id",
+                "skus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "product_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "78a87de5-d110-48cc-8c46-0fd86dc26560",
+              "name": "List of SKUs for the product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":product_id",
+                    "skus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "product_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3023fbf-d306-4f7c-bb48-bdb5536c62df",
+          "name": "Create Product Option",
+          "request": {
+            "name": "Create Product Option",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "70801566-b98c-41ff-a8f7-72746bb87d0c",
+              "name": "Option created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f94d8bab-4a4a-4f05-bc64-1862e72e6dfd",
+          "name": "Update Product Quantities",
+          "request": {
+            "name": "Update Product Quantities",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                "quantities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aed34e6e-56ba-442e-bed1-5d861b4cf9b0",
+              "name": "Quantities updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "quantities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://accounts.salla.sa",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e1649e48-d6b1-4122-b74f-c93589e376c5",
+    "name": "Salla Apps Branches Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OAuth 2.0 authorization server for Salla apps. Handles the merchant\nconsent flow, access and refresh token exchange, and merchant user info\nlookup. Apps obtain a 14-day access token plus a refresh token valid\nwithin a one-month window.\n\nOAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated\nREST calls then go to the Merchant API base URL\n`https://api.salla.dev/admin/v2`.\n\n\nContact Support:\n Name: Salla Developers\n Email: support@salla.dev",
+      "type": "text/plain"
+    }
+  }
+}

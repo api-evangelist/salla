@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salla Apps Branches Brands API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Brands",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Brands",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/brands"
+          },
+          "docs": "List Brands"
+        },
+        {
+          "info": {
+            "name": "Create Brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://accounts.salla.sa/brands",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Brand"
+        },
+        {
+          "info": {
+            "name": "Get Brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/brands/:brand_id",
+            "params": [
+              {
+                "name": "brand_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Brand"
+        },
+        {
+          "info": {
+            "name": "Update Brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://accounts.salla.sa/brands/:brand_id",
+            "params": [
+              {
+                "name": "brand_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Brand"
+        },
+        {
+          "info": {
+            "name": "Delete Brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://accounts.salla.sa/brands/:brand_id",
+            "params": [
+              {
+                "name": "brand_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Brand"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

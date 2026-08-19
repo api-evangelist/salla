@@ -1,0 +1,721 @@
+{
+  "item": [
+    {
+      "id": "3a431428-1326-4208-b48f-9236e09a6336",
+      "name": "Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6af69f56-e4ee-48a3-b7db-654f6980e930",
+          "name": "List Orders",
+          "request": {
+            "name": "List Orders",
+            "description": {},
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "from_date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to_date",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9655777-1592-430f-818b-a09be542256a",
+              "name": "Paginated list of orders.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "to_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4584,\n  \"success\": false,\n  \"data\": [\n    {\n      \"id\": 2030,\n      \"reference_id\": 27,\n      \"urls\": {},\n      \"date\": {\n        \"date\": \"1984-02-26T18:46:04.563Z\",\n        \"timezone\": \"string\"\n      },\n      \"source\": \"string\",\n      \"status\": {\n        \"id\": 7295,\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"customized\": {}\n      },\n      \"can_cancel\": false,\n      \"can_reorder\": false,\n      \"is_pending_payment\": true,\n      \"payment_method\": \"string\",\n      \"amounts\": {\n        \"sub_total\": {\n          \"amount\": 1070.5348963545591,\n          \"currency\": \"SAR\"\n        },\n        \"shipping_cost\": {\n          \"amount\": 6340.050311910359,\n          \"currency\": \"SAR\"\n        },\n        \"tax\": {\n          \"amount\": 3974.182691411501,\n          \"currency\": \"SAR\"\n        },\n        \"discounts\": {\n          \"amount\": 3640.8657537447443,\n          \"currency\": \"SAR\"\n        },\n        \"total\": {\n          \"amount\": 4417.836328145466,\n          \"currency\": \"SAR\"\n        }\n      },\n      \"shipping\": {},\n      \"total_weight\": 7071.399166206369,\n      \"currency\": \"string\",\n      \"customer\": {\n        \"id\": 8005,\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"mobile\": \"string\",\n        \"mobile_code\": \"string\",\n        \"email\": \"G0l2SpIynyh4@G.tc\",\n        \"gender\": \"female\",\n        \"birthday\": \"1947-04-08\",\n        \"avatar\": \"https://cRzoCpxZiNBZvLjqJT.uyoXuvpOld-OHzI-Er,LcouACqZB197qNdSM6uBUipXOL9dYk3ntcOlw2vu1K8NMQ4.\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"currency\": \"string\",\n        \"updated_at\": \"1963-10-01T06:55:10.177Z\"\n      }\n    },\n    {\n      \"id\": 7233,\n      \"reference_id\": 5375,\n      \"urls\": {},\n      \"date\": {\n        \"date\": \"1959-06-30T17:39:06.492Z\",\n        \"timezone\": \"string\"\n      },\n      \"source\": \"string\",\n      \"status\": {\n        \"id\": 9154,\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"customized\": {}\n      },\n      \"can_cancel\": true,\n      \"can_reorder\": true,\n      \"is_pending_payment\": true,\n      \"payment_method\": \"string\",\n      \"amounts\": {\n        \"sub_total\": {\n          \"amount\": 2470.7737627620054,\n          \"currency\": \"SAR\"\n        },\n        \"shipping_cost\": {\n          \"amount\": 4504.195177494149,\n          \"currency\": \"SAR\"\n        },\n        \"tax\": {\n          \"amount\": 145.12886758300536,\n          \"currency\": \"SAR\"\n        },\n        \"discounts\": {\n          \"amount\": 2606.970702269995,\n          \"currency\": \"SAR\"\n        },\n        \"total\": {\n          \"amount\": 6837.691849959582,\n          \"currency\": \"SAR\"\n        }\n      },\n      \"shipping\": {},\n      \"total_weight\": 2115.5782074344565,\n      \"currency\": \"string\",\n      \"customer\": {\n        \"id\": 3260,\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"mobile\": \"string\",\n        \"mobile_code\": \"string\",\n        \"email\": \"8sWtwYf@qgTEUevoRrtESqLZXjeYGFyUEC.cd\",\n        \"gender\": \"male\",\n        \"birthday\": \"1978-10-13\",\n        \"avatar\": \"https://qmJyfakNJzIFdUEY.uzeo,.dusQlh6ASich.MlAR49GgwcJ0kC\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"currency\": \"string\",\n        \"updated_at\": \"1947-02-10T14:34:57.429Z\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"count\": 269,\n    \"current\": 1765,\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72bc5efb-12cc-41cf-a5db-ce5e73e7a0c4",
+          "name": "Get Order Details",
+          "request": {
+            "name": "Get Order Details",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Set to `light` to exclude shipments, items, pickup branch, and customer groups."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dee18a04-f27d-443d-9dbf-d47a4d52aae4",
+              "name": "Order details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6492,\n  \"success\": false,\n  \"data\": {\n    \"id\": 6711,\n    \"reference_id\": 5076,\n    \"urls\": {},\n    \"date\": {\n      \"date\": \"1950-02-05T10:54:42.498Z\",\n      \"timezone\": \"string\"\n    },\n    \"source\": \"string\",\n    \"status\": {\n      \"id\": 264,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"customized\": {}\n    },\n    \"can_cancel\": false,\n    \"can_reorder\": true,\n    \"is_pending_payment\": true,\n    \"payment_method\": \"string\",\n    \"amounts\": {\n      \"sub_total\": {\n        \"amount\": 7527.007565346112,\n        \"currency\": \"SAR\"\n      },\n      \"shipping_cost\": {\n        \"amount\": 5385.609979440379,\n        \"currency\": \"SAR\"\n      },\n      \"tax\": {\n        \"amount\": 4720.147273118038,\n        \"currency\": \"SAR\"\n      },\n      \"discounts\": {\n        \"amount\": 3290.731502669553,\n        \"currency\": \"SAR\"\n      },\n      \"total\": {\n        \"amount\": 7039.755302526909,\n        \"currency\": \"SAR\"\n      }\n    },\n    \"shipping\": {},\n    \"total_weight\": 7051.196763109604,\n    \"currency\": \"string\",\n    \"customer\": {\n      \"id\": 2987,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"mobile\": \"string\",\n      \"mobile_code\": \"string\",\n      \"email\": \"XVoPSL3w@AbGvxHhM.ubb\",\n      \"gender\": \"male\",\n      \"birthday\": \"1960-09-18\",\n      \"avatar\": \"https://mebkDnIPHvKurQOEJKEeLtjnaYxpq.sckufSc-qICoU6IWncYVICSAExqaP77TvGrF2YTGW.gZ.vXtj0m5qa+hayW\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"currency\": \"string\",\n      \"updated_at\": \"1972-08-03T20:43:14.759Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4a28856-1f92-4bff-aaba-b65f6e70f31e",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 1033,\n  \"success\": false,\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"fields\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34967a26-4d81-4b51-816c-c2ce90a4b538",
+          "name": "Update Order",
+          "request": {
+            "name": "Update Order",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "098b1ff8-4986-441a-aa02-09e1a098eeb0",
+              "name": "Order updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6492,\n  \"success\": false,\n  \"data\": {\n    \"id\": 6711,\n    \"reference_id\": 5076,\n    \"urls\": {},\n    \"date\": {\n      \"date\": \"1950-02-05T10:54:42.498Z\",\n      \"timezone\": \"string\"\n    },\n    \"source\": \"string\",\n    \"status\": {\n      \"id\": 264,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"customized\": {}\n    },\n    \"can_cancel\": false,\n    \"can_reorder\": true,\n    \"is_pending_payment\": true,\n    \"payment_method\": \"string\",\n    \"amounts\": {\n      \"sub_total\": {\n        \"amount\": 7527.007565346112,\n        \"currency\": \"SAR\"\n      },\n      \"shipping_cost\": {\n        \"amount\": 5385.609979440379,\n        \"currency\": \"SAR\"\n      },\n      \"tax\": {\n        \"amount\": 4720.147273118038,\n        \"currency\": \"SAR\"\n      },\n      \"discounts\": {\n        \"amount\": 3290.731502669553,\n        \"currency\": \"SAR\"\n      },\n      \"total\": {\n        \"amount\": 7039.755302526909,\n        \"currency\": \"SAR\"\n      }\n    },\n    \"shipping\": {},\n    \"total_weight\": 7051.196763109604,\n    \"currency\": \"string\",\n    \"customer\": {\n      \"id\": 2987,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"mobile\": \"string\",\n      \"mobile_code\": \"string\",\n      \"email\": \"XVoPSL3w@AbGvxHhM.ubb\",\n      \"gender\": \"male\",\n      \"birthday\": \"1960-09-18\",\n      \"avatar\": \"https://mebkDnIPHvKurQOEJKEeLtjnaYxpq.sckufSc-qICoU6IWncYVICSAExqaP77TvGrF2YTGW.gZ.vXtj0m5qa+hayW\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"currency\": \"string\",\n      \"updated_at\": \"1972-08-03T20:43:14.759Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "453d16f5-902a-4c82-a1c6-39e03aae5dcf",
+          "name": "Update Order Status",
+          "request": {
+            "name": "Update Order Status",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":order_id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"slug\": \"<string>\",\n  \"note\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2f6d2478-745c-4df0-bdd7-c2ecd18cd3cd",
+              "name": "Order status updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"slug\": \"<string>\",\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b135892-c9c6-4ea4-8335-7ae512918ea0",
+          "name": "List Order Histories",
+          "request": {
+            "name": "List Order Histories",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":order_id",
+                "histories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b02c5664-5b71-495c-8309-b579fe4f9c00",
+              "name": "Order history entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id",
+                    "histories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a70b6c22-c038-4827-9c25-1c125672c4d9",
+          "name": "List Order Invoices",
+          "request": {
+            "name": "List Order Invoices",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":order_id",
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c516f61b-f8c7-4635-9d05-673bccf5f8e5",
+              "name": "Order invoices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3d2bf27-a89a-46fd-856e-f5ed13b005d2",
+          "name": "List Order Items",
+          "request": {
+            "name": "List Order Items",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":order_id",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9d590f8-e8d4-40ae-a6e2-c4b0a155401a",
+              "name": "Order items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://accounts.salla.sa",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "731f120e-6805-4079-931b-80270ae99cfe",
+    "name": "Salla Apps Branches Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OAuth 2.0 authorization server for Salla apps. Handles the merchant\nconsent flow, access and refresh token exchange, and merchant user info\nlookup. Apps obtain a 14-day access token plus a refresh token valid\nwithin a one-month window.\n\nOAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated\nREST calls then go to the Merchant API base URL\n`https://api.salla.dev/admin/v2`.\n\n\nContact Support:\n Name: Salla Developers\n Email: support@salla.dev",
+      "type": "text/plain"
+    }
+  }
+}

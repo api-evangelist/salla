@@ -1,0 +1,175 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salla Apps Branches Shipping API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipping",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Shipments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/shipments"
+          },
+          "docs": "List Shipments"
+        },
+        {
+          "info": {
+            "name": "Create Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://accounts.salla.sa/shipments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Shipment"
+        },
+        {
+          "info": {
+            "name": "Get Shipment Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/shipments/:shipment_id",
+            "params": [
+              {
+                "name": "shipment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Shipment Details"
+        },
+        {
+          "info": {
+            "name": "List Shipping Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/shipping/zones"
+          },
+          "docs": "List Shipping Zones"
+        },
+        {
+          "info": {
+            "name": "Get Shipping Zone Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/shipping/zones/:zone_id",
+            "params": [
+              {
+                "name": "zone_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Shipping Zone Details"
+        },
+        {
+          "info": {
+            "name": "List Shipping Companies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/shipping/companies"
+          },
+          "docs": "List Shipping Companies"
+        },
+        {
+          "info": {
+            "name": "Create Shipping Company",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://accounts.salla.sa/shipping/companies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Shipping Company"
+        },
+        {
+          "info": {
+            "name": "Get Shipping Company",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/shipping/companies/:company_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Shipping Company"
+        },
+        {
+          "info": {
+            "name": "Update Shipping Company",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://accounts.salla.sa/shipping/companies/:company_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Shipping Company"
+        },
+        {
+          "info": {
+            "name": "Delete Shipping Company",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://accounts.salla.sa/shipping/companies/:company_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Shipping Company"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

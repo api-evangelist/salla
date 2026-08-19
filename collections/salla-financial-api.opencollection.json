@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salla Apps Branches Financial API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Financial",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Taxes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/taxes"
+          },
+          "docs": "List Taxes"
+        },
+        {
+          "info": {
+            "name": "Create Tax",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://accounts.salla.sa/taxes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Tax"
+        },
+        {
+          "info": {
+            "name": "List Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/transactions"
+          },
+          "docs": "List Transactions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

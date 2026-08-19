@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salla Apps Branches Localization API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Localization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Currencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/currencies"
+          },
+          "docs": "List Currencies"
+        },
+        {
+          "info": {
+            "name": "List Languages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/languages"
+          },
+          "docs": "List Languages"
+        },
+        {
+          "info": {
+            "name": "List Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/countries"
+          },
+          "docs": "List Countries"
+        },
+        {
+          "info": {
+            "name": "Get Country Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.salla.sa/countries/:country_id",
+            "params": [
+              {
+                "name": "country_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Country Details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

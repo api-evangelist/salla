@@ -1,0 +1,398 @@
+{
+  "item": [
+    {
+      "id": "6840bd9f-d0b9-46cc-8553-301e5622f38d",
+      "name": "Customers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "be69bb96-a519-4fee-87ce-b2af04ed53fd",
+          "name": "List Customers",
+          "request": {
+            "name": "List Customers",
+            "description": {},
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33c24b54-15e8-46c7-a9cb-c7d57d027573",
+              "name": "Paginated list of customers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 309,\n  \"success\": false,\n  \"data\": [\n    {\n      \"id\": 5114,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"mobile\": \"string\",\n      \"mobile_code\": \"string\",\n      \"email\": \"w8kyqTch@tOphBqGdzDHDZJdGzZUomUrrjD.wo\",\n      \"gender\": \"female\",\n      \"birthday\": \"1968-08-09\",\n      \"avatar\": \"https://rxqwox.kldP4sEUkpVxPT2Bj2vEgYoacbNTeoEbTpwMNtJg+PDKwRAEP.18cgnwjE9LBHuPuYp,s.\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"currency\": \"string\",\n      \"updated_at\": \"2023-06-06T06:19:23.587Z\"\n    },\n    {\n      \"id\": 4376,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"mobile\": \"string\",\n      \"mobile_code\": \"string\",\n      \"email\": \"iMLDfDNMn@svxPngwfKakRmMPEAR.vq\",\n      \"gender\": \"female\",\n      \"birthday\": \"1985-09-06\",\n      \"avatar\": \"https://TLjELqEpgRsMhQ.rtbe5V62RdKYdGeFoe2kixco,VjA,bvX2..\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"currency\": \"string\",\n      \"updated_at\": \"1999-01-13T23:23:17.598Z\"\n    }\n  ],\n  \"pagination\": {\n    \"count\": 3487,\n    \"current\": 2741,\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9869703-941d-4ea9-9aeb-de705018f24d",
+          "name": "Create Customer",
+          "request": {
+            "name": "Create Customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"mobile_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"gender\": \"<string>\",\n  \"birthday\": \"<date>\",\n  \"city\": \"<string>\",\n  \"country\": \"<string>\",\n  \"groups\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3f30bda3-6568-46bb-adcf-3307bb4569d7",
+              "name": "Customer created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"mobile_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"gender\": \"<string>\",\n  \"birthday\": \"<date>\",\n  \"city\": \"<string>\",\n  \"country\": \"<string>\",\n  \"groups\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8109,\n  \"success\": true,\n  \"data\": {\n    \"id\": 1506,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"mobile\": \"string\",\n    \"mobile_code\": \"string\",\n    \"email\": \"1JUuT1o1SGdbv8c@VAU.whk\",\n    \"gender\": \"male\",\n    \"birthday\": \"1960-01-27\",\n    \"avatar\": \"http://QFzxMeWhkHYCTeoCpgjfN.dlfhFhDctO2Ym+V71I-g0wwcQ\",\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"currency\": \"string\",\n    \"updated_at\": \"1976-05-23T07:28:13.853Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e97f35b-3d85-4c46-93af-c27802ceaae7",
+          "name": "Get Customer",
+          "request": {
+            "name": "Get Customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a91ae758-00aa-4918-823b-f97f058059a3",
+              "name": "Customer details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8109,\n  \"success\": true,\n  \"data\": {\n    \"id\": 1506,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"mobile\": \"string\",\n    \"mobile_code\": \"string\",\n    \"email\": \"1JUuT1o1SGdbv8c@VAU.whk\",\n    \"gender\": \"male\",\n    \"birthday\": \"1960-01-27\",\n    \"avatar\": \"http://QFzxMeWhkHYCTeoCpgjfN.dlfhFhDctO2Ym+V71I-g0wwcQ\",\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"currency\": \"string\",\n    \"updated_at\": \"1976-05-23T07:28:13.853Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d338205-a888-42a7-a094-782cbe10450d",
+          "name": "Update Customer",
+          "request": {
+            "name": "Update Customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"mobile_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"gender\": \"<string>\",\n  \"birthday\": \"<date>\",\n  \"city\": \"<string>\",\n  \"country\": \"<string>\",\n  \"groups\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f9f89c27-bf11-4d72-8422-dcc2599a2ff2",
+              "name": "Customer updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"mobile_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"gender\": \"<string>\",\n  \"birthday\": \"<date>\",\n  \"city\": \"<string>\",\n  \"country\": \"<string>\",\n  \"groups\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8109,\n  \"success\": true,\n  \"data\": {\n    \"id\": 1506,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"mobile\": \"string\",\n    \"mobile_code\": \"string\",\n    \"email\": \"1JUuT1o1SGdbv8c@VAU.whk\",\n    \"gender\": \"male\",\n    \"birthday\": \"1960-01-27\",\n    \"avatar\": \"http://QFzxMeWhkHYCTeoCpgjfN.dlfhFhDctO2Ym+V71I-g0wwcQ\",\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"currency\": \"string\",\n    \"updated_at\": \"1976-05-23T07:28:13.853Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://accounts.salla.sa",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3b07bc34-68ee-49bd-b9d6-2e5226dff052",
+    "name": "Salla Apps Branches Customers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OAuth 2.0 authorization server for Salla apps. Handles the merchant\nconsent flow, access and refresh token exchange, and merchant user info\nlookup. Apps obtain a 14-day access token plus a refresh token valid\nwithin a one-month window.\n\nOAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated\nREST calls then go to the Merchant API base URL\n`https://api.salla.dev/admin/v2`.\n\n\nContact Support:\n Name: Salla Developers\n Email: support@salla.dev",
+      "type": "text/plain"
+    }
+  }
+}
