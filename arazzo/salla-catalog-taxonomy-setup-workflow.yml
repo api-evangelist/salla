@@ -10,8 +10,14 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: merchantApi
-  url: ../openapi/salla-merchant-api-openapi.yml
+- name: brandsApi
+  url: ../openapi/salla-brands-api-openapi.yml
+  type: openapi
+- name: categoriesApi
+  url: ../openapi/salla-categories-api-openapi.yml
+  type: openapi
+- name: productsApi
+  url: ../openapi/salla-products-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: setup-catalog-taxonomy

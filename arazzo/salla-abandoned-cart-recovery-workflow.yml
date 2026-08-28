@@ -11,8 +11,14 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: merchantApi
-  url: ../openapi/salla-merchant-api-openapi.yml
+- name: cartsApi
+  url: ../openapi/salla-carts-api-openapi.yml
+  type: openapi
+- name: couponsApi
+  url: ../openapi/salla-coupons-api-openapi.yml
+  type: openapi
+- name: customersApi
+  url: ../openapi/salla-customers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: recover-abandoned-cart

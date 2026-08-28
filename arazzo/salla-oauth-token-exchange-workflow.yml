@@ -12,8 +12,8 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: appsApi
-  url: ../openapi/salla-apps-api-openapi.yml
+- name: oauthApi
+  url: ../openapi/salla-oauth-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: oauth-token-exchange

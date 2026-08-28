@@ -12,7 +12,10 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: shippingApi
-  url: ../openapi/salla-shipping-fulfillment-api-openapi.yml
+  url: ../openapi/salla-shipping-api-openapi.yml
+  type: openapi
+- name: zonesApi
+  url: ../openapi/salla-zones-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: setup-shipping-zone

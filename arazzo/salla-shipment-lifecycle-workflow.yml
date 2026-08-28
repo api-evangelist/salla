@@ -12,8 +12,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
+- name: shipmentsApi
+  url: ../openapi/salla-shipments-api-openapi.yml
+  type: openapi
 - name: shippingApi
-  url: ../openapi/salla-shipping-fulfillment-api-openapi.yml
+  url: ../openapi/salla-shipping-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: shipment-lifecycle

@@ -11,8 +11,8 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: merchantApi
-  url: ../openapi/salla-merchant-api-openapi.yml
+- name: customersApi
+  url: ../openapi/salla-customers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: upsert-customer
