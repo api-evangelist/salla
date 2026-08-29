@@ -1,30 +1,17 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Salla Apps Branches Shipping API
-  description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
-
-    consent flow, access and refresh token exchange, and merchant user info
-
-    lookup. Apps obtain a 14-day access token plus a refresh token valid
-
-    within a one-month window.
-
-
-    OAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated
-
-    REST calls then go to the Merchant API base URL
-
-    `https://api.salla.dev/admin/v2`.
-
-    '
+  title: Salla Shipping API
   version: '2'
   contact:
     name: Salla Developers
     url: https://docs.salla.dev/
     email: support@salla.dev
+  description: 'Operations tagged Shipping across 2 of this provider''s published API definitions: salla-merchant-api-openapi.yml, salla-shipping-fulfillment-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://accounts.salla.sa
-  description: Salla OAuth and account endpoints
+- url: https://api.salla.dev/admin/v2
+  description: Salla Merchant API production
+security:
+- OAuth2: []
 tags:
 - name: Shipping
 paths:
@@ -51,6 +38,9 @@ paths:
       responses:
         '201':
           description: Shipment created.
+    servers:
+    - url: https://api.salla.dev/admin/v2
+      description: Salla Merchant API production
   /shipments/{shipment_id}:
     parameters:
     - name: shipment_id
@@ -66,6 +56,9 @@ paths:
       responses:
         '200':
           description: Shipment details.
+    servers:
+    - url: https://api.salla.dev/admin/v2
+      description: Salla Merchant API production
   /shipping/zones:
     get:
       summary: List Shipping Zones
@@ -75,6 +68,9 @@ paths:
       responses:
         '200':
           description: Shipping zone list.
+    servers:
+    - url: https://api.salla.dev/admin/v2
+      description: Salla Merchant API production
   /shipping/zones/{zone_id}:
     parameters:
     - name: zone_id
@@ -90,6 +86,9 @@ paths:
       responses:
         '200':
           description: Shipping zone details.
+    servers:
+    - url: https://api.salla.dev/admin/v2
+      description: Salla Merchant API production
   /shipping/companies:
     get:
       summary: List Shipping Companies
@@ -113,6 +112,9 @@ paths:
       responses:
         '201':
           description: Shipping company created.
+    servers:
+    - url: https://api.salla.dev/admin/v2
+      description: Salla Merchant API production
   /shipping/companies/{company_id}:
     parameters:
     - name: company_id
@@ -150,9 +152,28 @@ paths:
       responses:
         '200':
           description: Shipping company deleted.
+    servers:
+    - url: https://api.salla.dev/admin/v2
+      description: Salla Shipping API production
 components:
   securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.salla.sa/oauth2/auth
+          tokenUrl: https://accounts.salla.sa/oauth2/token
+          refreshUrl: https://accounts.salla.sa/oauth2/token
+          scopes:
+            offline_access: Required to receive a refresh token.
+            orders.read: Read orders.
+            orders.read_write: Read and write orders.
+            products.read: Read products.
+            products.read_write: Read and write products.
+            customers.read: Read customers.
+            customers.read_write: Read and write customers.
+            settings.read: Read store settings.
+            webhooks.read_write: Manage webhook subscriptions.
+x-refined-from:
+- salla-merchant-api-openapi.yml
+- salla-shipping-fulfillment-api-openapi.yml

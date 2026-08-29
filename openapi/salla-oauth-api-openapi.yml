@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Salla Apps Branches OAuth API
+  title: Salla Apps O Auth API
   description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
 
     consent flow, access and refresh token exchange, and merchant user info

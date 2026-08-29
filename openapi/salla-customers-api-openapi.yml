@@ -1,20 +1,20 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Salla Apps Branches Customers API
-  description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
+  title: Salla Merchant Customers API
+  description: 'RESTful endpoints purpose-built for secure, fast, and easy access to Salla
 
-    consent flow, access and refresh token exchange, and merchant user info
+    Merchant store data. Covers products, orders, customers, branches, brands,
 
-    lookup. Apps obtain a 14-day access token plus a refresh token valid
+    categories, currencies, languages, coupons, taxes, abandoned carts,
 
-    within a one-month window.
+    shipping, shipments, and store configuration.
 
 
-    OAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated
+    All requests use the base URL `https://api.salla.dev/admin/v2` and are
 
-    REST calls then go to the Merchant API base URL
+    authenticated with an OAuth 2.0 bearer token issued via the Salla Partners
 
-    `https://api.salla.dev/admin/v2`.
+    Portal.
 
     '
   version: '2'
@@ -22,9 +22,14 @@ info:
     name: Salla Developers
     url: https://docs.salla.dev/
     email: support@salla.dev
+  license:
+    name: Proprietary
+    url: https://salla.com/terms
 servers:
-- url: https://accounts.salla.sa
-  description: Salla OAuth and account endpoints
+- url: https://api.salla.dev/admin/v2
+  description: Salla Merchant API production
+security:
+- OAuth2: []
 tags:
 - name: Customers
 paths:
@@ -107,6 +112,40 @@ paths:
                 $ref: '#/components/schemas/CustomerResponse'
 components:
   schemas:
+    CustomerCreate:
+      type: object
+      required:
+      - first_name
+      - mobile
+      - mobile_code
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        mobile:
+          type: string
+        mobile_code:
+          type: string
+        email:
+          type: string
+          format: email
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+        birthday:
+          type: string
+          format: date
+        city:
+          type: string
+        country:
+          type: string
+        groups:
+          type: array
+          items:
+            type: integer
     CustomerResponse:
       type: object
       properties:
@@ -116,6 +155,17 @@ components:
           type: boolean
         data:
           $ref: '#/components/schemas/Customer'
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        current:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
     Customer:
       type: object
       properties:
@@ -152,50 +202,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    CustomerCreate:
-      type: object
-      required:
-      - first_name
-      - mobile
-      - mobile_code
-      properties:
-        first_name:
-          type: string
-        last_name:
-          type: string
-        mobile:
-          type: string
-        mobile_code:
-          type: string
-        email:
-          type: string
-          format: email
-        gender:
-          type: string
-          enum:
-          - male
-          - female
-        birthday:
-          type: string
-          format: date
-        city:
-          type: string
-        country:
-          type: string
-        groups:
-          type: array
-          items:
-            type: integer
-    Pagination:
-      type: object
-      properties:
-        count:
-          type: integer
-        current:
-          type: integer
-        next:
-          type: string
-          nullable: true
     CustomerList:
       type: object
       properties:
@@ -210,7 +216,20 @@ components:
         pagination:
           $ref: '#/components/schemas/Pagination'
   securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.salla.sa/oauth2/auth
+          tokenUrl: https://accounts.salla.sa/oauth2/token
+          refreshUrl: https://accounts.salla.sa/oauth2/token
+          scopes:
+            offline_access: Required to receive a refresh token.
+            orders.read: Read orders.
+            orders.read_write: Read and write orders.
+            products.read: Read products.
+            products.read_write: Read and write products.
+            customers.read: Read customers.
+            customers.read_write: Read and write customers.
+            settings.read: Read store settings.
+            webhooks.read_write: Manage webhook subscriptions.

@@ -1,20 +1,15 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Salla Apps Branches Zones API
-  description: 'OAuth 2.0 authorization server for Salla apps. Handles the merchant
+  title: Salla Shipping and Fulfillment Zones API
+  description: 'REST surface for managing and tracking shipments, shipping zones, pickup
 
-    consent flow, access and refresh token exchange, and merchant user info
+    branches, and courier integrations across Salla merchant stores. Shipping
 
-    lookup. Apps obtain a 14-day access token plus a refresh token valid
+    apps that implement this contract are listed in the Salla App Store and
 
-    within a one-month window.
+    receive shipment lifecycle webhooks (`shipment.creating`,
 
-
-    OAuth endpoints are hosted at `https://accounts.salla.sa`. Authenticated
-
-    REST calls then go to the Merchant API base URL
-
-    `https://api.salla.dev/admin/v2`.
+    `shipment.created`, `shipment.cancelled`).
 
     '
   version: '2'
@@ -23,8 +18,10 @@ info:
     url: https://docs.salla.dev/
     email: support@salla.dev
 servers:
-- url: https://accounts.salla.sa
-  description: Salla OAuth and account endpoints
+- url: https://api.salla.dev/admin/v2
+  description: Salla Shipping API production
+security:
+- OAuth2: []
 tags:
 - name: Zones
 paths:
@@ -107,10 +104,18 @@ components:
         currency:
           type: string
         free_above:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
   securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.salla.sa/oauth2/auth
+          tokenUrl: https://accounts.salla.sa/oauth2/token
+          refreshUrl: https://accounts.salla.sa/oauth2/token
+          scopes:
+            offline_access: Required to receive a refresh token.
+            shipments.read: Read shipments.
+            shipments.read_write: Read and write shipments.
