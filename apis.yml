@@ -638,6 +638,9 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/salla.png
 access: 3rd-Party
 common:
+  - type: CapabilityMap
+    url: capabilities/salla-capability-edges.yml
+    name: Salla Business Capability Map
   - type: AgenticAccess
     url: agentic-access/salla-agentic-access.yml
   - type: DomainSecurity
