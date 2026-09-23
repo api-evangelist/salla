@@ -14,9 +14,7 @@ info:
 
     REST calls then go to the Merchant API base URL
 
-    `https://api.salla.dev/admin/v2`.
-
-    '
+    `https://api.salla.dev/admin/v2`.'
   version: '2'
   contact:
     name: Salla Developers

@@ -14,9 +14,7 @@ info:
 
     authenticated with an OAuth 2.0 bearer token issued via the Salla Partners
 
-    Portal.
-
-    '
+    Portal.'
   version: '2'
   contact:
     name: Salla Developers
@@ -191,30 +189,7 @@ paths:
         '200':
           description: Order items.
 components:
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        status:
-          type: integer
-        success:
-          type: boolean
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-            fields:
-              type: object
     Order:
       type: object
       properties:
@@ -282,15 +257,6 @@ components:
           type: string
         customer:
           $ref: '#/components/schemas/Customer'
-    OrderResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Order'
     OrderList:
       type: object
       properties:
@@ -304,14 +270,22 @@ components:
             $ref: '#/components/schemas/Order'
         pagination:
           $ref: '#/components/schemas/Pagination'
-    Money:
+    Error:
       type: object
       properties:
-        amount:
-          type: number
-        currency:
-          type: string
-          example: SAR
+        status:
+          type: integer
+        success:
+          type: boolean
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            fields:
+              type: object
     Pagination:
       type: object
       properties:
@@ -323,6 +297,15 @@ components:
           type:
           - string
           - 'null'
+    OrderResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Order'
     Customer:
       type: object
       properties:
@@ -359,6 +342,21 @@ components:
         updated_at:
           type: string
           format: date-time
+    Money:
+      type: object
+      properties:
+        amount:
+          type: number
+        currency:
+          type: string
+          example: SAR
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2

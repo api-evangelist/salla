@@ -14,9 +14,7 @@ info:
 
     authenticated with an OAuth 2.0 bearer token issued via the Salla Partners
 
-    Portal.
-
-    '
+    Portal.'
   version: '2'
   contact:
     name: Salla Developers

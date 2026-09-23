@@ -14,9 +14,7 @@ info:
 
     authenticated with an OAuth 2.0 bearer token issued via the Salla Partners
 
-    Portal.
-
-    '
+    Portal.'
   version: '2'
   contact:
     name: Salla Developers
@@ -196,6 +194,19 @@ paths:
         '200':
           description: Quantities updated.
 components:
+  responses:
+    Unauthorized:
+      description: Invalid or missing access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: Request validation failed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -213,43 +224,6 @@ components:
               type: string
             fields:
               type: object
-    ProductResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Product'
-    ProductList:
-      type: object
-      properties:
-        status:
-          type: integer
-        success:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    Image:
-      type: object
-      properties:
-        id:
-          type: integer
-        original:
-          type: string
-          format: uri
-        thumbnail:
-          type: string
-          format: uri
-        alt:
-          type: string
-        sort:
-          type: integer
     ProductCreate:
       type: object
       required:
@@ -331,6 +305,21 @@ components:
         currency:
           type: string
           example: SAR
+    Image:
+      type: object
+      properties:
+        id:
+          type: integer
+        original:
+          type: string
+          format: uri
+        thumbnail:
+          type: string
+          format: uri
+        alt:
+          type: string
+        sort:
+          type: integer
     Pagination:
       type: object
       properties:
@@ -403,19 +392,28 @@ components:
         updated_at:
           type: string
           format: date-time
-  responses:
-    ValidationError:
-      description: Request validation failed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Invalid or missing access token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    ProductList:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    ProductResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Product'
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -48,7 +48,8 @@
     "salla-shipping-fulfillment-api-openapi.yml: declared missing tag: Shipments",
     "salla-shipping-fulfillment-api-openapi.yml: declared missing tag: Shipping",
     "salla-shipping-fulfillment-api-openapi.yml: declared missing tag: Zones",
-    "tag 'Shipping' spans 2 source specs (salla-merchant-api-openapi.yml, salla-shipping-fulfillment-api-openapi.yml): per-path servers applied"
+    "tag 'Shipping' spans 2 source specs (salla-merchant-api-openapi.yml, salla-shipping-fulfillment-api-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "salla-branches-api-openapi.yml: previously refined output, superseded by openapi/_original/",

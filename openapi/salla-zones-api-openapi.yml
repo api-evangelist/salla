@@ -9,9 +9,7 @@ info:
 
     receive shipment lifecycle webhooks (`shipment.creating`,
 
-    `shipment.created`, `shipment.cancelled`).
-
-    '
+    `shipment.created`, `shipment.cancelled`).'
   version: '2'
   contact:
     name: Salla Developers

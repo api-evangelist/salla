@@ -14,9 +14,7 @@ info:
 
     authenticated with an OAuth 2.0 bearer token issued via the Salla Partners
 
-    Portal.
-
-    '
+    Portal.'
   version: '2'
   contact:
     name: Salla Developers
@@ -112,6 +110,28 @@ paths:
                 $ref: '#/components/schemas/CustomerResponse'
 components:
   schemas:
+    CustomerResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Customer'
+    CustomerList:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     CustomerCreate:
       type: object
       required:
@@ -146,15 +166,6 @@ components:
           type: array
           items:
             type: integer
-    CustomerResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Customer'
     Pagination:
       type: object
       properties:
@@ -202,19 +213,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    CustomerList:
-      type: object
-      properties:
-        status:
-          type: integer
-        success:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Customer'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -9,9 +9,7 @@ info:
 
     receive shipment lifecycle webhooks (`shipment.creating`,
 
-    `shipment.created`, `shipment.cancelled`).
-
-    '
+    `shipment.created`, `shipment.cancelled`).'
   version: '2'
   contact:
     name: Salla Developers
@@ -123,36 +121,6 @@ paths:
           description: Shipment return created.
 components:
   schemas:
-    ShipmentCreate:
-      type: object
-      required:
-      - order_id
-      - courier_id
-      properties:
-        order_id:
-          type: integer
-        courier_id:
-          type: integer
-        type:
-          type: string
-          enum:
-          - shipment
-          - return
-        tracking_number:
-          type: string
-        tracking_link:
-          type: string
-          format: uri
-        cost:
-          type: number
-        pickup_address:
-          type: object
-        ship_to:
-          type: object
-        packages:
-          type: array
-          items:
-            type: object
     Shipment:
       type: object
       properties:
@@ -186,6 +154,36 @@ components:
         updated_at:
           type: string
           format: date-time
+    ShipmentCreate:
+      type: object
+      required:
+      - order_id
+      - courier_id
+      properties:
+        order_id:
+          type: integer
+        courier_id:
+          type: integer
+        type:
+          type: string
+          enum:
+          - shipment
+          - return
+        tracking_number:
+          type: string
+        tracking_link:
+          type: string
+          format: uri
+        cost:
+          type: number
+        pickup_address:
+          type: object
+        ship_to:
+          type: object
+        packages:
+          type: array
+          items:
+            type: object
   securitySchemes:
     OAuth2:
       type: oauth2
