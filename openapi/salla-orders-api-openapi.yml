@@ -190,6 +190,14 @@ paths:
           description: Order items.
 components:
   schemas:
+    Money:
+      type: object
+      properties:
+        amount:
+          type: number
+        currency:
+          type: string
+          example: SAR
     Order:
       type: object
       properties:
@@ -257,6 +265,26 @@ components:
           type: string
         customer:
           $ref: '#/components/schemas/Customer'
+    OrderResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Order'
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        current:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
     OrderList:
       type: object
       properties:
@@ -286,26 +314,6 @@ components:
               type: string
             fields:
               type: object
-    Pagination:
-      type: object
-      properties:
-        count:
-          type: integer
-        current:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-    OrderResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Order'
     Customer:
       type: object
       properties:
@@ -342,14 +350,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    Money:
-      type: object
-      properties:
-        amount:
-          type: number
-        currency:
-          type: string
-          example: SAR
   responses:
     NotFound:
       description: Resource not found.

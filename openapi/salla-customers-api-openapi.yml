@@ -110,15 +110,17 @@ paths:
                 $ref: '#/components/schemas/CustomerResponse'
 components:
   schemas:
-    CustomerResponse:
+    Pagination:
       type: object
       properties:
-        status:
+        count:
           type: integer
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Customer'
+        current:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
     CustomerList:
       type: object
       properties:
@@ -166,17 +168,15 @@ components:
           type: array
           items:
             type: integer
-    Pagination:
+    CustomerResponse:
       type: object
       properties:
-        count:
+        status:
           type: integer
-        current:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Customer'
     Customer:
       type: object
       properties:

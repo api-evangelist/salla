@@ -194,36 +194,96 @@ paths:
         '200':
           description: Quantities updated.
 components:
-  responses:
-    Unauthorized:
-      description: Invalid or missing access token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ValidationError:
-      description: Request validation failed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        sku:
+          type: string
+        mpn:
+          type: string
+        gtin:
+          type: string
+        type:
+          type: string
+          enum:
+          - product
+          - service
+          - group_products
+          - codes
+          - digital
+          - food
+          - booking
+          - donating
+        status:
+          type: string
+          enum:
+          - sale
+          - out
+          - hidden
+          - deleted
+        price:
+          $ref: '#/components/schemas/Money'
+        sale_price:
+          $ref: '#/components/schemas/Money'
+        cost_price:
+          $ref: '#/components/schemas/Money'
+        quantity:
+          type: integer
+        description:
+          type: string
+        url:
+          type: string
+          format: uri
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        categories:
+          type: array
+          items:
+            type: integer
+        brand_id:
+          type: integer
+        tags:
+          type: array
+          items:
+            type: string
+        updated_at:
+          type: string
+          format: date-time
+    Money:
+      type: object
+      properties:
+        amount:
+          type: number
+        currency:
+          type: string
+          example: SAR
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        current:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+    ProductResponse:
       type: object
       properties:
         status:
           type: integer
         success:
           type: boolean
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-            fields:
-              type: object
+        data:
+          $ref: '#/components/schemas/Product'
     ProductCreate:
       type: object
       required:
@@ -297,14 +357,35 @@ components:
           type: string
         metadata_url:
           type: string
-    Money:
+    Error:
       type: object
       properties:
-        amount:
-          type: number
-        currency:
-          type: string
-          example: SAR
+        status:
+          type: integer
+        success:
+          type: boolean
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            fields:
+              type: object
+    ProductList:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     Image:
       type: object
       properties:
@@ -320,100 +401,19 @@ components:
           type: string
         sort:
           type: integer
-    Pagination:
-      type: object
-      properties:
-        count:
-          type: integer
-        current:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-    Product:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        sku:
-          type: string
-        mpn:
-          type: string
-        gtin:
-          type: string
-        type:
-          type: string
-          enum:
-          - product
-          - service
-          - group_products
-          - codes
-          - digital
-          - food
-          - booking
-          - donating
-        status:
-          type: string
-          enum:
-          - sale
-          - out
-          - hidden
-          - deleted
-        price:
-          $ref: '#/components/schemas/Money'
-        sale_price:
-          $ref: '#/components/schemas/Money'
-        cost_price:
-          $ref: '#/components/schemas/Money'
-        quantity:
-          type: integer
-        description:
-          type: string
-        url:
-          type: string
-          format: uri
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/Image'
-        categories:
-          type: array
-          items:
-            type: integer
-        brand_id:
-          type: integer
-        tags:
-          type: array
-          items:
-            type: string
-        updated_at:
-          type: string
-          format: date-time
-    ProductList:
-      type: object
-      properties:
-        status:
-          type: integer
-        success:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    ProductResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Product'
+  responses:
+    ValidationError:
+      description: Request validation failed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Invalid or missing access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2

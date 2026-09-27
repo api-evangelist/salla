@@ -252,6 +252,8 @@ apis:
   humanURL: https://docs.salla.dev/421117m0
   baseURL: https://api.salla.dev/admin/v2
   tags:
+  - Finance
+  tags_raw:
   - Financial
   properties:
   - type: OpenAPI
@@ -605,7 +607,7 @@ tags:
 - Online Store
 - Retail
 - Saudi Arabia
-- SMB
+- Small Business
 - Storefront
 tags_raw:
 - Arabic
