@@ -195,6 +195,32 @@ paths:
           description: Quantities updated.
 components:
   schemas:
+    Image:
+      type: object
+      properties:
+        id:
+          type: integer
+        original:
+          type: string
+          format: uri
+        thumbnail:
+          type: string
+          format: uri
+        alt:
+          type: string
+        sort:
+          type: integer
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        current:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
     Product:
       type: object
       properties:
@@ -256,34 +282,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    Money:
-      type: object
-      properties:
-        amount:
-          type: number
-        currency:
-          type: string
-          example: SAR
-    Pagination:
-      type: object
-      properties:
-        count:
-          type: integer
-        current:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-    ProductResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Product'
     ProductCreate:
       type: object
       required:
@@ -357,6 +355,36 @@ components:
           type: string
         metadata_url:
           type: string
+    Money:
+      type: object
+      properties:
+        amount:
+          type: number
+        currency:
+          type: string
+          example: SAR
+    ProductResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Product'
+    ProductList:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     Error:
       type: object
       properties:
@@ -373,43 +401,15 @@ components:
               type: string
             fields:
               type: object
-    ProductList:
-      type: object
-      properties:
-        status:
-          type: integer
-        success:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    Image:
-      type: object
-      properties:
-        id:
-          type: integer
-        original:
-          type: string
-          format: uri
-        thumbnail:
-          type: string
-          format: uri
-        alt:
-          type: string
-        sort:
-          type: integer
   responses:
-    ValidationError:
-      description: Request validation failed.
+    Unauthorized:
+      description: Invalid or missing access token.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Invalid or missing access token.
+    ValidationError:
+      description: Request validation failed.
       content:
         application/json:
           schema:

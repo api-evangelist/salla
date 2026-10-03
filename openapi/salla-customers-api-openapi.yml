@@ -121,19 +121,6 @@ components:
           type:
           - string
           - 'null'
-    CustomerList:
-      type: object
-      properties:
-        status:
-          type: integer
-        success:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Customer'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
     CustomerCreate:
       type: object
       required:
@@ -168,6 +155,19 @@ components:
           type: array
           items:
             type: integer
+    CustomerList:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     CustomerResponse:
       type: object
       properties:
