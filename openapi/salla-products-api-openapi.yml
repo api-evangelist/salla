@@ -195,21 +195,23 @@ paths:
           description: Quantities updated.
 components:
   schemas:
-    Image:
+    Money:
       type: object
       properties:
-        id:
+        amount:
+          type: number
+        currency:
+          type: string
+          example: SAR
+    ProductResponse:
+      type: object
+      properties:
+        status:
           type: integer
-        original:
-          type: string
-          format: uri
-        thumbnail:
-          type: string
-          format: uri
-        alt:
-          type: string
-        sort:
-          type: integer
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Product'
     Pagination:
       type: object
       properties:
@@ -221,67 +223,35 @@ components:
           type:
           - string
           - 'null'
-    Product:
+    Error:
       type: object
       properties:
-        id:
-          type: integer
-        name:
-          type: string
-        sku:
-          type: string
-        mpn:
-          type: string
-        gtin:
-          type: string
-        type:
-          type: string
-          enum:
-          - product
-          - service
-          - group_products
-          - codes
-          - digital
-          - food
-          - booking
-          - donating
         status:
-          type: string
-          enum:
-          - sale
-          - out
-          - hidden
-          - deleted
-        price:
-          $ref: '#/components/schemas/Money'
-        sale_price:
-          $ref: '#/components/schemas/Money'
-        cost_price:
-          $ref: '#/components/schemas/Money'
-        quantity:
           type: integer
-        description:
-          type: string
-        url:
-          type: string
-          format: uri
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/Image'
-        categories:
-          type: array
-          items:
-            type: integer
-        brand_id:
+        success:
+          type: boolean
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            fields:
+              type: object
+    ProductList:
+      type: object
+      properties:
+        status:
           type: integer
-        tags:
+        success:
+          type: boolean
+        data:
           type: array
           items:
-            type: string
-        updated_at:
-          type: string
-          format: date-time
+            $ref: '#/components/schemas/Product'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     ProductCreate:
       type: object
       required:
@@ -355,52 +325,82 @@ components:
           type: string
         metadata_url:
           type: string
-    Money:
+    Product:
       type: object
       properties:
-        amount:
-          type: number
-        currency:
+        id:
+          type: integer
+        name:
           type: string
-          example: SAR
-    ProductResponse:
-      type: object
-      properties:
+        sku:
+          type: string
+        mpn:
+          type: string
+        gtin:
+          type: string
+        type:
+          type: string
+          enum:
+          - product
+          - service
+          - group_products
+          - codes
+          - digital
+          - food
+          - booking
+          - donating
         status:
+          type: string
+          enum:
+          - sale
+          - out
+          - hidden
+          - deleted
+        price:
+          $ref: '#/components/schemas/Money'
+        sale_price:
+          $ref: '#/components/schemas/Money'
+        cost_price:
+          $ref: '#/components/schemas/Money'
+        quantity:
           type: integer
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Product'
-    ProductList:
-      type: object
-      properties:
-        status:
-          type: integer
-        success:
-          type: boolean
-        data:
+        description:
+          type: string
+        url:
+          type: string
+          format: uri
+        images:
           type: array
           items:
-            $ref: '#/components/schemas/Product'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    Error:
+            $ref: '#/components/schemas/Image'
+        categories:
+          type: array
+          items:
+            type: integer
+        brand_id:
+          type: integer
+        tags:
+          type: array
+          items:
+            type: string
+        updated_at:
+          type: string
+          format: date-time
+    Image:
       type: object
       properties:
-        status:
+        id:
           type: integer
-        success:
-          type: boolean
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-            fields:
-              type: object
+        original:
+          type: string
+          format: uri
+        thumbnail:
+          type: string
+          format: uri
+        alt:
+          type: string
+        sort:
+          type: integer
   responses:
     Unauthorized:
       description: Invalid or missing access token.
