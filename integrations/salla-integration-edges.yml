@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/salla/integrations
+- https://n8n.io/integrations/salla/
+- https://composio.dev/toolkits/salla
+- https://monid.ai/tools/salla
+checked:
+- https://composio.dev/toolkits/salla
+- https://monid.ai/tools/salla
+- https://n8n.io/integrations/salla/
+- https://zapier.com/apps/salla/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
